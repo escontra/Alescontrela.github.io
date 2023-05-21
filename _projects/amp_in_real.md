@@ -18,9 +18,7 @@ category: work
     </a>
 </div>
 
-## Authors
-<a href="https://twitter.com/aleescontrela">Alejandro Escontrela</a>, <a href="https://xbpeng.github.io/">Xue Bin Peng</a>, <a href="https://research.google/people/107213/">Wenhao Yu</a>, <a  href="https://research.google/people/TingnanZhang/">Tingnan Zhang</a>, <a  href="https://www.linkedin.com/in/atil-iscen-32737945">Atil Iscen</a>, <a href="https://goldberg.berkeley.edu/">Ken Goldberg</a>, <a  href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a>
-
+<br/>
 ## Publication info
 <div class="publications">
 {% bibliography -f papers -q @*[title=Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions]* %}

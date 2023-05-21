@@ -13,10 +13,7 @@ category: work
     </a>
 </div>
 
-## Authors
-
-<a href="https://www.linkedin.com/in/vainavi-viswanath">Vainavi Viswanath</a>, <a href="https://kmindspark.github.io/">Kaushik Shivakumar</a>, <a href="https://kerrj.github.io/">Justin Kerr</a>, <a  href="https://bthananjeyan.github.io/">Brijen Thananjeyan</a>, <a  href="https://ernovoseller.github.io/">Ellen Novoseller</a>, <a href="https://ichnow.ski/">Jeffrey Ichnowski</a>, <a  href="https://www.escontrela.me">Alejandro Escontrela</a>, <a  href="https://www.linkedin.com/in/michael-laskey-4b087ba2">Michael Laskey</a>, <a  href="https://people.eecs.berkeley.edu/~jegonzal/">Joseph E. Gonzalez</a>, <a  href="https://goldberg.berkeley.edu/">Ken Goldberg</a>
-
+<br/>
 ## Publication info
 <div class="publications">
 {% bibliography -f papers -q @*[title=Autonomously Untangling Long Cables]* %}

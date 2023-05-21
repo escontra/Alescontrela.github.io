@@ -26,9 +26,7 @@ category: work
     </a>
 </div>
 
-## Authors
-<a href="https://twitter.com/philippswu">Philipp Wu</a>\*, <a href="https://twitter.com/aleescontrela">Alejandro Escontrela</a>\*, <a href="https://danijar.com/">Danijar Hafner</a>\*, <a href="https://goldberg.berkeley.edu/">Ken Goldberg</a>, <a  href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a> (\* = equal authors)
-
+<br/>
 ## Publication info
 <div class="publications">
 {% bibliography -f papers -q @*[title=Daydreamer: World Models for Physical Robot Learning]* %}

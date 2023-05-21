@@ -19,6 +19,17 @@
                     <!-- Author -->
                     <div class="author">
                         {%- for author in entry.author_array -%}
+
+                        {%- assign author_idx = {{forloop.index}} -%}
+                        {%- if entry.n_first_authors -%}
+                        {% assign nfa = entry.n_first_authors | plus: 1 %}
+                        {%- if author_idx < nfa -%}
+                        {%- assign special_text = "*" -%}
+                        {%- else -%}
+                        {%- assign special_text = "" -%}
+                        {%- endif -%}
+                        {%- endif -%}
+
                         {%- assign author_is_self = false -%}
                         {%- if author.last == site.scholar.last_name%}
                         {%- if site.scholar.first_name contains author.first -%}
@@ -37,29 +48,29 @@
 
                         {%- if forloop.length == 1 -%}
                         {%- if author_is_self %}
-                        <em>{{author.first}} {{author.last}}</em>
+                        <em>{{author.first}} {{author.last}}</em>{{special_text}}
                         {%- else -%}
-                        {{author.first}} {{author.last}}
+                        {{author.first}} {{author.last}}{{special_text}}
                         {%- endif -%}
                         {%- else -%}
                         {%- unless forloop.last -%}
                         {% if author_is_self %}
-                        <em>{{author.first}} {{author.last}}</em>,&nbsp;
+                        <em>{{author.first}} {{author.last}}</em>{{special_text}},&nbsp; 
                         {%- else -%}
                         {% if coauthor_url -%}
-                        <a href="{{coauthor_url}}">{{author.first}} {{author.last}}</a>,&nbsp;
+                        <a href="{{coauthor_url}}">{{author.first}} {{author.last}}</a>{{special_text}},&nbsp;
                         {%- else -%}
-                        {{author.first}} {{author.last}},&nbsp;
+                        {{author.first}} {{author.last}}{{special_text}},&nbsp;
                         {%- endif -%}
                         {%- endif -%}
                         {%- else -%}
                         {% if author_is_self -%}
-                        and <em>{{author.first}} {{author.last}}</em>
+                        and <em>{{author.first}} {{author.last}}</em>{{special_text}}
                         {% else -%}
                         {%- if coauthor_url -%}
-                        and <a href="{{coauthor_url}}">{{author.first}} {{author.last}}</a>
+                        and <a href="{{coauthor_url}}">{{author.first}} {{author.last}}</a>{{special_text}}
                         {% else -%}
-                        and {{author.first}} {{author.last}}
+                        and {{author.first}} {{author.last}}{{special_text}}
                         {%- endif -%}
                         {%- endif -%}
                         {%- endunless -%}
