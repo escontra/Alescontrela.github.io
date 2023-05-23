@@ -58,13 +58,11 @@ rewards specified by video models inherently measure the temporal consistency of
 observation-level rewards. Further, evaluating likelihoods is significantly faster than performing
 video model rollouts, enabling faster training times and more interactions with the environment.
 
-<br/>
-<div class="embed-responsive embed-responsive-16by9">
+<div class="embed-responsive embed-responsive-4by3">
 <video controls autoplay muted loop>
 <source src="/assets/vid/viper_method.mp4" type="video/mp4">
 </video>
 </div>
-<br/>
 
 We summarize the three key contributions of this paper as follows:
 - We present VIPER: a novel, scalable reward specification algorithm which leverages rapid improvements in generative modeling to provide RL agents with rewards from unlabeled videos.
