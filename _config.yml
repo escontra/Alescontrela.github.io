@@ -118,7 +118,8 @@ collections:
     permalink: /news/:path/
   projects:
     output: true
-    permalink: /projects/:path/
+    permalink: /:path/
+    # permalink: /projects/:path/
   featured_media:
     output: true
     permalink: /featured_media/:path/
