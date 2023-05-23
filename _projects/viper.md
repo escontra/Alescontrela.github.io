@@ -223,5 +223,8 @@ We observe that these generalization capabilities also extend to downstream RL, 
 </div>
 
 
+## Visualizing Video Model Uncertainty
+
+
 ## Acknowledgements
 This work was supported in part by an NSF Fellowship, NSF NRI #2024675, and the Vanier Canada Graduate Scholarship. We also thank Google TPU Research Cloud for providing compute resources.
