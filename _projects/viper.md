@@ -92,7 +92,7 @@ $$\max_{\theta} \sum_{t=1}^T \sum_{i=1}^Z \log p_\theta(z^i_t \mid z^{1:i-1}_t, 
 The resulting video model is able to produce videos that capture the complex dynamics and behaviors in each environment. For example, a single task-conditond video model trained on 45 RLBench tasks across two arms produces rollouts which accurately model each task:
 
 
-<img class="mx-auto d-block" src="/assets/gif/rlbench_samples_final.gif"/>
+<img class="mx-auto d-block img-fluid rounded" style="width: 100%;" src="/assets/gif/rlbench_samples_final.gif"/>
 
 
 
@@ -117,8 +117,8 @@ We evaluate using VIPER rewards for policy learning on 15 tasks from the DeepMin
 
 <div class="row">
     <div class="text-center col-12 col-sm-12 col-md-12 mt-4 mt-md-0">
-        <figure class="figure mx-auto d-block">
-            <img class="mx-auto d-block img-fluid" src="/assets/img/viper/results_agg.png"/>
+        <figure class="figure mx-auto d-block rounded">
+            <img class="mx-auto d-block img-fluid rounded" src="/assets/img/viper/results_agg.png"/>
             <figcaption class="figure-caption text-center">Aggregate results across 15 DMC tasks, 7 Atari games, and 6 RLBench tasks. DMC results are provided for DrQ and DreamerV3 (Dv3) RL agents. Atari and RLBench results are reported for DreamerV3. Atari scores are computed using Human-Normalized Mean.</figcaption>
         </figure>
     </div>
@@ -127,13 +127,13 @@ We evaluate using VIPER rewards for policy learning on 15 tasks from the DeepMin
 
 
 <div class="row">
-    <div class="text-center col-12 col-sm-12 col-md-7 mt-4 mt-md-0">
+    <div class="text-center col-12 col-sm-12 col-md-5 mt-4 mt-md-0">
         <figure class="figure mx-auto d-block">
-            <img class="mx-auto d-block" src="/assets/gif/VIPER/DMC_GIFS_final.gif"/>
+            <img class="mx-auto d-block img-fluid rounded" style="width: 100%;" src="/assets/gif/VIPER/DMC_GIFS_final.gif"/>
             <figcaption class="figure-caption text-center">Sample policies learned for the DeepMind Control Suite set of tasks.</figcaption>
         </figure>
     </div>
-    <div class="text col-12 col-sm-12 col-md-5 mt-4 mt-md-0">
+    <div class="text col-12 col-sm-12 col-md-7 mt-4 mt-md-0">
         <p>In DMC, VIPER achieves near expert-level performance from pixels with our video prediction
             rewards alone. Although VIPER slightly underperforms Task Oracle, this is surprising as the Task
             Oracle uses full state information along with dense task rewards. VIPER outperforms both variants
@@ -152,9 +152,12 @@ We evaluate using VIPER rewards for policy learning on 15 tasks from the DeepMin
         in each Atari environment when training the video model improved downstream RL performance.
         </p>
     </div>
+</div>
+
+<div class="row">
     <div class="text-center col-12 col-sm-12 col-md-12 mt-4 mt-md-0">
     <figure class="figure mx-auto d-block">
-        <img class="mx-auto d-block" src="/assets/gif/VIPER/ATARI_GIFS_final.gif"/>
+        <img class="mx-auto d-block img-fluid rounded" style="width: 100%" src="/assets/gif/VIPER/ATARI_GIFS_final.gif"/>
     <figcaption class="figure-caption text-center">Sample policies learned for Atari games.</figcaption>
     </figure>
     </div>
@@ -172,14 +175,16 @@ rarely moving and interacting with the scene. We hypothesize that this may be pa
 the high control frequency of the environment, along with the initial slow acceleration of the
 robot arm in demonstrations, resulting in very little movement between adjacent frames.</p>
     </div>
-    <div class="text-center col-12 col-sm-12 col-md-12 mt-4 mt-md-0">
-        <figure class="figure mx-auto d-block">
-            <img class="mx-auto d-block" src="/assets/gif/VIPER/RLBench_final.gif"/>
-        <figcaption class="figure-caption text-center">Sample policies learned for RLBench manipulation tasks.</figcaption>
-        </figure>
-    </div>
 </div>
 
+<div class="row">
+<div class="text-center col-12 col-sm-12 col-md-12 mt-4 mt-md-0">
+    <figure class="figure mx-auto d-block">
+        <img class="mx-auto d-block img-fluid rounded" style="width: 100%;" src="/assets/gif/VIPER/RLBench_final.gif"/>
+    <figcaption class="figure-caption text-center">Sample policies learned for RLBench manipulation tasks.</figcaption>
+    </figure>
+</div>
+</div>
 
 ## Cross-Embodiment Generalization
 
@@ -190,13 +195,13 @@ Sample video model rollouts for in distribution training tasks and an OOD arm/ta
 <figure class="figure mx-auto d-block">
 <div class="row">
     <div class="text-center col-4 col-sm-4 col-md-4 mt-4 mt-md-0">
-        <img class="mx-auto d-block w-100" src="/assets/gif/VIPER/generalization_saucepan_sawyer.gif"/>
+        <img class="mx-auto d-block w-100 rounded border border-warning" style="border-width: 5px !important;" src="/assets/gif/VIPER/generalization_saucepan_sawyer.gif"/>
     </div>
     <div class="text-center col-4 col-sm-4 col-md-4 mt-4 mt-md-0">
-        <img class="mx-auto d-block w-100" src="/assets/gif/VIPER/generalization_umbrella_panda.gif"/>
+        <img class="mx-auto d-block w-100 rounded border border-warning" style="border-width: 5px !important;" src="/assets/gif/VIPER/generalization_umbrella_panda.gif"/>
     </div>
     <div class="text-center col-4 col-sm-4 col-md-4 mt-4 mt-md-0">
-        <img class="mx-auto d-block w-100" src="/assets/gif/VIPER/generalization_saucepan_panda.gif"/>
+        <img class="mx-auto d-block w-100 rounded border border-success" style="border-width: 5px !important;" src="/assets/gif/VIPER/generalization_saucepan_panda.gif"/>
     </div>
 </div>
 <figcaption class="figure-caption text-center">Sampled video predictions for in distribution reference videos (Left and Middle) and an OOD arm/task combination (Right). The video model displays cross-embodiment generalization to arm/task combination not observed in the training data. Video model generalization can enable specifying new tasks where no reference data is available.</figcaption>
@@ -212,8 +217,8 @@ We observe that these generalization capabilities also extend to downstream RL, 
 
 <div class="row">
     <div class="text-center col-12 col-sm-12 col-md-12 mt-4 mt-md-0">
-        <figure class="figure mx-auto d-block">
-            <img class="mx-auto d-block img-fluid" src="/assets/img/viper/cross_embodiment_generalization.png"/>
+        <figure class="figure mx-auto d-block rounded">
+            <img class="mx-auto d-block img-fluid rounded" style="width: 80%;" src="/assets/img/viper/cross_embodiment_generalization.png"/>
             <figcaption class="figure-caption text-center">(Left) Training curve for RL agent trained with VIPER on OOD task. (Right) Task-conditional likelihood for reference and random trajectory for an OOD task.</figcaption>
         </figure>
     </div>
