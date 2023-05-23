@@ -7,6 +7,8 @@
 "Jain":
   - firstname: ["Ajay"]
     url: https://www.ajayjain.net/
+  - firstname: ["Deepali"]
+    url: https://research.google/people/Deepali/
 "Peng":
   - firstname: ["Xue Bin", "Jason"]
     url: https://xbpeng.github.io/
@@ -58,3 +60,15 @@
 "Iscen":
   - firstname: ["Atil"]
     url: https://www.linkedin.com/in/atil-iscen-32737945
+"Xu":
+  - firstname: ["Peng"]
+    url: https://scholar.google.com/citations?user=460NWeQAAAAJ&hl=en
+"Coumans":
+  - firstname: ["Erwin"]
+    url: https://www.linkedin.com/in/erwincoumans
+"Ha":
+  - firstname: ["Sehoon"]
+    url: https://faculty.cc.gatech.edu/~sha9/
+"Tan":
+  - firstname: ["Jie"]
+    url: https://www.jie-tan.net/
