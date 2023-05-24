@@ -100,6 +100,15 @@ Given a pretrained video model, VIPER proposes an intuitive reward that maximize
 
 $$r^{\mathrm{VIPER}}_t \doteq \ln p_\theta(x_{t+1}|x_{1:t}).$$
 
+This reward incentivizes the agent to find the most likely trajectory under the expert video distribution as modeled by the video model. However, the most probable sequence does not necessarily capture the distribution of behaviors we want the agent to learn.
+
+For example, when flipping a weighted coin with $$p(\text{heads} = 0.6)$$ 1000 times, typical sequences will
+count roughly 600 heads and 400 tails, in contrast to the most probable sequence of 1000 heads that
+will basically never be seen in practice. Similarly, the most likely image under a density model
+trained on MNIST images is often the image of only background without a digit, despite this never
+occurring in the dataset. In the reinforcement learning setting, an additional issue is that solely
+optimizing a dense reward such as $$r^{\mathrm{VIPER}}_t$$ can lead to early convergence to local optima.
+
 To overcome these challenges, we take the more principled approach of matching the agent’s trajectory
 distribution $$q(x_{1:T} )$$ to the sequence distribution $$p_\theta(x_{1:T} )$$ of the video model by minimizing the
 KL-divergence between the two distributions. We refer the reader to the main text for all derivations. The resulting reward is given by:
