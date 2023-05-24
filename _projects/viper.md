@@ -34,14 +34,14 @@ category: work
 
 <br/>
 <div class="row">
-    <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
-        <h4><a href="https://arxiv.org/pdf/2206.14176.pdf">Paper</a></h4>
+    <div class="text-center col-6 col-sm-6 mt-6 mt-md-0">
+        <h3><a href="https://arxiv.org/pdf/2305.14343.pdf">Paper</a></h3>
     </div>
-    <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
+    <!-- <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
         <h4><a href="https://twitter.com/danijarh/status/1542170248706609152">Twitter</a></h4>
-    </div>
-    <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
-        <h4>Code (Coming Soon)</h4>
+    </div> -->
+    <div class="text-center col-6 col-sm-6 mt-6 mt-md-0">
+        <h3>Code (Coming Soon)</h3>
     </div>
 </div>
 
