@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: AI Researcher @ {<a href='https://rll.berkeley.edu/'>UC Berkeley Robot Learning Lab 🤖</a>, <a href='https://bair.berkeley.edu/'>BAIR 🐻</a>}.<br>PhD Student advised by <a href='https://people.eecs.berkeley.edu/~pabbeel/'>Pieter Abbeel</a>
+subtitle: PhD Student @ <a href='https://rll.berkeley.edu/'>UC Berkeley Robot Learning Lab 🤖</a>, <a href='https://bair.berkeley.edu/'>BAIR 🐻</a><br>Advised by <a href='https://people.eecs.berkeley.edu/~pabbeel/'>Pieter Abbeel</a>
 
 profile:
   align: right
