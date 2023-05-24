@@ -106,7 +106,16 @@ KL-divergence between the two distributions. We refer the reader to the main tex
 
 $$r^{\mathrm{KL}}_t \doteq r^{\mathrm{VIPER}}_t+\beta r^\mathrm{expl}_t,$$
 
-Where $$\beta$$ balances the relative importance of the VIPER and exploration rewards.
+Where $$\beta$$ balances the relative importance of the VIPER and exploration rewards. We summarize VIPER in the figure below:
+
+<div class="row">
+    <div class="text-center col-12 col-sm-12 col-md-12 mt-4 mt-md-0">
+        <figure class="figure mx-auto d-block rounded">
+            <img class="mx-auto d-block img-fluid rounded" src="/assets/img/viper/viper_method_figure.png"/>
+            <figcaption class="figure-caption text-center">Full outline of the VIPER algorithm.</figcaption>
+        </figure>
+    </div>
+</div>
 
 
 ## Benchmarks
@@ -225,6 +234,27 @@ We observe that these generalization capabilities also extend to downstream RL, 
 
 ## Visualizing Video Model Uncertainty
 
+We can visualize the the uncertainty of the video model by upsampling per-frame log-probabilities for each VQCode. We find that the video model correctly assigns low log probs to trajectories that are not consistent with the reference videos, and high log probs to trajectories that are consistent with the reference videos. We show this for low return trajectories and expert trajectories in the figure below:
+
+<figure class="figure mx-auto d-block">
+<div class="row">
+    <div class="text-center col-6 col-sm-6 col-md-6 mt-4 mt-md-0">
+        <img class="mx-auto d-block w-100 rounded border border-danger" style="border-width: 3px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_rlbench_bad.gif"/>
+    </div>
+    <div class="text-center col-6 col-sm-6 col-md-6 mt-4 mt-md-0">
+        <img class="mx-auto d-block w-100 rounded border border-success" style="border-width: 3px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_rlbench_good.gif"/>
+    </div>
+</div>
+<div class="row">
+    <div class="text-center col-6 col-sm-6 col-md-6 mt-4 mt-md-0">
+        <img class="mx-auto d-block w-100 rounded border border-danger" style="border-width: 3px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_dmc_bad.gif"/>
+    </div>
+    <div class="text-center col-6 col-sm-6 col-md-6 mt-4 mt-md-0">
+        <img class="mx-auto d-block w-100 rounded border border-success" style="border-width: 3px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_dmc_good.gif"/>
+    </div>
+</div>
+<figcaption class="figure-caption text-center">Upsampled VQCode conditional log probabilities for low return trajectories (left) and expert trajectories (right). Visualizations correspond to RLBench (top) and DeepMind Control (bottom). RLBench uses 16X16 VQCodes while DMC uses 8X8. Brighther colors correspond to higher log probabilities.</figcaption>
+</figure>
 
 ## Acknowledgements
-This work was supported in part by an NSF Fellowship, NSF NRI #2024675, and the Vanier Canada Graduate Scholarship. We also thank Google TPU Research Cloud for providing compute resources.
+This work was supported in part by an NSF Fellowship, NSF NRI #2024675, ONR MURI N00014-22-1-2773, Komatsu, and the Vanier Canada Graduate Scholarship. We also thank Google TPU Research Cloud for providing compute resources.
