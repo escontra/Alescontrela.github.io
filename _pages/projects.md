@@ -2,7 +2,7 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Enjoy this assortment of projects i've worked on recently
+description: 
 nav: true
 nav_order: 1
 display_categories: [work, fun]
@@ -48,9 +48,10 @@ horizontal: false
     </div>
   </div>
   {%- else -%}
-  <div class="grid">
+  <div class="container">
     {%- for project in sorted_projects -%}
       {% include projects.html %}
+      <br>
     {%- endfor %}
   </div>
   {%- endif -%}
