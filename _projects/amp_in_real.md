@@ -7,33 +7,6 @@ importance: 2
 category: work
 ---
 
-<div class="row justify-content-sm-center">
-    <a href="https://techcrunch.com/2022/07/21/berkeley-shows-off-accelerated-learning-that-puts-robots-on-their-feet-in-minutes/" class="col-6 col-sm-6 col-md-3 mt-3 mt-md-0">
-        <img style="padding: 5% 5% 5% 5%;" class="card-img border bg-white rounded" src="/assets/img/techcrunch.png"
-          alt="Card image cap"> 
-    </a>
-    <a href="https://www.youtube.com/watch?v=h8AUJwPdTIE&t=1s" class="col-6 col-sm-6 col-md-3 mt-3 mt-md-0">
-        <img style="padding: 5% 5% 5% 5%; background: linear-gradient(90deg, rgba(18,70,29,1) 0%, rgba(16,92,28,1) 100%) !important;" class="card-img bg-white rounded" src="/assets/img/techcrunch_robotics.png"
-          alt="Card image cap"> 
-    </a>
-</div>
-
-<br/>
-## Publication info
-<div class="publications">
-{% bibliography -f papers -q @*[title=Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions]* %}
-</div>
-
-## Leveraging adversarial motion priors for robot locomotion
-
-{% raw %}
-<p style="position: relative; text-align: center; height: 0; padding-bottom: 56.25%; margin-bottom: 0;">
-<iframe frameborder="0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; margin-bottom: -.5em" src="https://www.youtube.com/embed/Bo88rwUQbrM?rel=0" allowfullscreen=""></iframe>
-</p>
-{% endraw %}
-
-
-<br/>
 <div class="row">
     <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
         <h4><a href="https://arxiv.org/pdf/2203.15103.pdf">Paper</a></h4>
@@ -47,8 +20,39 @@ category: work
 </div>
 
 <br/>
+<div class="row justify-content-sm-center">
+    <a href="https://techcrunch.com/2022/07/21/berkeley-shows-off-accelerated-learning-that-puts-robots-on-their-feet-in-minutes/" class="col-6 col-sm-6 col-md-3 mt-3 mt-md-0">
+        <img style="padding: 5% 5% 5% 5%;" class="card-img border bg-white rounded" src="/assets/img/techcrunch.png"
+          alt="Card image cap"> 
+    </a>
+    <a href="https://www.youtube.com/watch?v=h8AUJwPdTIE&t=1s" class="col-6 col-sm-6 col-md-3 mt-3 mt-md-0">
+        <img style="padding: 5% 5% 5% 5%; background: linear-gradient(90deg, rgba(18,70,29,1) 0%, rgba(16,92,28,1) 100%) !important;" class="card-img bg-white rounded" src="/assets/img/techcrunch_robotics.png"
+          alt="Card image cap"> 
+    </a>
+</div>
+
+<br/>
+## Publication info
+---
+<div class="publications">
+{% bibliography -f papers -q @*[title=Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions]* %}
+</div>
+
+<br/>
+## Leveraging adversarial motion priors for robot locomotion
+---
+
+{% raw %}
+<p style="position: relative; text-align: center; height: 0; padding-bottom: 56.25%; margin-bottom: 0;">
+<iframe frameborder="0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; margin-bottom: -.5em" src="https://www.youtube.com/embed/Bo88rwUQbrM?rel=0" allowfullscreen=""></iframe>
+</p>
+{% endraw %}
+
+
+<br/>
 
 ## Overview
+---
 
 <div class="row">
     <div class="text col-12 col-sm-12 col-md-6 mt-4 mt-md-0">
@@ -59,7 +63,9 @@ category: work
     </div>
 </div>
 
+<br/>
 ## Example behaviors
+---
 
 <div class="row">
     <div class="text col-12 col-sm-12 col-md-4">
@@ -82,6 +88,7 @@ category: work
 <br/>
 
 ## Energy efficiency comparison with baselines
+---
 <div class="row">
     <div class="text col-12">
         <p>
@@ -96,7 +103,9 @@ category: work
     </div>
 </div>
 
+<br/>
 ## Motion priors substitute the need for complex style rewards or custom action spaces
+---
 
 <div class="row">
     <div class="text-center col-12 col-sm-12 col-md-5 mt-4 mt-md-0">
@@ -107,7 +116,9 @@ category: work
     </div>
 </div>
 
+<br/>
 ## More behaviors
+---
 
 <div class="row">
     <div class="text col-12 col-sm-12 col-md-4">
@@ -133,5 +144,14 @@ category: work
 <br/>
 
 ## Acknowledgements
+---
 The authors would like to thank <a href="https://www.lauvisuals.com/">Adam Lau</a>, <a href="https://kerrj.github.io/">Justin Kerr</a>,
 <a href="https://www.ipr.kit.edu/english/staff_2970.php">Lars Berscheid</a>, and <a href="https://twitter.com/chungminkim?lang=en">Chung Min Kim</a> for their helpful contributions and discussions.
+
+<br/>
+## How to cite
+---
+
+<div class="publications">
+{% bibliography -f papers_new_pref -q @*[title=Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions]* --max 0 %}
+</div>

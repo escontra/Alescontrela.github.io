@@ -26,24 +26,23 @@ category: work
     </a>
 </div> -->
 
+<div class="row">
+    <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
+        <h3><a href="https://arxiv.org/pdf/2305.14343.pdf">Paper<br/><i class="fas fa-file-pdf"></i></a></h3>
+    </div>
+    <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
+        <h3><a href="https://twitter.com/AleEscontrela/status/1661363555495710721?s=20">Twitter<br/><i class="fab fa-twitter"></i></a></h3>
+    </div>
+    <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
+        <h3>Code (Coming Soon)<br/><i class="fas fa-file-code"></i></h3>
+    </div>
+</div>
+<br/>
 
 ## Publication info
 ---
 <div class="publications">
-{% bibliography -f papers -q @*[title=Video Prediction Models as Rewards for Reinforcement Learning]* %}
-</div>
-
-<br/>
-<div class="row">
-    <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
-        <h3><a href="https://arxiv.org/pdf/2305.14343.pdf">Paper <i class="fas fa-file-pdf"></i></a></h3>
-    </div>
-    <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
-        <h3><a href="https://twitter.com/AleEscontrela/status/1661363555495710721?s=20">Twitter <i class="fab fa-twitter"></i></a></h3>
-    </div>
-    <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
-        <h3>Code (Coming Soon) <i class="fas fa-file-code"></i></h3>
-    </div>
+{% bibliography -f papers -q @*[title=Video Prediction Models as Rewards for Reinforcement Learning]* --max 0 %}
 </div>
 
 <br/>
@@ -292,3 +291,12 @@ We can visualize the the uncertainty of the video model by upsampling per-frame 
 ## Acknowledgements
 ---
 This work was supported in part by an NSF Fellowship, NSF NRI #2024675, ONR MURI N00014-22-1-2773, Komatsu, and the Vanier Canada Graduate Scholarship. We also thank Google TPU Research Cloud for providing compute resources.
+
+<br/>
+
+## How to cite
+---
+
+<div class="publications">
+{% bibliography -f papers_new_pref -q @*[title=Video Prediction Models as Rewards for Reinforcement Learning]* --max 0 %}
+</div>

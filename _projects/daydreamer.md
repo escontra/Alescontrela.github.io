@@ -7,6 +7,23 @@ importance: 1
 category: work
 ---
 
+<div class="row">
+    <div class="text-center col-3 col-sm-3 mt-3 mt-md-0">
+        <h4><a href="https://arxiv.org/pdf/2206.14176.pdf">Paper</a></h4>
+    </div>
+    <div class="text-center col-3 col-sm-3 mt-3 mt-md-0">
+        <h4><a href="https://twitter.com/danijarh/status/1542170248706609152">Twitter</a></h4>
+    </div>
+    <div class="text-center col-3 col-sm-3 mt-3 mt-md-0">
+        <h4><a href="https://www.youtube.com/watch?v=A6Rg0qRwTYs">Talk</a></h4>
+    </div>
+    <div class="text-center col-3 col-sm-3 mt-3 mt-md-0">
+        <h4><a href="https://github.com/danijar/daydreamer">Code</a></h4>
+    </div>
+</div>
+
+<br/>
+
 <div class="row justify-content-sm-center">
     <a href="https://www.dailymail.co.uk/sciencetech/article-11024615/Robot-dog-walk-ONE-hour-training-scientists-hope-play-fetch-future.html" class="col-6 col-sm-6 col-md-3 mt-3 mt-md-0">
         <img style="padding: 5% 5% 5% 5%;" class="card-img border bg-white rounded" src="/assets/img/dailymail.png"
@@ -28,11 +45,15 @@ category: work
 
 <br/>
 ## Publication info
+---
+
 <div class="publications">
 {% bibliography -f papers -q @*[title=Daydreamer: World Models for Physical Robot Learning]* %}
 </div>
 
+<br/>
 ## Learning to walk in the real world in under an hour
+---
 
 The A1 quadruped shown below learns to walk with DayDreamer in ~1 hour, from scratch, with no human intervention.
 
@@ -45,24 +66,9 @@ The A1 quadruped shown below learns to walk with DayDreamer in ~1 hour, from scr
 
 
 <br/>
-<div class="row">
-    <div class="text-center col-3 col-sm-3 mt-3 mt-md-0">
-        <h4><a href="https://arxiv.org/pdf/2206.14176.pdf">Paper</a></h4>
-    </div>
-    <div class="text-center col-3 col-sm-3 mt-3 mt-md-0">
-        <h4><a href="https://twitter.com/danijarh/status/1542170248706609152">Twitter</a></h4>
-    </div>
-    <div class="text-center col-3 col-sm-3 mt-3 mt-md-0">
-        <h4><a href="https://www.youtube.com/watch?v=A6Rg0qRwTYs">Talk</a></h4>
-    </div>
-    <div class="text-center col-3 col-sm-3 mt-3 mt-md-0">
-        <h4><a href="https://github.com/danijar/daydreamer">Code</a></h4>
-    </div>
-</div>
-
-<br/>
 
 ## Abstract
+---
 
 To solve tasks in complex environments, robots need to learn from experience.
 Deep reinforcement learning is a common approach to robot learning but requires
@@ -91,7 +97,9 @@ online learning in the real world, which establishes a strong baseline. We
 release our infrastructure for future applications of world models to robot
 learning.
 
+<br/>
 ## Robots
+---
 
 {% raw %}
 <div class="card-deck">
@@ -124,6 +132,7 @@ learning.
 
 <br/>
 ## All Media Coverage
+---
 
 <ul>
   <li><a href="https://www.dailymail.co.uk/sciencetech/article-11024615/Robot-dog-walk-ONE-hour-training-scientists-hope-play-fetch-future.html">Daily Mail</a></li>
@@ -142,9 +151,19 @@ learning.
   <li><a href="https://engineering.berkeley.edu/news/2022/10/step-by-step/">Berkeley Engineering</a></li>
 </ul>
 
+<br/>
 
 ## Acknowledgements
+---
 We thank <a href="https://stepjam.github.io/">Stephen James</a> and <a href="https://kerrj.github.io/">Justin Kerr</a> for helpful suggestions and help with
 printing the protective shell of the quadruped robot. We thank <a href="https://www.linkedin.com/in/ademi-adeniji">Ademi Adeniji</a> for help with setting up
 the XArm robot and <a href="https://twitter.com/ravenhuang4?lang=en">Raven Huang</a> for help with setting up the UR5 robot. This work was supported
 in part by an NSF Fellowship, NSF NRI #2024675, and the Vanier Canada Graduate Scholarship.
+
+<br/>
+
+## How to cite
+---
+<div class="publications">
+{% bibliography -f papers_new_pref -q @*[title=Daydreamer: World Models for Physical Robot Learning]* --max 0 %}
+</div>
