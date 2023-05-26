@@ -28,6 +28,7 @@ category: work
 
 
 ## Publication info
+---
 <div class="publications">
 {% bibliography -f papers -q @*[title=Video Prediction Models as Rewards for Reinforcement Learning]* %}
 </div>
@@ -48,6 +49,7 @@ category: work
 <br/>
 
 ## Overview
+---
 
 In this work, we propose using Video Prediction Rewards (VIPER) for reinforcement learning.
 VIPER first learns a video prediction model from expert videos. We then train an agent using
@@ -71,7 +73,12 @@ We summarize the three key contributions of this paper as follows:
 
 Along the way, we discuss important implementation details that improve the robustness of VIPER.
 
+<br/>
+
 ## Leveraging Video Prediction Rewards for Reinforcement Learning
+---
+
+<br/>
 
 ### Video Modeling
 Our method can integrate any video model that supports computing likelihoods over the joint distribution factorized in the following form:
@@ -92,7 +99,7 @@ The resulting video model is able to produce videos that capture the complex dyn
 
 <img class="mx-auto d-block img-fluid rounded" style="width: 100%;" src="/assets/gif/rlbench_samples_final.gif"/>
 
-
+<br/>
 
 ### Reward Formulation
 
@@ -126,8 +133,10 @@ Where $$\beta$$ balances the relative importance of the VIPER and exploration re
     </div>
 </div>
 
+<br/>
 
 ## Benchmarks
+---
 
 We evaluate using VIPER rewards for policy learning on 15 tasks from the DeepMind Control Suite, 7 tasks from Atari Gym, and 6 tasks from the Robot Learning Benchmark. Aggregate plots of the results are shown below. We compare VIPER to Adversarial Motion Priors, and to a Task Oracle with access to full state information and task reward.
 
@@ -202,7 +211,10 @@ robot arm in demonstrations, resulting in very little movement between adjacent 
 </div>
 </div>
 
+<br/>
+
 ## Cross-Embodiment Generalization
+---
 
 We seek to understand how this generalization can be used to learn more general reward functions. We train a model on two datasets of different robot arms, and evaluate the cross-embodiment generalization capabilities of the model. Specifically, we gather demonstrations for 23 tasks on the Rethink Robotics Sawyer Arm, and demonstrations for 30 tasks on the Franka Panda robotic arm, where only 20 tasks are overlapping between arms. We then train a task-conditioned autoregressive video model on these demonstration videos and evaluate the video model by querying unseen arm/task combinations, where a single initial frame is used for open loop predictions.
 
@@ -231,7 +243,7 @@ reasonable trajectories for the arm and task combination
 
 We observe that these generalization capabilities also extend to downstream RL, where we use our trained video model with VIPER to learn a policy for the Franka Robot arm to solve an OOD task without requiring demos for that specific task and arm combination. These results demonstrate a promising direction for future work in applying VIPER to larger scale video models that will be able to better generalize and learn desired behaviors only through a few demonstrations.
 
-<div class="row">
+<div class="row form-group">
     <div class="text-center col-12 col-sm-12 col-md-12 mt-4 mt-md-0">
         <figure class="figure mx-auto d-block rounded">
             <img class="mx-auto d-block img-fluid rounded" style="width: 80%;" src="/assets/img/viper/cross_embodiment_generalization.png"/>
@@ -240,13 +252,23 @@ We observe that these generalization capabilities also extend to downstream RL, 
     </div>
 </div>
 
+<br/>
 
 ## Visualizing Video Model Uncertainty
+---
 
 We can visualize the the uncertainty of the video model by upsampling per-frame log-probabilities for each VQCode. We find that the video model correctly assigns low log probs to trajectories that are not consistent with the reference videos, and high log probs to trajectories that are consistent with the reference videos. We show this for low return trajectories and expert trajectories in the figure below:
 
 <figure class="figure mx-auto d-block">
-<div class="row">
+<div class="row form-group">
+    <div class="text-center col-6 col-sm-6 col-md-6 mt-4 mt-md-0">
+        <img class="mx-auto d-block w-100 rounded border border-danger" style="border-width: 10px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_atari_bad.gif"/>
+    </div>
+    <div class="text-center col-6 col-sm-6 col-md-6 mt-4 mt-md-0">
+        <img class="mx-auto d-block w-100 rounded border border-success" style="border-width: 3px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_atari_good.gif"/>
+    </div>
+</div>
+<div class="row form-group">
     <div class="text-center col-6 col-sm-6 col-md-6 mt-4 mt-md-0">
         <img class="mx-auto d-block w-100 rounded border border-danger" style="border-width: 3px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_rlbench_bad.gif"/>
     </div>
@@ -254,7 +276,7 @@ We can visualize the the uncertainty of the video model by upsampling per-frame 
         <img class="mx-auto d-block w-100 rounded border border-success" style="border-width: 3px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_rlbench_good.gif"/>
     </div>
 </div>
-<div class="row">
+<div class="row form-group">
     <div class="text-center col-6 col-sm-6 col-md-6 mt-4 mt-md-0">
         <img class="mx-auto d-block w-100 rounded border border-danger" style="border-width: 3px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_dmc_bad.gif"/>
     </div>
@@ -265,5 +287,8 @@ We can visualize the the uncertainty of the video model by upsampling per-frame 
 <figcaption class="figure-caption text-center">Upsampled VQCode conditional log probabilities for low return trajectories (left) and expert trajectories (right). Visualizations correspond to RLBench (top) and DeepMind Control (bottom). RLBench uses 16X16 VQCodes while DMC uses 8X8. Brighther colors correspond to higher log probabilities.</figcaption>
 </figure>
 
+<br/>
+
 ## Acknowledgements
+---
 This work was supported in part by an NSF Fellowship, NSF NRI #2024675, ONR MURI N00014-22-1-2773, Komatsu, and the Vanier Canada Graduate Scholarship. We also thank Google TPU Research Cloud for providing compute resources.
