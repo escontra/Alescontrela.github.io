@@ -283,7 +283,7 @@ We can visualize the the uncertainty of the video model by upsampling per-frame 
         <img class="mx-auto d-block w-100 rounded border border-success" style="border-width: 3px !important; width: 100%;" src="/assets/gif/VIPER/uncertainty_dmc_good.gif"/>
     </div>
 </div>
-<figcaption class="figure-caption text-center">Upsampled VQCode conditional log probabilities for low return trajectories (left) and expert trajectories (right). Visualizations correspond to RLBench (top) and DeepMind Control (bottom). RLBench uses 16X16 VQCodes while DMC uses 8X8. Brighther colors correspond to higher log probabilities.</figcaption>
+<figcaption class="figure-caption text-center">Upsampled VQCode conditional log probabilities for low return trajectories (left) and expert trajectories (right). Visualizations correspond to Atari (top), RLBench (middle), and DeepMind Control (bottom). RLBench uses 16X16 VQCodes while DMC uses 8X8. Brighther colors correspond to higher log probabilities.</figcaption>
 </figure>
 
 <br/>
