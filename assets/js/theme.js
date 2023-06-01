@@ -60,5 +60,32 @@ let initTheme = (theme) => {
   setTheme(theme);
 }
 
+function getPreferredColorScheme() {
+  if (window.matchMedia) {
+    if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+      return 'dark';
+    } else {
+      return 'light';
+    }
+  }
+  return 'light';
+}
+
+function updateColorScheme(){
+    setTheme(getPreferredColorScheme());
+}
+
+if(window.matchMedia){
+  var colorSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  colorSchemeQuery.addEventListener('change', updateColorScheme);
+}
+
+/* Clear the theme local storage upon first load */
+window.onload = function () {
+  if (localStorage.getItem("hasCodeRunBefore") === null) {
+      localStorage.removeItem("theme");
+      localStorage.setItem("hasCodeRunBefore", true);
+  }
+}
 
 initTheme(localStorage.getItem("theme"));
