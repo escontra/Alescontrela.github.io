@@ -9,8 +9,7 @@ last_name: Escontrela
 email: mail@escontrela.me
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
   Website of AI Researcher and Roboticist Alejandro Escontrela.
-footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
+footer_text:
 keywords: AI, robotics, ML, artificial, intelligence, reinforcement, learning  # add your own keywords or leave empty
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
@@ -237,7 +236,7 @@ scholar:
 
   query: "@*"
 
-filtered_bibtex_keywords: [abbr, abstract, arxiv, bibtex_show, html, pdf, selected, supp, blog, code, poster, slides, website, img_path, code, award, n_first_authors, for_project] # Filter out certain bibtex entry keywords used internally from the bib output
+filtered_bibtex_keywords: [abbr, abstract, arxiv, bibtex_show, html, pdf, selected, supp, blog, code, poster, slides, website, img_path, code, award, n_first_authors, for_project, max_n_authors] # Filter out certain bibtex entry keywords used internally from the bib output
 
 # -----------------------------------------------------------------------------
 # Responsive WebP Images

@@ -27,7 +27,15 @@
 
                     <!-- Author -->
                     <div class="author">
+                        {% assign i = 0 |plus:0 %}
                         {%- for author in entry.author_array -%}
+                        {% assign max_n_authors = entry.max_n_authors |plus:0 %}
+                        {%- if entry.max_n_authors -%}
+                        {%- if {{forloop.index}} > max_n_authors -%}
+                        <span>&#8230;</span>
+                        {%- break -%}
+                        {%- endif -%}
+                        {%- endif -%}
 
                         {%- assign author_idx = {{forloop.index}} -%}
                         {%- if entry.n_first_authors -%}
@@ -84,6 +92,7 @@
                         {%- endif -%}
                         {%- endunless -%}
                         {%- endif -%}
+                        {% assign i = i|plus:1 %}
                         {%- endfor %}
                     </div>
 
