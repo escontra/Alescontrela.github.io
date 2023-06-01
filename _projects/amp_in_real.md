@@ -33,6 +33,7 @@ category: work
 
 <br/>
 ## Publication info
+{: .no_toc}
 ---
 <div class="publications">
 {% bibliography -f papers -q @*[title=Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions]* %}
@@ -48,6 +49,11 @@ category: work
 </p>
 {% endraw %}
 
+<br/>
+The project page is organized as follows:
+
+* TOC
+{:toc}
 
 <br/>
 
@@ -144,12 +150,14 @@ category: work
 <br/>
 
 ## Acknowledgements
+{: .no_toc}
 ---
 The authors would like to thank <a href="https://www.lauvisuals.com/">Adam Lau</a>, <a href="https://kerrj.github.io/">Justin Kerr</a>,
 <a href="https://www.ipr.kit.edu/english/staff_2970.php">Lars Berscheid</a>, and <a href="https://twitter.com/chungminkim?lang=en">Chung Min Kim</a> for their helpful contributions and discussions.
 
 <br/>
 ## How to cite
+{: .no_toc}
 ---
 
 <div class="publications">

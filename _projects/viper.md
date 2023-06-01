@@ -6,6 +6,7 @@ img: assets/img/viper/viper_method.png
 importance: 0
 category: work
 ---
+
 <!-- 
 <div class="row justify-content-sm-center">
     <a href="https://www.dailymail.co.uk/sciencetech/article-11024615/Robot-dog-walk-ONE-hour-training-scientists-hope-play-fetch-future.html" class="col-6 col-sm-6 col-md-3 mt-3 mt-md-0">
@@ -39,7 +40,9 @@ category: work
 </div>
 <br/>
 
+
 ## Publication info
+{: .no_toc}
 ---
 <div class="publications">
 {% bibliography -f papers -q @*[title=Video Prediction Models as Rewards for Reinforcement Learning]* --max 0 %}
@@ -65,12 +68,17 @@ video model rollouts, enabling faster training times and more interactions with 
 </video>
 </div>
 
+<br/>
+
 We summarize the three key contributions of this paper as follows:
 - We present VIPER: a novel, scalable reward specification algorithm which leverages rapid improvements in generative modeling to provide RL agents with rewards from unlabeled videos.
 - We perform an extensive evaluation, and show that VIPER can achieve expert-level control without task rewards on 15 DMC tasks, 6 RLBench tasks, and 7 Atari tasks.
 - We demonstrate that VIPER generalizes to different environments for which no training data was provided, enabling cross-embodiment generalization for tabletop manipulation.
 
-Along the way, we discuss important implementation details that improve the robustness of VIPER.
+Along the way, we discuss important implementation details that improve the robustness of VIPER. The project page is organized as follows:
+
+* TOC
+{:toc}
 
 <br/>
 
@@ -289,12 +297,14 @@ We can visualize the the uncertainty of the video model by upsampling per-frame 
 <br/>
 
 ## Acknowledgements
+{: .no_toc}
 ---
 This work was supported in part by an NSF Fellowship, NSF NRI #2024675, ONR MURI N00014-22-1-2773, Komatsu, and the Vanier Canada Graduate Scholarship. We also thank Google TPU Research Cloud for providing compute resources.
 
 <br/>
 
 ## How to cite
+{: .no_toc}
 ---
 
 <div class="publications">
