@@ -35,7 +35,7 @@ category: work
         <h3><a href="https://twitter.com/AleEscontrela/status/1661363555495710721?s=20">Twitter<br/><i class="fab fa-twitter"></i></a></h3>
     </div>
     <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
-        <h3>Code (Coming Soon)<br/><i class="fas fa-file-code"></i></h3>
+        <h3><a href="https://github.com/Alescontrela/viper_rl">Code<br/><i class="fas fa-file-code"></i></a></h3>
     </div>
 </div>
 <br/>

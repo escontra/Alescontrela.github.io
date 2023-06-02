@@ -9,16 +9,16 @@ category: work
 
 <div class="row">
     <div class="text-center col-3 col-sm-3 mt-3 mt-md-0">
-        <h4><a href="https://arxiv.org/pdf/2206.14176.pdf">Paper</a></h4>
+        <h4><a href="https://arxiv.org/pdf/2206.14176.pdf">Paper<br/><i class="fas fa-file-pdf"></i></a></h4>
     </div>
     <div class="text-center col-3 col-sm-3 mt-3 mt-md-0">
-        <h4><a href="https://twitter.com/danijarh/status/1542170248706609152">Twitter</a></h4>
+        <h4><a href="https://twitter.com/danijarh/status/1542170248706609152">Twitter<br/><i class="fab fa-twitter"></i></a></h4>
     </div>
     <div class="text-center col-3 col-sm-3 mt-3 mt-md-0">
-        <h4><a href="https://www.youtube.com/watch?v=A6Rg0qRwTYs">Talk</a></h4>
+        <h4><a href="https://www.youtube.com/watch?v=A6Rg0qRwTYs">Talk<br/><i class="fab fa-youtube"></i></a></h4>
     </div>
     <div class="text-center col-3 col-sm-3 mt-3 mt-md-0">
-        <h4><a href="https://github.com/danijar/daydreamer">Code</a></h4>
+        <h4><a href="https://github.com/danijar/daydreamer">Code<br/><i class="fas fa-file-code"></i></a></h4>
     </div>
 </div>
 
