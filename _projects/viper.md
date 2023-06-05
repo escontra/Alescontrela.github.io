@@ -28,13 +28,16 @@ category: work
 </div> -->
 
 <div class="row">
-    <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
+    <div class="text-center col-3 col-sm-3 mt-4 mt-md-0">
         <h3><a href="https://arxiv.org/pdf/2305.14343.pdf">Paper<br/><i class="fas fa-file-pdf"></i></a></h3>
     </div>
-    <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
+    <div class="text-center col-3 col-sm-3 mt-4 mt-md-0">
         <h3><a href="https://twitter.com/AleEscontrela/status/1661363555495710721?s=20">Twitter<br/><i class="fab fa-twitter"></i></a></h3>
     </div>
-    <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
+    <div class="text-center col-3 col-sm-3 mt-4 mt-md-0">
+        <h3><a href="https://github.com/Alescontrela/viper_rl#downloading-data">Data<br/><i class="fas fa-database"></i></a></h3>
+    </div>
+    <div class="text-center col-3 col-sm-3 mt-4 mt-md-0">
         <h3><a href="https://github.com/Alescontrela/viper_rl">Code<br/><i class="fas fa-file-code"></i></a></h3>
     </div>
 </div>
