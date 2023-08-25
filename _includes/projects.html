@@ -5,19 +5,19 @@
     {%- else -%}
     <a href="{{ project.url | relative_url }}">
       {%- endif %}
-      <div class="card hoverable">
-        <div class="row gy-5">
+      <!-- <div class="card hoverable"> -->
+        <div class="row justify-content-md-center">
         {%- if project.img %}
-        <div class="col-sm-4 mx-auto my-auto">
-          <img src="{{ project.img | relative_url }}" class="card-img mx-sm-2" style="height: 100% !important; max-width: 100%;">
+        <div class="col-sm-4 mx-auto my-auto" style="padding-left: 0px !important; padding-right: 0px !important;">
+          <img src="{{ project.img | relative_url }}" class="card-img" style="height: 100% !important; max-width: 100%;">
 
         </div>
         {%- endif %}
-        <div class="col-sm-8">
+        <div class="col-sm-8" style="padding-left: 0px !important; padding-right: 0px !important;">
         <div class="card-body">
           <h2 class="card-title">{{ project.title }}</h2>
           <p class="card-text">{{ project.description }}</p>
-          <div class="row ml-1 mr-1 p-0">
+          <div class="row">
             {%- if project.github -%}
             <div class="github-icon">
               <div class="icon" data-toggle="tooltip" title="Code Repository">
@@ -35,6 +35,6 @@
         </div>
         </div>
         </div>
-      </div>
+      <!-- </div> -->
     </a>
 </div>

@@ -24,21 +24,37 @@ category: work
 
 <br/>
 
-<div class="row justify-content-sm-center">
-    <a href="https://www.dailymail.co.uk/sciencetech/article-11024615/Robot-dog-walk-ONE-hour-training-scientists-hope-play-fetch-future.html" class="col-6 col-sm-6 col-md-3 mt-3 mt-md-0">
+<div class="row justify-content-sm-center gx-5 gy-5">
+    <a href="https://www.dailymail.co.uk/sciencetech/article-11024615/Robot-dog-walk-ONE-hour-training-scientists-hope-play-fetch-future.html" class="col col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 mb-2">
         <img style="padding: 5% 5% 5% 5%;" class="card-img border bg-white rounded" src="/assets/img/dailymail.png"
           alt="Card image cap"> 
     </a>
-    <a href="https://www.technologyreview.com/2022/07/18/1056059/robot-dog-ai-reinforcement/" class="col-6 col-sm-6 col-md-3 mt-3 mt-md-0">
+    <a href="https://www.technologyreview.com/2022/07/18/1056059/robot-dog-ai-reinforcement/" class="col col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 mb-2">
         <img style="padding: 5% 5% 5% 5%;" class="card-img border bg-white rounded" src="/assets/img/mittechreview.png"
           alt="Card image cap"> 
     </a>
-    <a href="https://techcrunch.com/2022/07/21/berkeley-shows-off-accelerated-learning-that-puts-robots-on-their-feet-in-minutes/" class="col-6 col-sm-6 col-md-3 mt-3 mt-md-0">
+    <a href="https://techcrunch.com/2022/07/21/berkeley-shows-off-accelerated-learning-that-puts-robots-on-their-feet-in-minutes/" class="col col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 mb-2">
         <img style="padding: 5% 5% 5% 5%;" class="card-img border bg-white rounded" src="/assets/img/techcrunch.png"
           alt="Card image cap"> 
     </a>
-    <a href="https://techxplore.com/news/2022-07-daydreamer-algorithm-quickly-robots-behaviors.html" class="col-6 col-sm-6 col-md-3 mt-3 mt-md-0">
+    <a href="https://techxplore.com/news/2022-07-daydreamer-algorithm-quickly-robots-behaviors.html" class="col col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 mb-2">
         <img class="card-img bg-white rounded" src="/assets/img/techxplore.png"
+          alt="Card image cap"> 
+    </a>
+    <a href="https://www.bbc.co.uk/programmes/m001ph7q?at_medium=social&at_campaign=Social_Flow&at_link_id=31E9265C-3ABA-11EE-AC4C-3A0479A687CD&at_campaign_type=owned&at_format=video&at_ptr_name=twitter&at_link_type=web_link&at_bbc_team=editorial&" class="col col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 mb-2">
+        <img style="padding: 5% 5% 5% 5%;" class="card-img border bg-white rounded" src="/assets/img/bbc_one.png"
+          alt="Card image cap"> 
+    </a>
+    <a href="https://www.reddit.com/r/ChatGPT/comments/142bzk3/selflearning_of_the_robot_in_1_hour/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button" class="col col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 mb-2">
+        <img style="padding: 5% 5% 5% 5%;" class="card-img border bg-white rounded" src="/assets/img/reddit_logo.png"
+          alt="Card image cap"> 
+    </a>
+    <a href="https://engineering.berkeley.edu/news/2022/10/step-by-step/" class="col col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 mb-2">
+        <img style="padding: 5% 5% 5% 5%;" class="card-img border bg-white rounded" src="/assets/img/ucbengineering.webp"
+          alt="Card image cap"> 
+    </a>
+    <a href="https://www.youtube.com/watch?v=h8AUJwPdTIE&t=1s" class="col col-6 col-sm-4 col-md-3 col-lg-3 col-xl-3 mb-2">
+        <img style="padding: 5% 5% 5% 5%;" class="card-img border bg-white rounded" src="/assets/img/techcrunch_robotics.png"
           alt="Card image cap"> 
     </a>
 </div>

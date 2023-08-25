@@ -1,11 +1,11 @@
 ---
 ---
 <!-- _layouts/bib.html -->
-<div class="card border-0">
+<div>
     <div class="row no-gutters">
         {%- unless entry.for_project -%}
         <div class="col-sm-4 mx-auto my-auto">
-            <img src="{{entry.img_path}}" class="card-img mx-sm-2" style="max-width: 100%;">
+            <img src="{{entry.img_path}}" class="card-img" style="max-width: 100%;">
         </div>
         {%- endunless -%}
         {%- if entry.for_project -%}
