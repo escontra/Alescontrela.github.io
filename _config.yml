@@ -21,6 +21,16 @@ baseurl: # the subpath of your site, e.g. /blog/
 last_updated: false # set to true if you want to display last updated in the footer
 impressum_path:  # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
 
+profile:
+  image: prof_pic.jpg
+  align: right
+  image_cicular: false # crops the image to make it circular
+  address: >
+    <p>Berkeley Way West</p>
+    <p>2121 Berkeley Way, Berkeley, CA 94704</p>
+
+subtitle: AI Researcher
+
 # -----------------------------------------------------------------------------
 # RSS Feed
 # -----------------------------------------------------------------------------
@@ -33,7 +43,7 @@ rss_icon: true
 # Layout
 # -----------------------------------------------------------------------------
 
-navbar_fixed: true
+navbar_fixed: false
 footer_fixed: false
 
 # Dimensions

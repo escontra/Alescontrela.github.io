@@ -4,21 +4,21 @@ layout: default
 
 <!-- about.html -->
 <div class="post">
-  <header class="post-header">
+  <header class="post-header d-none d-sm-block">
     <h1 class="post-title">
       {% if site.title == "blank" -%}<span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
       {{ site.last_name }}{%- else -%}{{ site.title }}{%- endif %}
     </h1>
-    <p class="desc">{{ page.subtitle }}</p>
+    <p class="desc">{{ site.subtitle }}</p>
   </header>
 
   <article>
-    {% if page.profile -%}
-    <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
-      {%- if page.profile.image %}
-      {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
+    {% if site.profile -%}
+    <div class="profile d-none d-sm-block float-{%- if site.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+      {%- if site.profile.image %}
+      {%- assign profile_image_path = site.profile.image | prepend: 'assets/img/' -%}
 
-      {% if page.profile.image_cicular %}
+      {% if site.profile.image_cicular %}
       {%- assign profile_image_class = "img-fluid z-dept-1 rounded-circle" -%}
       {% else %}
       {%- assign profile_image_class = "img-fluid z-dept-1 rounded" -%}
@@ -27,11 +27,11 @@ layout: default
       {% include figure.html
       path=profile_image_path
       class=profile_image_class
-      alt=page.profile.image -%}
+      alt=site.profile.image -%}
       {% endif -%}
-      {%- if page.profile.address %}
+      {%- if site.profile.address %}
       <div class="address">
-        {{ page.profile.address }}
+        {{ site.profile.address }}
       </div>
       {%- endif %}
     </div>
