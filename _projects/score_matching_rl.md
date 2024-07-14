@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Learning a Diffusion Model Policy from Rewards via Q-Score Matching"
-description: Learning diffusion model policies for off-policy RL.
+description: Learning diffusion model policies for off-policy reinforcement learning.
 img: assets/img/score_matching_rl/qsm_splash.png
 importance: 1
 category: work
