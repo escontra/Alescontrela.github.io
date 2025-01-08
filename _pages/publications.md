@@ -6,6 +6,7 @@ description:
 years: [2018, 2020, 2021, 2022, 2023]
 nav: true
 nav_order: 2
+show_title: false
 ---
 <!-- _pages/publications.md -->
 <div class="publications">

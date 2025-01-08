@@ -20,3 +20,19 @@ for (const heading of headings) { // 3
     heading.appendChild(linkSpace);
     heading.appendChild(linkIcon); // 7
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('sf-downtown-timelapse');
+    const videoSrc = "http://34.54.10.242/sf_timelapse_stream/sf_downtown_timelapse_watermarked_16by9.m3u8";
+
+    if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(videoSrc);
+        hls.attachMedia(video);
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        // Fallback for Safari and other browsers with native HLS support
+        video.src = videoSrc;
+    } else {
+        console.error('HLS is not supported in this browser.');
+    }
+});
