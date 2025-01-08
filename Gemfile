@@ -13,9 +13,10 @@ group :jekyll_plugins do
     gem 'jekyll-target-blank'
     gem 'jekyll-twitter-plugin'
     gem 'jemoji'
-    gem 'mini_racer'
+    gem 'mini_racer'  # Sometimes need to comment this out...
     gem 'unicode_utils'
     gem 'webrick'
+    # gem 'google-protobuf' # and uncomment this when building the site locally.
 end
 group :other_plugins do
     gem 'httparty'
