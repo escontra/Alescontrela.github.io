@@ -28,8 +28,8 @@ show_title: false
 
 ## C/2023 A3 over Gilmore Lake, Tahoe
 <div class="row">
-    <div class="col-12">
-        <div class="embed-responsive embed-responsive-1by1">
+    <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
+        <div class="embed-responsive embed-responsive-5by7">
             <video class="embed-responsive-item" id="tsuchinshan-atlas" controls ></video>
         </div>
     </div>
