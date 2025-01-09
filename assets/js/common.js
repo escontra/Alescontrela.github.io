@@ -23,7 +23,7 @@ for (const heading of headings) { // 3
 
 document.addEventListener('DOMContentLoaded', function() {
     const video = document.getElementById('sf-downtown-timelapse');
-    const videoSrc = "https://viperrl.com/sf_timelapse_stream/sf_downtown_timelapse_watermarked_16by9.m3u8";
+    const videoSrc = "https://viperrl.com/sf_timelapse_stream/sf_downtown_timelapse_watermarked_16by9_1080p.m3u8";
 
     if (Hls.isSupported()) {
         const hls = new Hls();
