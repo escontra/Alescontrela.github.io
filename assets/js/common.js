@@ -37,3 +37,37 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('HLS is not supported in this browser.');
     }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    const video = document.getElementById('tsuchinshan-atlas');
+    const videoSrc = "https://viperrl.com/tsuchinshan_atlas_stream/tsuchinshan_atlas_timelapse_1080p.m3u8";
+
+    if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(videoSrc);
+        hls.attachMedia(video);
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        // Fallback for Safari and other browsers with native HLS support
+        video.src = videoSrc;
+    } else {
+        console.error('HLS is not supported in this browser.');
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    const video = document.getElementById('milky-way-point-arena');
+    const videoSrc = "https://viperrl.com/gualala_milky_way_stream/gualala_milky_way_1080p.m3u8";
+
+    if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(videoSrc);
+        hls.attachMedia(video);
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        // Fallback for Safari and other browsers with native HLS support
+        video.src = videoSrc;
+    } else {
+        console.error('HLS is not supported in this browser.');
+    }
+});
