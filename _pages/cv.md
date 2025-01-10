@@ -10,8 +10,9 @@ cv_pdf: aescontrela_cv.pdf
 <div class="row">
     <div class="col-12">
         <div class="embed-responsive embed-responsive-us-letter">
-            <!-- <video class="embed-responsive-item" id="milky-way-point-arena" controls ></video> -->
-            <embed class="embed-responsive-item" src="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}" type="application/pdf">
+            <div class="embed-responsive-item" id="pdf-viewer" style="overflow-y: auto; border: 1px solid #ddd;">
+                <!-- Pages will be appended here -->
+            </div>
         </div>
     </div>
     <div class="col-12">

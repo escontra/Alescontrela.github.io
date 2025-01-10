@@ -21,6 +21,48 @@ for (const heading of headings) { // 3
     heading.appendChild(linkIcon); // 7
 }
 
+const url = '/assets/pdf/aescontrela_cv.pdf'; // Replace with your PDF path
+
+const pdfjsLib = window['pdfjs-dist/build/pdf'];
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+const viewer = document.getElementById('pdf-viewer');
+
+async function renderPDF(url) {
+    // Load the PDF document
+    const pdf = await pdfjsLib.getDocument(url).promise;
+
+    // Iterate through all pages
+    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        const page = await pdf.getPage(pageNum);
+
+        // Create a canvas for each page
+        const canvas = document.createElement('canvas');
+        const context = canvas.getContext('2d');
+        viewer.appendChild(canvas);
+
+        // Calculate scale to fit container width
+
+        const viewport = page.getViewport({ scale: 1.03 });
+        const scale = viewer.clientWidth / viewport.width;
+        const scaledViewport = page.getViewport({ scale: scale });
+
+        // Set the canvas size to match the scaled page
+        canvas.width = scaledViewport.width;
+        canvas.height = scaledViewport.height;
+
+        const renderContext = {
+            canvasContext: context,
+            viewport: scaledViewport,
+        };
+
+        await page.render(renderContext).promise;
+    }
+}
+
+// Render the PDF
+renderPDF(url);
+
 document.addEventListener('DOMContentLoaded', function() {
 
     const video = document.getElementById('sf-downtown-timelapse');
