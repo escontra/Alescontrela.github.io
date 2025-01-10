@@ -32,6 +32,9 @@ async function renderPDF(url) {
     // Load the PDF document
     const pdf = await pdfjsLib.getDocument(url).promise;
 
+    // Get device pixel ratio
+    const devicePixelRatio = window.devicePixelRatio || 1;
+
     // Iterate through all pages
     for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
         const page = await pdf.getPage(pageNum);
@@ -42,15 +45,15 @@ async function renderPDF(url) {
         viewer.appendChild(canvas);
 
         // Calculate scale to fit container width
-
         const viewport = page.getViewport({ scale: 1.03 });
-        const scale = viewer.clientWidth / viewport.width;
+        const scale = (viewer.clientWidth / viewport.width) * devicePixelRatio; // Scale for container width and DPI
         const scaledViewport = page.getViewport({ scale: scale });
 
         // Set the canvas size to match the scaled page
         canvas.width = scaledViewport.width;
         canvas.height = scaledViewport.height;
 
+        // Render the page with the scaled resolution
         const renderContext = {
             canvasContext: context,
             viewport: scaledViewport,
@@ -59,6 +62,8 @@ async function renderPDF(url) {
         await page.render(renderContext).promise;
     }
 }
+
+
 
 // Render the PDF
 renderPDF(url);
