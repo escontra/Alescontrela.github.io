@@ -94,7 +94,7 @@ async function renderPDF(url) {
                 link.style.top = `${top}px`;
                 link.style.width = `${width}px`;
                 link.style.height = `${height}px`;
-                link.style.backgroundColor = 'rgba(0, 0, 255, 0.1)'; // Optional highlight
+                link.style.backgroundColor = '#2697ba26'; // Optional highlight
                 link.style.zIndex = '10';
 
                 // Append the link to the current page container
