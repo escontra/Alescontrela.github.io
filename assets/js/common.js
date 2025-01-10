@@ -44,26 +44,29 @@ async function renderPDF(url) {
         const context = canvas.getContext('2d');
         viewer.appendChild(canvas);
 
-        // Calculate scale to fit container width
-        const viewport = page.getViewport({ scale: 1.03 });
-        const scale = (viewer.clientWidth / viewport.width) * devicePixelRatio; // Scale for container width and DPI
+        // Calculate scale based on container width
+        const viewport = page.getViewport({ scale: 1 });
+        const scale = viewer.clientWidth / viewport.width; // Fit width of the container
         const scaledViewport = page.getViewport({ scale: scale });
 
-        // Set the canvas size to match the scaled page
-        canvas.width = scaledViewport.width;
-        canvas.height = scaledViewport.height;
+        // Set canvas size to match high-resolution rendering
+        canvas.width = scaledViewport.width * devicePixelRatio;
+        canvas.height = scaledViewport.height * devicePixelRatio;
 
-        // Render the page with the scaled resolution
+        // Style canvas to match the container dimensions (CSS pixels)
+        canvas.style.width = `${scaledViewport.width}px`;
+        canvas.style.height = `${scaledViewport.height}px`;
+
+        // Render the page with high resolution
         const renderContext = {
             canvasContext: context,
             viewport: scaledViewport,
+            transform: [devicePixelRatio, 0, 0, devicePixelRatio, 0, 0],
         };
 
         await page.render(renderContext).promise;
     }
 }
-
-
 
 // Render the PDF
 renderPDF(url);
