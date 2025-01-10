@@ -39,21 +39,27 @@ async function renderPDF(url) {
     for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
         const page = await pdf.getPage(pageNum);
 
-        // Create a canvas for each page
+        // Create a container for each page
+        const pageContainer = document.createElement('div');
+        pageContainer.className = 'pdf-page';
+        pageContainer.style.position = 'relative'; // Ensure the container is relative
+        viewer.appendChild(pageContainer);
+
+        // Create a canvas for rendering
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
-        viewer.appendChild(canvas);
+        pageContainer.appendChild(canvas);
 
         // Calculate scale based on container width
         const viewport = page.getViewport({ scale: 1 });
         const scale = viewer.clientWidth / viewport.width; // Fit width of the container
         const scaledViewport = page.getViewport({ scale: scale });
 
-        // Set canvas size to match high-resolution rendering
+        // Set canvas size for high-resolution rendering
         canvas.width = scaledViewport.width * devicePixelRatio;
         canvas.height = scaledViewport.height * devicePixelRatio;
 
-        // Style canvas to match the container dimensions (CSS pixels)
+        // Style canvas to match the container dimensions
         canvas.style.width = `${scaledViewport.width}px`;
         canvas.style.height = `${scaledViewport.height}px`;
 
@@ -65,8 +71,39 @@ async function renderPDF(url) {
         };
 
         await page.render(renderContext).promise;
+
+        // Get annotations (links)
+        const annotations = await page.getAnnotations();
+
+        // Overlay links on the current page
+        annotations.forEach((annotation) => {
+            if (annotation.subtype === 'Link' && annotation.url) {
+                const link = document.createElement('a');
+                link.href = annotation.url;
+                link.target = '_blank'; // Open in a new tab
+                link.style.position = 'absolute';
+
+                // Calculate link position
+                const [x1, y1, x2, y2] = annotation.rect;
+                const left = x1 * scale;
+                const top = (viewport.height - y2) * scale;
+                const width = (x2 - x1) * scale;
+                const height = (y2 - y1) * scale;
+
+                link.style.left = `${left}px`;
+                link.style.top = `${top}px`;
+                link.style.width = `${width}px`;
+                link.style.height = `${height}px`;
+                link.style.backgroundColor = 'rgba(0, 0, 255, 0.1)'; // Optional highlight
+                link.style.zIndex = '10';
+
+                // Append the link to the current page container
+                pageContainer.appendChild(link);
+            }
+        });
     }
 }
+
 
 // Render the PDF
 renderPDF(url);
