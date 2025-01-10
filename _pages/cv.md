@@ -12,9 +12,11 @@ cv_pdf: aescontrela_cv.pdf
         <div class="embed-responsive embed-responsive-us-letter">
             <!-- <video class="embed-responsive-item" id="milky-way-point-arena" controls ></video> -->
             <embed class="embed-responsive-item" src="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}" type="application/pdf">
-                This browser does not support PDFs. Please download the PDF to view it: 
-                <a href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}">Download CV</a>.
-            </embed>
         </div>
+    </div>
+    <div class="col-12">
+        <p class="text-center text-monospace mt-3">
+            <a href="{{ page.cv_pdf | prepend: 'assets/pdf/' | relative_url}}">Download CV</a>
+        </p>
     </div>
 </div>
