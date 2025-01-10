@@ -8,7 +8,7 @@ middle_name:
 last_name: Escontrela
 email: mail@escontrela.me
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Website of AI Researcher and Roboticist Alejandro Escontrela.
+  AI / Robotics / Reinforcement Learning
 footer_text:
 keywords: AI, robotics, ML, artificial, intelligence, reinforcement, learning  # add your own keywords or leave empty
 
