@@ -15,7 +15,7 @@ cv_pdf: aescontrela_cv.pdf
     </div>
     <div class="col-12">
         <div class="embed-responsive embed-responsive-us-letter">
-            <div class="embed-responsive-item" id="pdf-viewer" style="overflow-y: auto; border: 1px solid #ddd;">
+            <div class="embed-responsive-item" id="pdf-viewer" style="overflow-y: scroll; overflow-x: hidden; scrollbar-gutter: stable;">
                 <!-- Pages will be appended here -->
             </div>
         </div>
