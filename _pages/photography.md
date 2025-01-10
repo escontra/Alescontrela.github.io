@@ -11,6 +11,7 @@ show_title: false
 ---
 
 ## Timelapse from Nob Hill facing Downtown SF and Oakland
+---
 <div class="row">
     <div class="col-12">
         <div class="embed-responsive embed-responsive-16by9">
@@ -26,7 +27,10 @@ show_title: false
     </div>
 </div>
 
-## C/2023 A3 over Gilmore Lake, Tahoe
+<br/>
+
+## Comet C/2023 A3 over Gilmore Lake, Tahoe
+---
 <div class="row">
     <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
         <div class="embed-responsive embed-responsive-5by7">
@@ -42,7 +46,10 @@ show_title: false
     </div>
 </div>
 
+<br/>
+
 ## Milky Way over Point Arena, Ca.
+---
 <div class="row">
     <div class="col-12">
         <div class="embed-responsive embed-responsive-3by2">
