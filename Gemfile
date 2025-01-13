@@ -16,7 +16,7 @@ group :jekyll_plugins do
     # gem 'mini_racer'  # Sometimes need to comment this out...
     gem 'unicode_utils'
     gem 'webrick'
-    gem 'google-protobuf' # and uncomment this when building the site locally.
+    gem 'google-protobuf', '3.21.0' # and uncomment this when building the site locally.
 end
 group :other_plugins do
     gem 'httparty'
