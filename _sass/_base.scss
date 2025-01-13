@@ -680,39 +680,52 @@ html.transition *:after {
    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
  }
 
-.carousel {
-  background: #eeeeee00;
-}
-
-.carousel img {
-  display: block;
-  height: 215px;
-}
-
-@media screen and ( min-width: 768px ) {
-  .carousel img {
-    height: 430px;
-  }
-}
-
 .flickity-prev-next-button {
   width: 30px; /* Set smaller width */
   height: 30px; /* Set smaller height */
+  border-radius: 5px;
 }
 
+* { box-sizing: border-box; }
+
+.carousel {
+  background: #222;
+}
+
+.carousel-cell {
+  width: 100%;
+  // height: 300px;
+  height: 60vh;
+  margin-right: 10px;
+  /* center images in cells with flexbox */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel.is-fullscreen .carousel-cell {
+  height: 100%;
+}
 
 .carousel-cell-image {
   display: block;
   max-height: 100%;
-  margin: 0 auto;
+}
+
+.carousel.is-fullscreen .carousel-cell-image {
   max-width: 100%;
-  opacity: 0;
-  -webkit-transition: opacity 0.4s;
-          transition: opacity 0.4s;
+}
+
+.carousel {
+  background: var(--global-bg-color);
 }
 
 /* fade in lazy loaded image */
 .carousel-cell-image.flickity-lazyloaded,
 .carousel-cell-image.flickity-lazyerror {
   opacity: 1;
+}
+
+.pdf-outline {
+  border: 4px solid var(--global-pdf-color);
 }

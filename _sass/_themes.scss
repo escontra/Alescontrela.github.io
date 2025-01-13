@@ -16,6 +16,7 @@
   --global-distill-app-color: #{$grey-color};
   --global-divider-color: #{$grey-low-opacity};
   --global-card-bg-color: #{$white-color};
+  --global-pdf-color: #{$black-color};
 
   .fa-sun {
     display : none;
@@ -56,6 +57,7 @@ html[data-theme='dark'] {
   --global-distill-app-color: #{$grey-color-light};
   --global-divider-color: #{$grey-color-light};
   --global-card-bg-color: #{$grey-900};
+  --global-pdf-color: #{$cyan-color};
 
   .fa-sun {
     padding-left: 10px;

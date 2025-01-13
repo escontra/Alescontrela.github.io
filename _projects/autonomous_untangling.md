@@ -48,24 +48,16 @@ The following video briefly summarizes the SGTM algorithm. Our <a href="https://
 ## Knot Detection
 ---
 
-<div id="carouselExampleIndicators" class="carousel" data-ride="carousel" data-interval="1500">
-  <div class="carousel-inner">
-    <div class="carousel-item active" data-interval="2500">
-      <img class="d-block rounded border" src="/assets/img/autonomous_untangling/knot_detection/12.png" alt="First slide">
-    </div>
-
+<div class="carousel" data-flickity='{ "fullscreen": true, "lazyLoad": 2, "wrapAround": true, "autoPlay": 2000, "draggable": false, "pauseAutoPlayOnHover": false, "prevNextButtons": false, "pageDots": false, "fade": true}'>
     {% for image in site.static_files %}
         {% if image.path contains '/assets/img/autonomous_untangling/knot_detection' %}
-            <div class="carousel-item">
-                <img class="d-block rounded border" src="{{ site.baseurl }}{{ image.path }}" alt="Second slide">
+            <div class="carousel-cell">
+                <img class="carousel-cell-image" data-flickity-lazyload="{{ site.baseurl }}{{ image.path }}">
             </div>
         {% endif %}
     {% endfor %}
-
-  </div>
 </div>
 
-<br/>
 
 ## RSS 2021 Spotlight
 ---

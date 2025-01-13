@@ -21,14 +21,9 @@ for (const heading of headings) { // 3
     heading.appendChild(linkIcon); // 7
 }
 
-const url = '/assets/pdf/aescontrela_cv.pdf'; // Replace with your PDF path
 
-const pdfjsLib = window['pdfjs-dist/build/pdf'];
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-const viewer = document.getElementById('pdf-viewer');
-
-async function renderPDF(url) {
+async function renderPDF(viewer, url) {
     // Load the PDF document
     const pdf = await pdfjsLib.getDocument(url).promise;
 
@@ -105,56 +100,35 @@ async function renderPDF(url) {
 }
 
 
-// Render the PDF
-renderPDF(url);
-
-document.addEventListener('DOMContentLoaded', function() {
-
-    const video = document.getElementById('sf-downtown-timelapse');
-    const videoSrc = "https://viperrl.com/sf_timelapse_stream/sf_downtown_timelapse_watermarked_16by9_1080p.m3u8";
-
-    if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(videoSrc);
-        hls.attachMedia(video);
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        // Fallback for Safari and other browsers with native HLS support
-        video.src = videoSrc;
-    } else {
-        console.error('HLS is not supported in this browser.');
+document.addEventListener("DOMContentLoaded", function () {
+    const viewer = document.getElementById('pdf-viewer');
+    if (viewer) {
+        const pdfjsLib = window['pdfjs-dist/build/pdf'];
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+        renderPDF(viewer, '/assets/pdf/aescontrela_cv.pdf');
     }
 });
 
-document.addEventListener('DOMContentLoaded', function() {
 
-    const video = document.getElementById('tsuchinshan-atlas');
-    const videoSrc = "https://viperrl.com/tsuchinshan_atlas_stream/tsuchinshan_atlas_timelapse_1080p.m3u8";
+function initializeHlsVideo(videoId, videoUrl) {
+    document.addEventListener('DOMContentLoaded', function () {
+        const video = document.getElementById(videoId);
+        if (video) {
+            // console.log('Loading video for ID:', videoId, 'from URL:', videoUrl);
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(videoUrl);
+                hls.attachMedia(video);
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                // Fallback for Safari and other browsers with native HLS support
+                video.src = videoUrl;
+            } else {
+                console.error('HLS is not supported in this browser.');
+            }
+        } 
+    });
+}
 
-    if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(videoSrc);
-        hls.attachMedia(video);
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        // Fallback for Safari and other browsers with native HLS support
-        video.src = videoSrc;
-    } else {
-        console.error('HLS is not supported in this browser.');
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-
-    const video = document.getElementById('milky-way-point-arena');
-    const videoSrc = "https://viperrl.com/gualala_milky_way_stream/gualala_milky_way_1080p.m3u8";
-
-    if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(videoSrc);
-        hls.attachMedia(video);
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        // Fallback for Safari and other browsers with native HLS support
-        video.src = videoSrc;
-    } else {
-        console.error('HLS is not supported in this browser.');
-    }
-});
+initializeHlsVideo('sf-downtown-timelapse', 'https://viperrl.com/sf_timelapse_stream/sf_downtown_timelapse_watermarked_16by9_1080p.m3u8');
+initializeHlsVideo('tsuchinshan-atlas', 'https://viperrl.com/tsuchinshan_atlas_stream/tsuchinshan_atlas_timelapse_1080p.m3u8');
+initializeHlsVideo('milky-way-point-arena', 'https://viperrl.com/gualala_milky_way_stream/gualala_milky_way_1080p.m3u8');
