@@ -32,6 +32,14 @@
       filter: invert(100%);
   }
 
+  .flickity-prev-next-button {
+    filter: invert(100%);
+  }
+  .flickity-page-dots {
+    filter: invert(0%);
+  }
+
+
 }
 
 html[data-theme='dark'] {
@@ -63,4 +71,12 @@ html[data-theme='dark'] {
   .carousel-indicators {
       filter: invert(0%);
   }
+
+  .flickity-prev-next-button {
+    filter: invert(0%);
+  }
+  .flickity-page-dots {
+    filter: invert(100%);
+  }
+
 }
