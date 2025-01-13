@@ -25,6 +25,13 @@
     padding-top: 12px;
     display : block;
   }
+
+  .carousel-control-next,
+  .carousel-control-prev,
+  .carousel-indicators {
+      filter: invert(100%);
+  }
+
 }
 
 html[data-theme='dark'] {
@@ -49,5 +56,11 @@ html[data-theme='dark'] {
   }
   .fa-moon {
     display : none;
+  }
+
+  .carousel-control-next,
+  .carousel-control-prev,
+  .carousel-indicators {
+      filter: invert(0%);
   }
 }

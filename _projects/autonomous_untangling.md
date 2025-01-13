@@ -48,7 +48,7 @@ The following video briefly summarizes the SGTM algorithm. Our <a href="https://
 ## Knot Detection
 ---
 
-<div id="carouselExampleIndicators" class="carousel" data-ride="carousel" data-interval="2500">
+<div id="carouselExampleIndicators" class="carousel" data-ride="carousel" data-interval="1500">
   <div class="carousel-inner">
     <div class="carousel-item active" data-interval="2500">
       <img class="d-block rounded border" src="/assets/img/autonomous_untangling/knot_detection/12.png" alt="First slide">
