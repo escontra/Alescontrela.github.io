@@ -40,13 +40,13 @@ jobs:
       run: |
         git config --global user.name "GitHub Action"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        if [[ ${GITHUB_REF} = refs/pull/*/merge ]]; then # pull request
-          echo "SRC_BRANCH=${GITHUB_HEAD_REF}" >> $GITHUB_STATE
-          echo "NO_PUSH=--no-push" >> $GITHUB_STATE
-        elif [[ ${GITHUB_REF} = refs/heads/* ]]; then # branch, e.g. master, source etc
-          echo "SRC_BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_STATE
+        if [[ ${GITHUB_REF} == refs/pull/*/merge ]]; then # pull request
+          echo "SRC_BRANCH=${GITHUB_HEAD_REF}" >> $GITHUB_ENV
+          echo "NO_PUSH=--no-push" >> $GITHUB_ENV
+        elif [[ ${GITHUB_REF} == refs/heads/* ]]; then # branch, e.g. master, source etc
+          echo "SRC_BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_ENV
         fi
-        echo "DEPLOY_BRANCH=gh-pages" >> $GITHUB_STATE
+        echo "DEPLOY_BRANCH=gh-pages" >> $GITHUB_ENV
     - name: Deploy website 
       run:  yes | bash bin/deploy --verbose ${{ steps.setup.outputs.NO_PUSH }}
                     --src ${{ steps.setup.outputs.SRC_BRANCH }} 
