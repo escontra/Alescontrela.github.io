@@ -129,6 +129,11 @@ async function renderPDF(viewer, url) {
     viewer.addEventListener('click', stopAutoScroll);
     viewer.addEventListener('keydown', stopAutoScroll);
     viewer.addEventListener('keyup', stopAutoScroll);
+
+    // Detect touch and scroll events for mobile
+    viewer.addEventListener('touchstart', stopAutoScroll);
+    viewer.addEventListener('touchmove', stopAutoScroll);
+    viewer.addEventListener('touchend', stopAutoScroll);
 }
 
 
