@@ -97,7 +97,40 @@ async function renderPDF(viewer, url) {
             }
         });
     }
+
+    // Add auto-scroll functionality
+    let scrollDirection = 1; // 1 for down, -1 for up
+    const scrollSpeed = 1.5; // Pixels per interval
+    const intervalTime = 30; // Interval time in milliseconds
+    let autoScrollInterval;
+
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+            viewer.scrollTop += scrollSpeed * scrollDirection;
+
+            // Reverse direction if reaching the top or bottom
+            if (viewer.scrollTop + viewer.clientHeight >= viewer.scrollHeight) {
+                scrollDirection = -1;
+            } else if (viewer.scrollTop <= 0) {
+                scrollDirection = 1;
+            }
+        }, intervalTime);
+    }
+
+    function stopAutoScroll() {
+        clearInterval(autoScrollInterval);
+    }
+
+    // Start auto-scroll
+    startAutoScroll();
+
+    // Stop auto-scroll on user interaction
+    viewer.addEventListener('mousemove', stopAutoScroll);
+    viewer.addEventListener('click', stopAutoScroll);
+    viewer.addEventListener('keydown', stopAutoScroll);
+    viewer.addEventListener('keyup', stopAutoScroll);
 }
+
 
 
 document.addEventListener("DOMContentLoaded", function () {
