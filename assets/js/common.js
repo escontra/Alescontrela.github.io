@@ -77,25 +77,31 @@ async function renderPDF(viewer, url) {
                 link.href = annotation.url;
                 link.target = '_blank'; // Open in a new tab
                 link.style.position = 'absolute';
-
+        
                 // Calculate link position
+                const PADDING = 1;
                 const [x1, y1, x2, y2] = annotation.rect;
-                const left = x1 * scale;
-                const top = (viewport.height - y2) * scale;
-                const width = (x2 - x1) * scale;
-                const height = (y2 - y1) * scale;
+                const left = x1 * scale - PADDING;
+                const top = (viewport.height - y2) * scale - PADDING;
+                const width = (x2 - x1) * scale + 2 * PADDING;
+                const height = (y2 - y1) * scale + 2 * PADDING;
 
                 link.style.left = `${left}px`;
                 link.style.top = `${top}px`;
                 link.style.width = `${width}px`;
                 link.style.height = `${height}px`;
+        
+                // Add a border for the rectangle
+                link.style.border = '1px solid #2698BA'; // Rectangle border
                 link.style.backgroundColor = '#2697ba26'; // Optional highlight
+                link.style.boxSizing = 'border-box'; // Include border in dimensions
                 link.style.zIndex = '10';
 
                 // Append the link to the current page container
                 pageContainer.appendChild(link);
             }
         });
+        
     }
 
     // Add auto-scroll functionality

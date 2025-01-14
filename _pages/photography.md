@@ -70,7 +70,7 @@ show_title: false
 ## San Francisco Fleet Week
 ---
 
-<div class="carousel" data-flickity='{ "fullscreen": true, "lazyLoad": 2, "draggable": true, "wrapAround": true}'>
+<div class="carousel" data-flickity='{ "fullscreen": true, "lazyLoad": 2, "draggable": true, "wrapAround": true, "contain": true}'>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
       data-flickity-lazyload="https://viperrl.com/fleet_week_sf_24/_DSC6594-Enhanced-NR.avif"/>
