@@ -65,7 +65,7 @@ rewards specified by video models inherently measure the temporal consistency of
 observation-level rewards. Further, evaluating likelihoods is significantly faster than performing
 video model rollouts, enabling faster training times and more interactions with the environment.
 
-<div class="embed-responsive embed-responsive-4by3">
+<div class="embed-responsive embed-responsive-3by2" id="viper-easter-egg">
 <video controls autoplay muted loop>
 <source src="/assets/vid/viper_method.mp4" type="video/mp4">
 </video>

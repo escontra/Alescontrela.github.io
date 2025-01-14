@@ -170,3 +170,18 @@ function initializeHlsVideo(videoId, videoUrl) {
 initializeHlsVideo('sf-downtown-timelapse', 'https://viperrl.com/sf_timelapse_stream/sf_downtown_timelapse_watermarked_16by9_1080p.m3u8');
 initializeHlsVideo('tsuchinshan-atlas', 'https://viperrl.com/tsuchinshan_atlas_stream/tsuchinshan_atlas_timelapse_1080p.m3u8');
 initializeHlsVideo('milky-way-point-arena', 'https://viperrl.com/gualala_milky_way_stream/gualala_milky_way_1080p.m3u8');
+
+document.addEventListener("DOMContentLoaded", function () {
+    const egg = document.getElementById('viper-easter-egg');
+    if (egg) {
+        console.log(`
+             ____
+            / . .\\
+Hi.         \\  ---<
+             \\  /
+   __________/ /
+-=:___________/
+`);
+    }
+
+});
