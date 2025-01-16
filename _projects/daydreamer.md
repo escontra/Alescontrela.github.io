@@ -120,25 +120,25 @@ learning.
 {% raw %}
 <div class="card-deck">
   <div class="card">
-    <img class="card-img-top" src="/assets/gif/1_a1.gif" alt="Card image cap">
+    <img class="card-img-top" src="https://imagedelivery.net/3j6TRSJdJ6zKbW2C_AD0hA/fada8d6d-ea88-4326-4d1b-c7dd99c75e00/public" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title text-center">A1 Quadruped Walking</h5>
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top" src="/assets/gif/2_ur5.gif" alt="Card image cap">
+    <img class="card-img-top" src="https://imagedelivery.net/3j6TRSJdJ6zKbW2C_AD0hA/ab2132c2-1466-4a35-8280-05f5e5b57500/public" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title text-center">UR5 Multi-Object Visual Pick Place</h5>
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top" src="/assets/gif/3_xarm.gif" alt="Card image cap">
+    <img class="card-img-top" src="https://imagedelivery.net/3j6TRSJdJ6zKbW2C_AD0hA/7bad5268-6ec3-4155-1829-b58b7b675300/public" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title text-center">XArm Visual Pick and Place</h5>
     </div>
   </div>
   <div class="card">
-    <img class="card-img-top" src="/assets/gif/4_sphero.gif" alt="Card image cap">
+    <img class="card-img-top" src="https://imagedelivery.net/3j6TRSJdJ6zKbW2C_AD0hA/c004b964-cc0e-46c9-30eb-b152365dc300/public" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title text-center">Sphero Ollie Visual Navigation</h5>
     </div>
