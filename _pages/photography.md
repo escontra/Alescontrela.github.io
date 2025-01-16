@@ -70,34 +70,34 @@ show_title: false
 ## San Francisco Fleet Week
 ---
 
-<div class="carousel" data-flickity='{ "fullscreen": true, "lazyLoad": 2, "draggable": true, "wrapAround": true, "contain": true}'>
+<div class="carousel" data-flickity='{ "fullscreen": true, "lazyLoad": 1, "draggable": true, "wrapAround": true, "contain": true}'>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
-      data-flickity-lazyload="https://viperrl.com/fleet_week_sf_24/_DSC6594-Enhanced-NR.avif"/>
+      data-flickity-lazyload="https://pub-ff07a56ffc3740fe88e651be3eee595f.r2.dev/_DSC6594-Enhanced-NR.jpg"/>
   </div>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
-      data-flickity-lazyload="https://viperrl.com/fleet_week_sf_24/_DSC7112.avif"/>
+      data-flickity-lazyload="https://pub-ff07a56ffc3740fe88e651be3eee595f.r2.dev/_DSC7112-Enhanced-NR-2.jpg"/>
   </div>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
-      data-flickity-lazyload="https://viperrl.com/fleet_week_sf_24/_DSC7142-Enhanced-NR.avif"/>
+      data-flickity-lazyload="https://pub-ff07a56ffc3740fe88e651be3eee595f.r2.dev/_DSC7142-Enhanced-NR.jpg"/>
   </div>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
-      data-flickity-lazyload="https://viperrl.com/fleet_week_sf_24/_DSC7262-Enhanced-NR.avif"/>
+      data-flickity-lazyload="https://pub-ff07a56ffc3740fe88e651be3eee595f.r2.dev/_DSC7262-Enhanced-NR.jpg"/>
   </div>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
-      data-flickity-lazyload="https://viperrl.com/fleet_week_sf_24/_DSC7436-Enhanced-NR.avif"/>
+      data-flickity-lazyload="https://pub-ff07a56ffc3740fe88e651be3eee595f.r2.dev/_DSC7436-Enhanced-NR.jpg"/>
   </div>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
-      data-flickity-lazyload="https://viperrl.com/fleet_week_sf_24/_DSC7497-Enhanced-NR.avif"/>
+      data-flickity-lazyload="https://pub-ff07a56ffc3740fe88e651be3eee595f.r2.dev/_DSC7497-Enhanced-NR.jpg"/>
   </div>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
-      data-flickity-lazyload="https://viperrl.com/fleet_week_sf_24/_DSC7507-Enhanced-NR.avif"/>
+      data-flickity-lazyload="https://pub-ff07a56ffc3740fe88e651be3eee595f.r2.dev/_DSC7507-Enhanced-NR.jpg"/>
   </div>
 </div>
 
