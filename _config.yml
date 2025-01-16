@@ -22,12 +22,13 @@ last_updated: false # set to true if you want to display last updated in the foo
 impressum_path:  # set to path to include impressum link in the footer, use the same path as permalink in a page, helps to conform with EU GDPR
 
 profile:
-  image: prof_pic_small.jpg
+  image: https://imagedelivery.net/3j6TRSJdJ6zKbW2C_AD0hA/a4596165-6f70-4b50-79af-51d30197de00/public
   align: right
   image_cicular: false # crops the image to make it circular
-  address: >
-    <p>Berkeley Way West</p>
-    <p>2121 Berkeley Way, Berkeley, CA 94704</p>
+  address:
+  # address: >
+  #   <p>Berkeley Way West</p>
+  #   <p>2121 Berkeley Way, Berkeley, CA 94704</p>
 
 subtitle: AI Researcher
 
@@ -252,10 +253,10 @@ filtered_bibtex_keywords: [abbr, abstract, arxiv, bibtex_show, html, pdf, select
 # Responsive WebP Images
 # -----------------------------------------------------------------------------
 
-enable_responsive_images: true # enables responsive images for your site (recomended, see https://github.com/alshedivat/al-folio/issues/537)
+enable_responsive_images: false # enables responsive images for your site (recomended, see https://github.com/alshedivat/al-folio/issues/537)
 
 imagemagick:
-  enabled: true # make it 'false' if not using responsive images
+  enabled: false # make it 'false' if not using responsive images
   widths:
     - 480
     - 800

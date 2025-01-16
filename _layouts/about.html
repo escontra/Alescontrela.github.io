@@ -16,7 +16,6 @@ layout: default
     {% if site.profile -%}
     <div class="profile d-none d-sm-block float-{%- if site.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
       {%- if site.profile.image %}
-      {%- assign profile_image_path = site.profile.image | prepend: 'assets/img/' -%}
 
       {% if site.profile.image_cicular %}
       {%- assign profile_image_class = "img-fluid z-dept-1 rounded-circle" -%}
@@ -25,7 +24,7 @@ layout: default
       {% endif %}
 
       {% include figure.html
-      path=profile_image_path
+      path=site.profile.image
       class=profile_image_class
       alt=site.profile.image -%}
       {% endif -%}
