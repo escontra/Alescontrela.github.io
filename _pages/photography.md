@@ -73,31 +73,31 @@ show_title: false
 <div class="carousel" data-flickity='{ "fullscreen": true, "lazyLoad": 1, "draggable": true, "wrapAround": true, "contain": true}'>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
-      data-flickity-lazyload="https://site-images.escontrela.me/_DSC6594-Enhanced-NR.jpg"/>
+      data-flickity-lazyload="https://site-images.escontrela.me/_DSC6594-Enhanced-NR.avif"/>
   </div>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
-      data-flickity-lazyload="https://site-images.escontrela.me/_DSC7112-Enhanced-NR-2.jpg"/>
+      data-flickity-lazyload="https://site-images.escontrela.me/_DSC7112-Enhanced-NR.avif"/>
   </div>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
-      data-flickity-lazyload="https://site-images.escontrela.me/_DSC7142-Enhanced-NR.jpg"/>
+      data-flickity-lazyload="https://site-images.escontrela.me/_DSC7142-Enhanced-NR.avif"/>
   </div>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
-      data-flickity-lazyload="https://site-images.escontrela.me/_DSC7262-Enhanced-NR.jpg"/>
+      data-flickity-lazyload="https://site-images.escontrela.me/_DSC7262-Enhanced-NR.avif"/>
   </div>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
-      data-flickity-lazyload="https://site-images.escontrela.me/_DSC7436-Enhanced-NR.jpg"/>
+      data-flickity-lazyload="https://site-images.escontrela.me/_DSC7436-Enhanced-NR.avif"/>
   </div>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
-      data-flickity-lazyload="https://site-images.escontrela.me/_DSC7497-Enhanced-NR.jpg"/>
+      data-flickity-lazyload="https://site-images.escontrela.me/_DSC7497-Enhanced-NR.avif"/>
   </div>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
-      data-flickity-lazyload="https://site-images.escontrela.me/_DSC7507-Enhanced-NR.jpg"/>
+      data-flickity-lazyload="https://site-images.escontrela.me/_DSC7507-Enhanced-NR.avif"/>
   </div>
 </div>
 
