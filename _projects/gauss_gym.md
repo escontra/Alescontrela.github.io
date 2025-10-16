@@ -24,14 +24,6 @@ category: work
 <br/>
 
 
-## Publication info
-{: .no_toc}
----
-<div class="publications">
-{% bibliography -f papers -q @*[title=Video Prediction Models as Rewards for Reinforcement Learning]* --max 0 %}
-</div>
-
-
 
 <br/>
 
@@ -124,6 +116,29 @@ category: work
   color: #fff;
   font-size: 14px;
   font-weight: bold;
+  overflow: hidden;
+  position: relative;
+}
+
+.viser-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.viser-thumbnail-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1;
 }
 
 .viser-thumbnail:hover {
@@ -160,14 +175,26 @@ category: work
 <div class="viser-carousel-wrapper">
   <div class="viser-carousel-container" id="viserCarousel">
     <div class="viser-carousel-item active" data-index="0">
-      <iframe src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/amazon.viser" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/cute_bridge.viser&initialCameraPosition=7.281,4.125,1.143&initialCameraLookAt=13.403,2.937,-0.042&initialCameraUp=-0.000,0.000,1.000&initialFov=60.0&fixedDpr=2.0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <div class="click-overlay" id="clickOverlay0">
         Click and drag to interact!
       </div>
     </div>
     <div class="viser-carousel-item" data-index="1">
-      <iframe src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/construction.viser" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/osaka.viser&initialCameraPosition=15.510,8.662,-0.634&initialCameraLookAt=8.800,6.051,0.017&initialCameraUp=-0.000,0.000,1.000&initialFov=30.0&fixedDpr=2.0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <div class="click-overlay" id="clickOverlay1">
+        Click and drag to interact!
+      </div>
+    </div>
+    <div class="viser-carousel-item" data-index="2">
+      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/miyajima.viser&initialCameraPosition=11.501,-2.827,1.214&initialCameraLookAt=6.564,2.285,-0.107&initialCameraUp=-0.000,0.000,1.000&initialFov=28.0&fixedDpr=2.0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="click-overlay" id="clickOverlay2">
+        Click and drag to interact!
+      </div>
+    </div>
+    <div class="viser-carousel-item" data-index="3">
+      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/grace_cathedral.viser&initialCameraPosition=6.479,0.363,0.001&initialCameraLookAt=0.203,2.342,-0.203&initialCameraUp=-0.000,0.000,1.000&initialFov=48.0&fixedDpr=2.0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="click-overlay" id="clickOverlay3">
         Click and drag to interact!
       </div>
     </div>
@@ -177,10 +204,20 @@ category: work
     <button class="viser-nav-arrow" id="viserPrevBtn" onclick="viserNavigate(-1)">&#8249;</button>
     <div class="viser-thumbnail-row" id="viserThumbnails">
       <div class="viser-thumbnail active" data-index="0" onclick="viserGoTo(0)">
-        Amazon
+        <img src="https://gauss-gym.escontrela.me/berkeley.jpg" alt="Berkeley">
+        <div class="viser-thumbnail-label">Berkeley</div>
       </div>
       <div class="viser-thumbnail" data-index="1" onclick="viserGoTo(1)">
-        Construction
+        <img src="https://gauss-gym.escontrela.me/osaka.jpeg" alt="Osaka">
+        <div class="viser-thumbnail-label">Osaka</div>
+      </div>
+      <div class="viser-thumbnail" data-index="2" onclick="viserGoTo(2)">
+        <img src="https://gauss-gym.escontrela.me/miyajima.jpg" alt="Miyajima">
+        <div class="viser-thumbnail-label">Miyajima</div>
+      </div>
+      <div class="viser-thumbnail" data-index="3" onclick="viserGoTo(3)">
+        <img src="https://gauss-gym.escontrela.me/san_francisco.jpg" alt="San Francisco">
+        <div class="viser-thumbnail-label">San Francisco</div>
       </div>
     </div>
     <button class="viser-nav-arrow" id="viserNextBtn" onclick="viserNavigate(1)">&#8250;</button>
@@ -208,10 +245,19 @@ function viserGoTo(index) {
   const thumbnails = document.querySelectorAll('.viser-thumbnail');
 
   items.forEach((item, i) => {
+    const iframe = item.querySelector('iframe');
     if (i === index) {
       item.classList.add('active');
+      // Load the iframe for the active item if not already loaded
+      if (iframe && iframe.dataset.src && iframe.src !== iframe.dataset.src) {
+        iframe.src = iframe.dataset.src;
+      }
     } else {
       item.classList.remove('active');
+      // Unload the iframe for inactive items to free memory
+      if (iframe && iframe.src) {
+        iframe.src = '';
+      }
     }
   });
 
@@ -227,6 +273,11 @@ function viserGoTo(index) {
   currentViserIndex = index;
 }
 
+// Initialize the first carousel item on page load
+document.addEventListener('DOMContentLoaded', function() {
+  viserGoTo(0);
+});
+
 // Hide overlay on interaction
 function hideOverlays() {
   if (!hasInteracted) {
@@ -236,15 +287,22 @@ function hideOverlays() {
   }
 }
 
+const carousel = document.getElementById('viserCarousel');
+
 // Hide on click anywhere in the carousel
-document.getElementById('viserCarousel').addEventListener('click', hideOverlays);
+carousel.addEventListener('click', hideOverlays);
 
 // Hide when mouse enters the carousel area (user is about to interact)
-document.getElementById('viserCarousel').addEventListener('mouseenter', hideOverlays);
+carousel.addEventListener('mouseenter', hideOverlays);
 
-// Also hide when clicking directly on the overlay
+// Hide on touch/drag (mobile)
+carousel.addEventListener('touchstart', hideOverlays);
+carousel.addEventListener('touchmove', hideOverlays);
+
+// Also hide when clicking/touching directly on the overlay
 document.querySelectorAll('.click-overlay').forEach(overlay => {
   overlay.addEventListener('click', hideOverlays);
+  overlay.addEventListener('touchstart', hideOverlays);
 });
 
 // Keyboard navigation
@@ -258,18 +316,3 @@ document.addEventListener('keydown', function(e) {
 </script>
 
 <br/>
-
-## Acknowledgements
-{: .no_toc}
----
-This work was supported in part by an NSF Fellowship, NSF NRI #2024675, ONR MURI N00014-22-1-2773, Komatsu, and the Vanier Canada Graduate Scholarship. We also thank Google TPU Research Cloud for providing compute resources.
-
-<br/>
-
-## How to cite
-{: .no_toc}
----
-
-<div class="publications">
-{% bibliography -f papers_new_pref -q @*[title=Video Prediction Models as Rewards for Reinforcement Learning]* --max 0 %}
-</div>
