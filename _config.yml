@@ -170,6 +170,7 @@ keep_files:
   - CNAME
   - .nojekyll
   - .git
+  - assets/viser
 
 # Plug-ins
 plugins:
@@ -198,7 +199,7 @@ defaults:
 # -----------------------------------------------------------------------------
 
 jekyll-minifier:
-  exclude: ['robots.txt']
+  exclude: ['robots.txt', 'assets/viser/**/*']
   uglifier_args:
     harmony: true
 
