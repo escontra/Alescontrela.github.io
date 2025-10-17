@@ -451,3 +451,120 @@ document.querySelectorAll('#gtCarousel .click-overlay').forEach(overlay => {
 </script>
 
 <br/>
+
+## ARKit Scenes (interactive)
+---
+
+<div class="viser-carousel-wrapper">
+  <div class="viser-carousel-container" id="arkitCarousel">
+    <div class="viser-carousel-item active" data-index="0">
+      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/arkit_living_room.viser&initialCameraPosition=22.319,8.537,0.725&initialCameraLookAt=22.164,14.110,-5.715&initialCameraUp=-0.000,0.000,1.000&initialFov=81.0&fixedDpr=2.0&robotViewPosition=bottom" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="click-overlay" id="arkitClickOverlay0">
+        Click and drag to interact!
+      </div>
+    </div>
+    <div class="viser-carousel-item" data-index="1">
+      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/arkit_office.viser&initialCameraPosition=9.836,19.375,0.767&initialCameraLookAt=12.167,13.237,-2.522&initialCameraUp=-0.000,0.000,1.000&initialFov=70.0&fixedDpr=2.0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="click-overlay" id="arkitClickOverlay1">
+        Click and drag to interact!
+      </div>
+    </div>
+  </div>
+
+  <div class="viser-thumbnail-nav">
+    <button class="viser-nav-arrow" id="arkitPrevBtn" onclick="arkitNavigate(-1)">&#8249;</button>
+    <div class="viser-thumbnail-row" id="arkitThumbnails">
+      <div class="viser-thumbnail active" data-index="0" onclick="arkitGoTo(0)">
+        Living Room
+      </div>
+      <div class="viser-thumbnail" data-index="1" onclick="arkitGoTo(1)">
+        Office
+      </div>
+    </div>
+    <button class="viser-nav-arrow" id="arkitNextBtn" onclick="arkitNavigate(1)">&#8250;</button>
+  </div>
+</div>
+
+<script>
+let currentArkitIndex = 0;
+let hasArkitInteracted = false;
+
+function arkitNavigate(direction) {
+  const items = document.querySelectorAll('#arkitCarousel .viser-carousel-item');
+  const thumbnails = document.querySelectorAll('#arkitThumbnails .viser-thumbnail');
+
+  currentArkitIndex += direction;
+
+  if (currentArkitIndex < 0) currentArkitIndex = items.length - 1;
+  if (currentArkitIndex >= items.length) currentArkitIndex = 0;
+
+  arkitGoTo(currentArkitIndex);
+}
+
+function arkitGoTo(index) {
+  const items = document.querySelectorAll('#arkitCarousel .viser-carousel-item');
+  const thumbnails = document.querySelectorAll('#arkitThumbnails .viser-thumbnail');
+
+  items.forEach((item, i) => {
+    const iframe = item.querySelector('iframe');
+    if (i === index) {
+      item.classList.add('active');
+      // Load the iframe for the active item if not already loaded
+      if (iframe && iframe.dataset.src && iframe.src !== iframe.dataset.src) {
+        iframe.src = iframe.dataset.src;
+      }
+    } else {
+      item.classList.remove('active');
+      // Unload the iframe for inactive items to free memory
+      if (iframe && iframe.src) {
+        iframe.src = '';
+      }
+    }
+  });
+
+  thumbnails.forEach((thumb, i) => {
+    if (i === index) {
+      thumb.classList.add('active');
+      thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    } else {
+      thumb.classList.remove('active');
+    }
+  });
+
+  currentArkitIndex = index;
+}
+
+// Initialize the first carousel item on page load
+document.addEventListener('DOMContentLoaded', function() {
+  arkitGoTo(0);
+});
+
+// Hide overlay on interaction
+function hideArkitOverlays() {
+  if (!hasArkitInteracted) {
+    hasArkitInteracted = true;
+    const overlays = document.querySelectorAll('#arkitCarousel .click-overlay');
+    overlays.forEach(overlay => overlay.classList.add('hidden'));
+  }
+}
+
+const arkitCarousel = document.getElementById('arkitCarousel');
+
+// Hide on click anywhere in the carousel
+arkitCarousel.addEventListener('click', hideArkitOverlays);
+
+// Hide when mouse enters the carousel area (user is about to interact)
+arkitCarousel.addEventListener('mouseenter', hideArkitOverlays);
+
+// Hide on touch/drag (mobile)
+arkitCarousel.addEventListener('touchstart', hideArkitOverlays);
+arkitCarousel.addEventListener('touchmove', hideArkitOverlays);
+
+// Also hide when clicking/touching directly on the overlay
+document.querySelectorAll('#arkitCarousel .click-overlay').forEach(overlay => {
+  overlay.addEventListener('click', hideArkitOverlays);
+  overlay.addEventListener('touchstart', hideArkitOverlays);
+});
+</script>
+
+<br/>
