@@ -304,14 +304,149 @@ document.querySelectorAll('.click-overlay').forEach(overlay => {
   overlay.addEventListener('click', hideOverlays);
   overlay.addEventListener('touchstart', hideOverlays);
 });
+</script>
 
-// Keyboard navigation
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'ArrowLeft') {
-    viserNavigate(-1);
-  } else if (e.key === 'ArrowRight') {
-    viserNavigate(1);
+<br/>
+
+## GrandTour Scenes (interactive)
+---
+
+<div class="viser-carousel-wrapper">
+  <div class="viser-carousel-container" id="gtCarousel">
+    <div class="viser-carousel-item active" data-index="0">
+      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/construction.viser&initialCameraPosition=21.174,5.955,0.292&initialCameraLookAt=25.099,10.757,-3.420&initialCameraUp=-0.000,0.000,1.000&initialFov=77.0&fixedDpr=2.0&robotViewPosition=bottom" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="click-overlay" id="gtClickOverlay0">
+        Click and drag to interact!
+      </div>
+    </div>
+    <div class="viser-carousel-item" data-index="1">
+      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/snow.viser&initialCameraPosition=46.683,19.043,-0.083&initialCameraLookAt=51.083,7.734,-0.183&initialCameraUp=-0.000,0.000,1.000&initialFov=35.0&fixedDpr=2.0&robotViewPosition=bottom" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="click-overlay" id="gtClickOverlay1">
+        Click and drag to interact!
+      </div>
+    </div>
+    <div class="viser-carousel-item" data-index="2">
+      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/warehouse.viser&initialCameraPosition=7.446,5.079,0.518&initialCameraLookAt=7.253,5.132,0.488&initialCameraUp=-0.000,0.000,1.000&initialFov=70.0&fixedDpr=2.0&robotViewPosition=bottom" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="click-overlay" id="gtClickOverlay2">
+        Click and drag to interact!
+      </div>
+    </div>
+    <div class="viser-carousel-item" data-index="3">
+      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/forest.viser&initialCameraPosition=2.745,2.480,0.069&initialCameraLookAt=7.820,7.623,0.266&initialCameraUp=-0.000,0.000,1.000&initialFov=48.0&fixedDpr=2.0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="click-overlay" id="gtClickOverlay3">
+        Click and drag to interact!
+      </div>
+    </div>
+    <div class="viser-carousel-item" data-index="4">
+      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/grindelwald.viser&initialCameraPosition=42.854,24.166,0.785&initialCameraLookAt=35.631,23.912,0.644&initialCameraUp=-0.000,0.000,1.000&initialFov=37.0&fixedDpr=2.0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="click-overlay" id="gtClickOverlay4">
+        Click and drag to interact!
+      </div>
+    </div>
+  </div>
+
+  <div class="viser-thumbnail-nav">
+    <button class="viser-nav-arrow" id="gtPrevBtn" onclick="gtNavigate(-1)">&#8249;</button>
+    <div class="viser-thumbnail-row" id="gtThumbnails">
+      <div class="viser-thumbnail active" data-index="0" onclick="gtGoTo(0)">
+        Construction
+      </div>
+      <div class="viser-thumbnail" data-index="1" onclick="gtGoTo(1)">
+        Snow
+      </div>
+      <div class="viser-thumbnail" data-index="2" onclick="gtGoTo(2)">
+        Warehouse
+      </div>
+      <div class="viser-thumbnail" data-index="3" onclick="gtGoTo(3)">
+        Forest
+      </div>
+      <div class="viser-thumbnail" data-index="4" onclick="gtGoTo(4)">
+        Grindelwald
+      </div>
+    </div>
+    <button class="viser-nav-arrow" id="gtNextBtn" onclick="gtNavigate(1)">&#8250;</button>
+  </div>
+</div>
+
+<script>
+let currentGtIndex = 0;
+let hasGtInteracted = false;
+
+function gtNavigate(direction) {
+  const items = document.querySelectorAll('#gtCarousel .viser-carousel-item');
+  const thumbnails = document.querySelectorAll('#gtThumbnails .viser-thumbnail');
+
+  currentGtIndex += direction;
+
+  if (currentGtIndex < 0) currentGtIndex = items.length - 1;
+  if (currentGtIndex >= items.length) currentGtIndex = 0;
+
+  gtGoTo(currentGtIndex);
+}
+
+function gtGoTo(index) {
+  const items = document.querySelectorAll('#gtCarousel .viser-carousel-item');
+  const thumbnails = document.querySelectorAll('#gtThumbnails .viser-thumbnail');
+
+  items.forEach((item, i) => {
+    const iframe = item.querySelector('iframe');
+    if (i === index) {
+      item.classList.add('active');
+      // Load the iframe for the active item if not already loaded
+      if (iframe && iframe.dataset.src && iframe.src !== iframe.dataset.src) {
+        iframe.src = iframe.dataset.src;
+      }
+    } else {
+      item.classList.remove('active');
+      // Unload the iframe for inactive items to free memory
+      if (iframe && iframe.src) {
+        iframe.src = '';
+      }
+    }
+  });
+
+  thumbnails.forEach((thumb, i) => {
+    if (i === index) {
+      thumb.classList.add('active');
+      thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    } else {
+      thumb.classList.remove('active');
+    }
+  });
+
+  currentGtIndex = index;
+}
+
+// Initialize the first carousel item on page load
+document.addEventListener('DOMContentLoaded', function() {
+  gtGoTo(0);
+});
+
+// Hide overlay on interaction
+function hideGtOverlays() {
+  if (!hasGtInteracted) {
+    hasGtInteracted = true;
+    const overlays = document.querySelectorAll('#gtCarousel .click-overlay');
+    overlays.forEach(overlay => overlay.classList.add('hidden'));
   }
+}
+
+const gtCarousel = document.getElementById('gtCarousel');
+
+// Hide on click anywhere in the carousel
+gtCarousel.addEventListener('click', hideGtOverlays);
+
+// Hide when mouse enters the carousel area (user is about to interact)
+gtCarousel.addEventListener('mouseenter', hideGtOverlays);
+
+// Hide on touch/drag (mobile)
+gtCarousel.addEventListener('touchstart', hideGtOverlays);
+gtCarousel.addEventListener('touchmove', hideGtOverlays);
+
+// Also hide when clicking/touching directly on the overlay
+document.querySelectorAll('#gtCarousel .click-overlay').forEach(overlay => {
+  overlay.addEventListener('click', hideGtOverlays);
+  overlay.addEventListener('touchstart', hideGtOverlays);
 });
 </script>
 
