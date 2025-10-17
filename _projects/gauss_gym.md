@@ -568,3 +568,183 @@ document.querySelectorAll('#arkitCarousel .click-overlay').forEach(overlay => {
 </script>
 
 <br/>
+
+## Video Gallery
+---
+
+<style>
+.video-grid-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  background: #000;
+}
+
+/* Mobile: 2x2 grid */
+@media (max-width: 768px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+.video-grid-item {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.video-grid-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-grid-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: #666;
+  font-size: 18px;
+}
+</style>
+
+<div class="video-grid-container">
+  <div id="videoGrid" class="video-grid">
+    <div class="video-grid-loading">Loading videos...</div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const BUCKET_URL = 'https://gauss-gym-videos.escontrela.me';
+  const MANIFEST_URL = `${BUCKET_URL}/videos.json`;
+
+  // Determine grid size based on screen width
+  function getGridSize() {
+    return window.innerWidth <= 768 ? 4 : 25; // 2x2 or 5x5
+  }
+
+  // Randomly sample n items from array
+  function randomSample(arr, n) {
+    const shuffled = [...arr].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, n);
+  }
+
+  // Create video element with appropriate settings
+  function createVideoElement(videoUrl) {
+    const video = document.createElement('video');
+    video.autoplay = true;
+    video.loop = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.preload = 'metadata';
+
+    // Set source
+    video.src = videoUrl;
+
+    // Handle errors gracefully
+    video.onerror = function() {
+      console.error('Failed to load video:', videoUrl);
+    };
+
+    return video;
+  }
+
+  // Load and populate video grid
+  async function loadVideoGrid() {
+    const gridContainer = document.getElementById('videoGrid');
+
+    try {
+      // Fetch video manifest
+      const response = await fetch(MANIFEST_URL);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch manifest: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const videos = data.videos || [];
+
+      if (videos.length === 0) {
+        gridContainer.innerHTML = '<div class="video-grid-loading">No videos found</div>';
+        return;
+      }
+
+      // Determine how many videos we need
+      const gridSize = getGridSize();
+
+      // Randomly sample videos
+      const selectedVideos = randomSample(videos, gridSize);
+
+      // Clear loading message
+      gridContainer.innerHTML = '';
+
+      // Create video elements
+      selectedVideos.forEach(videoFilename => {
+        const videoUrl = `${BUCKET_URL}/${videoFilename}`;
+        const gridItem = document.createElement('div');
+        gridItem.className = 'video-grid-item';
+
+        const video = createVideoElement(videoUrl);
+        gridItem.appendChild(video);
+        gridContainer.appendChild(gridItem);
+      });
+
+      // Use Intersection Observer to only play videos when visible
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const video = entry.target.querySelector('video');
+          if (video) {
+            if (entry.isIntersecting) {
+              video.play().catch(e => console.error('Autoplay failed:', e));
+            } else {
+              video.pause();
+            }
+          }
+        });
+      }, { threshold: 0.1 });
+
+      // Observe all grid items
+      document.querySelectorAll('.video-grid-item').forEach(item => {
+        observer.observe(item);
+      });
+
+    } catch (error) {
+      console.error('Error loading video grid:', error);
+      gridContainer.innerHTML = `<div class="video-grid-loading">Error loading videos: ${error.message}</div>`;
+    }
+  }
+
+  // Reload grid on resize if crossing mobile/desktop threshold
+  let lastGridSize = getGridSize();
+  window.addEventListener('resize', () => {
+    const newGridSize = getGridSize();
+    if (newGridSize !== lastGridSize) {
+      lastGridSize = newGridSize;
+      loadVideoGrid();
+    }
+  });
+
+  // Load grid when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadVideoGrid);
+  } else {
+    loadVideoGrid();
+  }
+})();
+</script>
+
+<br/>
