@@ -66,7 +66,7 @@ og_image: # The site-wide (default for all links) Open Graph preview image
 
 github_username: alescontrela 
 gitlab_username: # your GitLab user name
-twitter_username: aleescontrela 
+twitter_username: alescontrela 
 linkedin_username: # your LinkedIn user name
 scholar_userid: 53OxjmYAAAAJ 
 orcid_id: # your ORCID ID
@@ -314,8 +314,8 @@ bootstrap:
     css: "sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY="
     js: "sha256-SyTu6CwrfOhaznYZPoolVw2rxoY7lKYKQvqbtqN93HI="
 fontawesome:
-  version: "5.15.4"
-  integrity: "sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4="
+  version: "6.5.1"
+  integrity: "sha256-wiz7ZSCn/btzhjKDQBms9Hx4sSeUYsDrTLg7roPstac="
 jquery:
   version: "3.6.0"
   integrity: "sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
