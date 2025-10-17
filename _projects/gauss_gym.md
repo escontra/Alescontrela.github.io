@@ -205,86 +205,76 @@ category: work
 
 <br/>
 
-## Interactive 3D Visualizations
+## Interactive 3D Scenes
 ---
 
 <style>
-.viser-carousel-wrapper {
+.scene-viewer-wrapper {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px 0;
 }
 
-.viser-carousel-container {
-  width: 100%;
-  height: 600px;
-  position: relative;
-  overflow: hidden;
-  background: #000;
-  border-radius: 8px;
-}
-
-.viser-carousel-item {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-  pointer-events: none;
-}
-
-.viser-carousel-item.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.viser-carousel-item iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.viser-thumbnail-nav {
-  position: relative;
+/* Category selector */
+.category-selector {
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin-top: 20px;
-  gap: 10px;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
-.viser-nav-arrow {
-  background: #333;
-  color: #fff;
-  border: none;
-  padding: 10px 15px;
-  font-size: 24px;
+.category-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 40px 60px;
+  border-radius: 12px;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+  min-width: 200px;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
 }
 
-.viser-nav-arrow:hover {
-  background: #555;
+.category-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.viser-thumbnail-row {
+.category-card.iphone {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.category-card.grandtour {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.category-card.arkit {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* Scene thumbnails */
+.scene-thumbnails {
+  display: none;
+  gap: 15px;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.scene-thumbnails.active {
   display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding: 10px;
-  max-width: 800px;
 }
 
-.viser-thumbnail {
+.scene-thumbnail {
   min-width: 150px;
   height: 100px;
   background: #222;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   border: 3px solid transparent;
   transition: border-color 0.3s, transform 0.2s;
@@ -298,34 +288,55 @@ category: work
   position: relative;
 }
 
-.viser-thumbnail img {
+.scene-thumbnail img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.viser-thumbnail-label {
+.scene-thumbnail-label {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.8);
   color: #fff;
-  padding: 5px 10px;
+  padding: 8px;
   font-size: 12px;
   font-weight: bold;
   text-align: center;
-  z-index: 1;
 }
 
-.viser-thumbnail:hover {
+.scene-thumbnail:hover {
   transform: scale(1.05);
   border-color: #666;
 }
 
-.viser-thumbnail.active {
+.scene-thumbnail.active {
   border-color: #4CAF50;
+}
+
+/* Viewer container */
+.scene-viewer-container {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  border-radius: 8px;
+  display: none;
+}
+
+.scene-viewer-container.active {
+  display: block;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.scene-viewer-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 .click-overlay {
@@ -348,400 +359,234 @@ category: work
   opacity: 0;
   pointer-events: none;
 }
+
+.back-button {
+  background: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  transition: background 0.3s;
+  display: none;
+}
+
+.back-button.active {
+  display: inline-block;
+}
+
+.back-button:hover {
+  background: #555;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 </style>
 
-<div class="viser-carousel-wrapper">
-  <div class="viser-carousel-container" id="viserCarousel">
-    <div class="viser-carousel-item active" data-index="0">
-      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/cute_bridge.viser&initialCameraPosition=7.281,4.125,1.143&initialCameraLookAt=13.403,2.937,-0.042&initialCameraUp=-0.000,0.000,1.000&initialFov=60.0&fixedDpr=2.0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="click-overlay" id="clickOverlay0">
-        Click and drag to interact!
-      </div>
-    </div>
-    <div class="viser-carousel-item" data-index="1">
-      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/osaka.viser&initialCameraPosition=15.510,8.662,-0.634&initialCameraLookAt=8.800,6.051,0.017&initialCameraUp=-0.000,0.000,1.000&initialFov=30.0&fixedDpr=2.0&robotViewPosition=bottom" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="click-overlay" id="clickOverlay1">
-        Click and drag to interact!
-      </div>
-    </div>
-    <div class="viser-carousel-item" data-index="2">
-      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/miyajima.viser&initialCameraPosition=11.501,-2.827,1.214&initialCameraLookAt=6.564,2.285,-0.107&initialCameraUp=-0.000,0.000,1.000&initialFov=28.0&fixedDpr=2.0&robotViewPosition=bottom" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="click-overlay" id="clickOverlay2">
-        Click and drag to interact!
-      </div>
-    </div>
-    <div class="viser-carousel-item" data-index="3">
-      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/grace_cathedral.viser&initialCameraPosition=6.479,0.363,0.001&initialCameraLookAt=0.203,2.342,-0.203&initialCameraUp=-0.000,0.000,1.000&initialFov=48.0&fixedDpr=2.0&robotViewPosition=bottom" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="click-overlay" id="clickOverlay3">
-        Click and drag to interact!
-      </div>
-    </div>
+<div class="scene-viewer-wrapper">
+  <!-- Back button -->
+  <button class="back-button" id="backButton" onclick="sceneViewer.showCategories()">
+    &#8249; Back to Categories
+  </button>
+
+  <!-- Category selection -->
+  <div class="category-selector" id="categorySelector">
+    <button class="category-card iphone" onclick="sceneViewer.selectCategory('iphone')">
+      <div>iPhone Scenes</div>
+      <div style="font-size: 12px; margin-top: 8px; opacity: 0.9;">4 locations</div>
+    </button>
+    <button class="category-card grandtour" onclick="sceneViewer.selectCategory('grandtour')">
+      <div>GrandTour Scenes</div>
+      <div style="font-size: 12px; margin-top: 8px; opacity: 0.9;">5 locations</div>
+    </button>
+    <button class="category-card arkit" onclick="sceneViewer.selectCategory('arkit')">
+      <div>ARKit Scenes</div>
+      <div style="font-size: 12px; margin-top: 8px; opacity: 0.9;">2 locations</div>
+    </button>
   </div>
 
-  <div class="viser-thumbnail-nav">
-    <button class="viser-nav-arrow" id="viserPrevBtn" onclick="viserNavigate(-1)">&#8249;</button>
-    <div class="viser-thumbnail-row" id="viserThumbnails">
-      <div class="viser-thumbnail active" data-index="0" onclick="viserGoTo(0)">
-        <img src="https://gauss-gym.escontrela.me/berkeley.jpg" alt="Berkeley">
-        <div class="viser-thumbnail-label">Berkeley</div>
-      </div>
-      <div class="viser-thumbnail" data-index="1" onclick="viserGoTo(1)">
-        <img src="https://gauss-gym.escontrela.me/osaka.jpeg" alt="Osaka">
-        <div class="viser-thumbnail-label">Osaka</div>
-      </div>
-      <div class="viser-thumbnail" data-index="2" onclick="viserGoTo(2)">
-        <img src="https://gauss-gym.escontrela.me/miyajima.jpg" alt="Miyajima">
-        <div class="viser-thumbnail-label">Miyajima</div>
-      </div>
-      <div class="viser-thumbnail" data-index="3" onclick="viserGoTo(3)">
-        <img src="https://gauss-gym.escontrela.me/san_francisco.jpg" alt="San Francisco">
-        <div class="viser-thumbnail-label">San Francisco</div>
-      </div>
-    </div>
-    <button class="viser-nav-arrow" id="viserNextBtn" onclick="viserNavigate(1)">&#8250;</button>
+  <!-- Scene thumbnails (hidden by default) -->
+  <div class="scene-thumbnails" id="sceneThumbnails"></div>
+
+  <!-- Viewer container (hidden by default) -->
+  <div class="scene-viewer-container" id="sceneViewer">
+    <iframe id="sceneIframe"></iframe>
+    <div class="click-overlay" id="clickOverlay">Click and drag to interact!</div>
   </div>
 </div>
 
 <script>
-let currentViserIndex = 0;
-let hasInteracted = false;
+const sceneViewer = {
+  currentCategory: null,
+  currentScene: null,
+  hasInteracted: false,
 
-function viserNavigate(direction) {
-  const items = document.querySelectorAll('.viser-carousel-item');
-  const thumbnails = document.querySelectorAll('.viser-thumbnail');
-
-  currentViserIndex += direction;
-
-  if (currentViserIndex < 0) currentViserIndex = items.length - 1;
-  if (currentViserIndex >= items.length) currentViserIndex = 0;
-
-  viserGoTo(currentViserIndex);
-}
-
-function viserGoTo(index) {
-  const items = document.querySelectorAll('.viser-carousel-item');
-  const thumbnails = document.querySelectorAll('.viser-thumbnail');
-
-  items.forEach((item, i) => {
-    const iframe = item.querySelector('iframe');
-    if (i === index) {
-      item.classList.add('active');
-      // Load the iframe for the active item if not already loaded
-      if (iframe && iframe.dataset.src && iframe.src !== iframe.dataset.src) {
-        iframe.src = iframe.dataset.src;
+  scenes: {
+    iphone: [
+      {
+        name: 'Berkeley',
+        thumbnail: 'https://gauss-gym.escontrela.me/berkeley.jpg',
+        url: '/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/cute_bridge.viser&initialCameraPosition=7.281,4.125,1.143&initialCameraLookAt=13.403,2.937,-0.042&initialCameraUp=-0.000,0.000,1.000&initialFov=60.0&fixedDpr=2.0'
+      },
+      {
+        name: 'Osaka',
+        thumbnail: 'https://gauss-gym.escontrela.me/osaka.jpeg',
+        url: '/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/osaka.viser&initialCameraPosition=15.510,8.662,-0.634&initialCameraLookAt=8.800,6.051,0.017&initialCameraUp=-0.000,0.000,1.000&initialFov=30.0&fixedDpr=2.0&robotViewPosition=bottom'
+      },
+      {
+        name: 'Miyajima',
+        thumbnail: 'https://gauss-gym.escontrela.me/miyajima.jpg',
+        url: '/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/miyajima.viser&initialCameraPosition=11.501,-2.827,1.214&initialCameraLookAt=6.564,2.285,-0.107&initialCameraUp=-0.000,0.000,1.000&initialFov=28.0&fixedDpr=2.0&robotViewPosition=bottom'
+      },
+      {
+        name: 'San Francisco',
+        thumbnail: 'https://gauss-gym.escontrela.me/san_francisco.jpg',
+        url: '/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/grace_cathedral.viser&initialCameraPosition=6.479,0.363,0.001&initialCameraLookAt=0.203,2.342,-0.203&initialCameraUp=-0.000,0.000,1.000&initialFov=48.0&fixedDpr=2.0&robotViewPosition=bottom'
       }
-    } else {
-      item.classList.remove('active');
-      // Unload the iframe for inactive items to free memory
-      if (iframe && iframe.src) {
-        iframe.src = '';
+    ],
+    grandtour: [
+      {
+        name: 'Construction',
+        url: '/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/construction.viser&initialCameraPosition=21.174,5.955,0.292&initialCameraLookAt=25.099,10.757,-3.420&initialCameraUp=-0.000,0.000,1.000&initialFov=77.0&fixedDpr=2.0&robotViewPosition=bottom'
+      },
+      {
+        name: 'Snow',
+        url: '/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/snow.viser&initialCameraPosition=46.683,19.043,-0.083&initialCameraLookAt=51.083,7.734,-0.183&initialCameraUp=-0.000,0.000,1.000&initialFov=35.0&fixedDpr=2.0&robotViewPosition=bottom'
+      },
+      {
+        name: 'Warehouse',
+        url: '/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/warehouse.viser&initialCameraPosition=7.446,5.079,0.518&initialCameraLookAt=7.253,5.132,0.488&initialCameraUp=-0.000,0.000,1.000&initialFov=70.0&fixedDpr=2.0&robotViewPosition=bottom'
+      },
+      {
+        name: 'Forest',
+        url: '/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/forest.viser&initialCameraPosition=2.745,2.480,0.069&initialCameraLookAt=7.820,7.623,0.266&initialCameraUp=-0.000,0.000,1.000&initialFov=48.0&fixedDpr=2.0'
+      },
+      {
+        name: 'Grindelwald',
+        url: '/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/grindelwald.viser&initialCameraPosition=42.854,24.166,0.785&initialCameraLookAt=35.631,23.912,0.644&initialCameraUp=-0.000,0.000,1.000&initialFov=37.0&fixedDpr=2.0'
       }
+    ],
+    arkit: [
+      {
+        name: 'Living Room',
+        url: '/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/arkit_living_room.viser&initialCameraPosition=22.319,8.537,0.725&initialCameraLookAt=22.164,14.110,-5.715&initialCameraUp=-0.000,0.000,1.000&initialFov=81.0&fixedDpr=2.0&robotViewPosition=bottom'
+      },
+      {
+        name: 'Office',
+        url: '/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/arkit_office.viser&initialCameraPosition=9.836,19.375,0.767&initialCameraLookAt=12.167,13.237,-2.522&initialCameraUp=-0.000,0.000,1.000&initialFov=70.0&fixedDpr=2.0'
+      }
+    ]
+  },
+
+  selectCategory(category) {
+    this.currentCategory = category;
+    this.showThumbnails();
+  },
+
+  showThumbnails() {
+    const categorySelector = document.getElementById('categorySelector');
+    const thumbnailsContainer = document.getElementById('sceneThumbnails');
+    const backButton = document.getElementById('backButton');
+
+    // Hide categories, show thumbnails
+    categorySelector.style.display = 'none';
+    thumbnailsContainer.classList.add('active');
+    backButton.classList.add('active');
+
+    // Populate thumbnails
+    const scenes = this.scenes[this.currentCategory];
+    thumbnailsContainer.innerHTML = '';
+
+    scenes.forEach((scene, index) => {
+      const thumbnail = document.createElement('div');
+      thumbnail.className = 'scene-thumbnail';
+      thumbnail.onclick = () => this.loadScene(index);
+
+      if (scene.thumbnail) {
+        const img = document.createElement('img');
+        img.src = scene.thumbnail;
+        img.alt = scene.name;
+        thumbnail.appendChild(img);
+      }
+
+      const label = document.createElement('div');
+      label.className = 'scene-thumbnail-label';
+      label.textContent = scene.name;
+      thumbnail.appendChild(label);
+
+      thumbnailsContainer.appendChild(thumbnail);
+    });
+  },
+
+  loadScene(sceneIndex) {
+    this.currentScene = sceneIndex;
+    const scene = this.scenes[this.currentCategory][sceneIndex];
+    const viewerContainer = document.getElementById('sceneViewer');
+    const iframe = document.getElementById('sceneIframe');
+    const overlay = document.getElementById('clickOverlay');
+
+    // Show viewer
+    viewerContainer.classList.add('active');
+
+    // Load iframe
+    iframe.src = scene.url;
+
+    // Show overlay
+    overlay.classList.remove('hidden');
+    this.hasInteracted = false;
+
+    // Update thumbnail active state
+    document.querySelectorAll('.scene-thumbnail').forEach((thumb, i) => {
+      if (i === sceneIndex) {
+        thumb.classList.add('active');
+      } else {
+        thumb.classList.remove('active');
+      }
+    });
+  },
+
+  showCategories() {
+    const categorySelector = document.getElementById('categorySelector');
+    const thumbnailsContainer = document.getElementById('sceneThumbnails');
+    const viewerContainer = document.getElementById('sceneViewer');
+    const backButton = document.getElementById('backButton');
+    const iframe = document.getElementById('sceneIframe');
+
+    // Unload iframe to free memory
+    iframe.src = '';
+
+    // Reset view
+    categorySelector.style.display = 'flex';
+    thumbnailsContainer.classList.remove('active');
+    viewerContainer.classList.remove('active');
+    backButton.classList.remove('active');
+
+    this.currentCategory = null;
+    this.currentScene = null;
+  },
+
+  hideOverlay() {
+    if (!this.hasInteracted) {
+      this.hasInteracted = true;
+      document.getElementById('clickOverlay').classList.add('hidden');
     }
-  });
-
-  thumbnails.forEach((thumb, i) => {
-    if (i === index) {
-      thumb.classList.add('active');
-      thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    } else {
-      thumb.classList.remove('active');
-    }
-  });
-
-  currentViserIndex = index;
-}
-
-// Initialize the first carousel item on page load
-document.addEventListener('DOMContentLoaded', function() {
-  viserGoTo(0);
-});
-
-// Hide overlay on interaction
-function hideOverlays() {
-  if (!hasInteracted) {
-    hasInteracted = true;
-    const overlays = document.querySelectorAll('.click-overlay');
-    overlays.forEach(overlay => overlay.classList.add('hidden'));
   }
-}
+};
 
-const carousel = document.getElementById('viserCarousel');
+// Set up overlay hiding
+document.addEventListener('DOMContentLoaded', function() {
+  const viewer = document.getElementById('sceneViewer');
+  const overlay = document.getElementById('clickOverlay');
 
-// Hide on click anywhere in the carousel
-carousel.addEventListener('click', hideOverlays);
-
-// Hide when mouse enters the carousel area (user is about to interact)
-carousel.addEventListener('mouseenter', hideOverlays);
-
-// Hide on touch/drag (mobile)
-carousel.addEventListener('touchstart', hideOverlays);
-carousel.addEventListener('touchmove', hideOverlays);
-
-// Also hide when clicking/touching directly on the overlay
-document.querySelectorAll('.click-overlay').forEach(overlay => {
-  overlay.addEventListener('click', hideOverlays);
-  overlay.addEventListener('touchstart', hideOverlays);
+  viewer.addEventListener('click', () => sceneViewer.hideOverlay());
+  viewer.addEventListener('mouseenter', () => sceneViewer.hideOverlay());
+  viewer.addEventListener('touchstart', () => sceneViewer.hideOverlay());
+  overlay.addEventListener('click', () => sceneViewer.hideOverlay());
 });
 </script>
 
 <br/>
-
-## GrandTour Scenes (interactive)
----
-
-<div class="viser-carousel-wrapper">
-  <div class="viser-carousel-container" id="gtCarousel">
-    <div class="viser-carousel-item active" data-index="0">
-      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/construction.viser&initialCameraPosition=21.174,5.955,0.292&initialCameraLookAt=25.099,10.757,-3.420&initialCameraUp=-0.000,0.000,1.000&initialFov=77.0&fixedDpr=2.0&robotViewPosition=bottom" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="click-overlay" id="gtClickOverlay0">
-        Click and drag to interact!
-      </div>
-    </div>
-    <div class="viser-carousel-item" data-index="1">
-      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/snow.viser&initialCameraPosition=46.683,19.043,-0.083&initialCameraLookAt=51.083,7.734,-0.183&initialCameraUp=-0.000,0.000,1.000&initialFov=35.0&fixedDpr=2.0&robotViewPosition=bottom" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="click-overlay" id="gtClickOverlay1">
-        Click and drag to interact!
-      </div>
-    </div>
-    <div class="viser-carousel-item" data-index="2">
-      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/warehouse.viser&initialCameraPosition=7.446,5.079,0.518&initialCameraLookAt=7.253,5.132,0.488&initialCameraUp=-0.000,0.000,1.000&initialFov=70.0&fixedDpr=2.0&robotViewPosition=bottom" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="click-overlay" id="gtClickOverlay2">
-        Click and drag to interact!
-      </div>
-    </div>
-    <div class="viser-carousel-item" data-index="3">
-      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/forest.viser&initialCameraPosition=2.745,2.480,0.069&initialCameraLookAt=7.820,7.623,0.266&initialCameraUp=-0.000,0.000,1.000&initialFov=48.0&fixedDpr=2.0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="click-overlay" id="gtClickOverlay3">
-        Click and drag to interact!
-      </div>
-    </div>
-    <div class="viser-carousel-item" data-index="4">
-      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/grindelwald.viser&initialCameraPosition=42.854,24.166,0.785&initialCameraLookAt=35.631,23.912,0.644&initialCameraUp=-0.000,0.000,1.000&initialFov=37.0&fixedDpr=2.0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="click-overlay" id="gtClickOverlay4">
-        Click and drag to interact!
-      </div>
-    </div>
-  </div>
-
-  <div class="viser-thumbnail-nav">
-    <button class="viser-nav-arrow" id="gtPrevBtn" onclick="gtNavigate(-1)">&#8249;</button>
-    <div class="viser-thumbnail-row" id="gtThumbnails">
-      <div class="viser-thumbnail active" data-index="0" onclick="gtGoTo(0)">
-        Construction
-      </div>
-      <div class="viser-thumbnail" data-index="1" onclick="gtGoTo(1)">
-        Snow
-      </div>
-      <div class="viser-thumbnail" data-index="2" onclick="gtGoTo(2)">
-        Warehouse
-      </div>
-      <div class="viser-thumbnail" data-index="3" onclick="gtGoTo(3)">
-        Forest
-      </div>
-      <div class="viser-thumbnail" data-index="4" onclick="gtGoTo(4)">
-        Grindelwald
-      </div>
-    </div>
-    <button class="viser-nav-arrow" id="gtNextBtn" onclick="gtNavigate(1)">&#8250;</button>
-  </div>
-</div>
-
-<script>
-let currentGtIndex = 0;
-let hasGtInteracted = false;
-
-function gtNavigate(direction) {
-  const items = document.querySelectorAll('#gtCarousel .viser-carousel-item');
-  const thumbnails = document.querySelectorAll('#gtThumbnails .viser-thumbnail');
-
-  currentGtIndex += direction;
-
-  if (currentGtIndex < 0) currentGtIndex = items.length - 1;
-  if (currentGtIndex >= items.length) currentGtIndex = 0;
-
-  gtGoTo(currentGtIndex);
-}
-
-function gtGoTo(index) {
-  const items = document.querySelectorAll('#gtCarousel .viser-carousel-item');
-  const thumbnails = document.querySelectorAll('#gtThumbnails .viser-thumbnail');
-
-  items.forEach((item, i) => {
-    const iframe = item.querySelector('iframe');
-    if (i === index) {
-      item.classList.add('active');
-      // Load the iframe for the active item if not already loaded
-      if (iframe && iframe.dataset.src && iframe.src !== iframe.dataset.src) {
-        iframe.src = iframe.dataset.src;
-      }
-    } else {
-      item.classList.remove('active');
-      // Unload the iframe for inactive items to free memory
-      if (iframe && iframe.src) {
-        iframe.src = '';
-      }
-    }
-  });
-
-  thumbnails.forEach((thumb, i) => {
-    if (i === index) {
-      thumb.classList.add('active');
-      thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    } else {
-      thumb.classList.remove('active');
-    }
-  });
-
-  currentGtIndex = index;
-}
-
-// Initialize the first carousel item on page load
-document.addEventListener('DOMContentLoaded', function() {
-  gtGoTo(0);
-});
-
-// Hide overlay on interaction
-function hideGtOverlays() {
-  if (!hasGtInteracted) {
-    hasGtInteracted = true;
-    const overlays = document.querySelectorAll('#gtCarousel .click-overlay');
-    overlays.forEach(overlay => overlay.classList.add('hidden'));
-  }
-}
-
-const gtCarousel = document.getElementById('gtCarousel');
-
-// Hide on click anywhere in the carousel
-gtCarousel.addEventListener('click', hideGtOverlays);
-
-// Hide when mouse enters the carousel area (user is about to interact)
-gtCarousel.addEventListener('mouseenter', hideGtOverlays);
-
-// Hide on touch/drag (mobile)
-gtCarousel.addEventListener('touchstart', hideGtOverlays);
-gtCarousel.addEventListener('touchmove', hideGtOverlays);
-
-// Also hide when clicking/touching directly on the overlay
-document.querySelectorAll('#gtCarousel .click-overlay').forEach(overlay => {
-  overlay.addEventListener('click', hideGtOverlays);
-  overlay.addEventListener('touchstart', hideGtOverlays);
-});
-</script>
-
-<br/>
-
-## ARKit Scenes (interactive)
----
-
-<div class="viser-carousel-wrapper">
-  <div class="viser-carousel-container" id="arkitCarousel">
-    <div class="viser-carousel-item active" data-index="0">
-      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/arkit_living_room.viser&initialCameraPosition=22.319,8.537,0.725&initialCameraLookAt=22.164,14.110,-5.715&initialCameraUp=-0.000,0.000,1.000&initialFov=81.0&fixedDpr=2.0&robotViewPosition=bottom" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="click-overlay" id="arkitClickOverlay0">
-        Click and drag to interact!
-      </div>
-    </div>
-    <div class="viser-carousel-item" data-index="1">
-      <iframe data-src="/assets/viser/index.html?playbackPath=https://gauss-gym.escontrela.me/arkit_office.viser&initialCameraPosition=9.836,19.375,0.767&initialCameraLookAt=12.167,13.237,-2.522&initialCameraUp=-0.000,0.000,1.000&initialFov=70.0&fixedDpr=2.0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <div class="click-overlay" id="arkitClickOverlay1">
-        Click and drag to interact!
-      </div>
-    </div>
-  </div>
-
-  <div class="viser-thumbnail-nav">
-    <button class="viser-nav-arrow" id="arkitPrevBtn" onclick="arkitNavigate(-1)">&#8249;</button>
-    <div class="viser-thumbnail-row" id="arkitThumbnails">
-      <div class="viser-thumbnail active" data-index="0" onclick="arkitGoTo(0)">
-        Living Room
-      </div>
-      <div class="viser-thumbnail" data-index="1" onclick="arkitGoTo(1)">
-        Office
-      </div>
-    </div>
-    <button class="viser-nav-arrow" id="arkitNextBtn" onclick="arkitNavigate(1)">&#8250;</button>
-  </div>
-</div>
-
-<script>
-let currentArkitIndex = 0;
-let hasArkitInteracted = false;
-
-function arkitNavigate(direction) {
-  const items = document.querySelectorAll('#arkitCarousel .viser-carousel-item');
-  const thumbnails = document.querySelectorAll('#arkitThumbnails .viser-thumbnail');
-
-  currentArkitIndex += direction;
-
-  if (currentArkitIndex < 0) currentArkitIndex = items.length - 1;
-  if (currentArkitIndex >= items.length) currentArkitIndex = 0;
-
-  arkitGoTo(currentArkitIndex);
-}
-
-function arkitGoTo(index) {
-  const items = document.querySelectorAll('#arkitCarousel .viser-carousel-item');
-  const thumbnails = document.querySelectorAll('#arkitThumbnails .viser-thumbnail');
-
-  items.forEach((item, i) => {
-    const iframe = item.querySelector('iframe');
-    if (i === index) {
-      item.classList.add('active');
-      // Load the iframe for the active item if not already loaded
-      if (iframe && iframe.dataset.src && iframe.src !== iframe.dataset.src) {
-        iframe.src = iframe.dataset.src;
-      }
-    } else {
-      item.classList.remove('active');
-      // Unload the iframe for inactive items to free memory
-      if (iframe && iframe.src) {
-        iframe.src = '';
-      }
-    }
-  });
-
-  thumbnails.forEach((thumb, i) => {
-    if (i === index) {
-      thumb.classList.add('active');
-      thumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    } else {
-      thumb.classList.remove('active');
-    }
-  });
-
-  currentArkitIndex = index;
-}
-
-// Initialize the first carousel item on page load
-document.addEventListener('DOMContentLoaded', function() {
-  arkitGoTo(0);
-});
-
-// Hide overlay on interaction
-function hideArkitOverlays() {
-  if (!hasArkitInteracted) {
-    hasArkitInteracted = true;
-    const overlays = document.querySelectorAll('#arkitCarousel .click-overlay');
-    overlays.forEach(overlay => overlay.classList.add('hidden'));
-  }
-}
-
-const arkitCarousel = document.getElementById('arkitCarousel');
-
-// Hide on click anywhere in the carousel
-arkitCarousel.addEventListener('click', hideArkitOverlays);
-
-// Hide when mouse enters the carousel area (user is about to interact)
-arkitCarousel.addEventListener('mouseenter', hideArkitOverlays);
-
-// Hide on touch/drag (mobile)
-arkitCarousel.addEventListener('touchstart', hideArkitOverlays);
-arkitCarousel.addEventListener('touchmove', hideArkitOverlays);
-
-// Also hide when clicking/touching directly on the overlay
-document.querySelectorAll('#arkitCarousel .click-overlay').forEach(overlay => {
-  overlay.addEventListener('click', hideArkitOverlays);
-  overlay.addEventListener('touchstart', hideArkitOverlays);
-});
-</script>
-
