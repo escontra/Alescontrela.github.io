@@ -315,11 +315,22 @@ Click on a category and sub-scene to visualize our learned vision-based policy i
   border: none;
   font-size: 18px;
   font-weight: bold;
+  position: relative;
+  animation: pulse-border 2s ease-in-out infinite;
 }
 
 .category-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes pulse-border {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7), 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(255, 0, 0, 0), 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
 }
 
 .category-card.iphone {
