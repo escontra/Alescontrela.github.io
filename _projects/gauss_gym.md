@@ -19,6 +19,13 @@ img {
   position: relative;
   overflow: hidden;
   background: #000;
+  min-height: 400px;
+}
+
+@media (max-width: 768px) {
+  .video-banner-container {
+    min-height: 300px;
+  }
 }
 
 .video-banner-grid {
@@ -113,6 +120,8 @@ img {
 document.addEventListener('DOMContentLoaded', function() {
   const BUCKET_URL = 'https://gauss-gym-videos.escontrela.me';
   const MANIFEST_URL = BUCKET_URL + '/videos_good.json';
+  let videosLoaded = false;
+  let isMobile = window.innerWidth <= 768;
 
   // Create video element
   function createBannerVideoElement(videoUrl) {
@@ -126,58 +135,40 @@ document.addEventListener('DOMContentLoaded', function() {
     video.loop = true;
     video.playsInline = true;
     video.volume = 0;
-    video.defaultMuted = true; // Add this
+    video.defaultMuted = true;
     video.preload = 'auto';
     video.src = videoUrl;
 
     video.onerror = function() {
-      console.error('Failed to load video:', videoUrl);
+      console.error('[VideoBanner] Failed to load video:', videoUrl);
     };
-
-    // Try multiple events for better Safari compatibility
-    const attemptPlay = () => {
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.error('Error auto-playing video:', error);
-          // Retry after a short delay
-          setTimeout(() => video.play().catch(() => {}), 100);
-        });
-      }
-    };
-
-    video.addEventListener('loadedmetadata', attemptPlay);
-    video.addEventListener('canplay', attemptPlay);
-
-    // // Explicitly try to play when loaded (Safari needs this)
-    // video.addEventListener('loadeddata', function() {
-    //   const playPromise = video.play();
-    //   if (playPromise !== undefined) {
-    //     playPromise.catch(error => {
-    //       console.error('Error auto-playing video:', error);
-    //     });
-    //   }
-    // });
-
-    // Force play after adding to DOM
-    setTimeout(() => {
-      if (video.paused) {
-        attemptPlay();
-      }
-    }, 100);
-
 
     return video;
   }
 
-  // Load and populate static video grid (5x5 = 25 videos, or 3x3 = 9 on mobile)
+  // Play all videos (called when user interacts on mobile)
+  function playAllVideos() {
+    const videos = document.querySelectorAll('#videoBanner video');
+    console.log('[VideoBanner] Playing', videos.length, 'videos');
+    videos.forEach(function(video, index) {
+      setTimeout(function() {
+        if (video.paused) {
+          video.play().catch(function(err) {
+            console.error('[VideoBanner] Error playing video', index, ':', err);
+          });
+        }
+      }, index * 50); // Stagger playback by 50ms
+    });
+  }
+
+  // Load and populate static video grid (5x5 = 25 videos, or 3x2 = 6 on mobile)
   async function loadVideoBanner() {
     const gridContainer = document.getElementById('videoBanner');
     console.log('[VideoBanner] Starting to load banner...');
+    console.log('[VideoBanner] Is mobile:', isMobile);
 
     try {
       console.log('[VideoBanner] Fetching manifest from:', MANIFEST_URL);
-      console.log('[VideoBanner] Current origin:', window.location.origin);
 
       const response = await fetch(MANIFEST_URL, {
         mode: 'cors',
@@ -187,12 +178,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
 
-      console.log('[VideoBanner] Fetch response received');
       console.log('[VideoBanner] Response status:', response.status);
-      console.log('[VideoBanner] Response headers:', [...response.headers.entries()]);
 
       if (!response.ok) {
-        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        throw new Error('HTTP ' + response.status + ': ' + response.statusText);
       }
 
       const data = await response.json();
@@ -205,10 +194,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       // Shuffle and pick random videos
-      const shuffled = allVideos.sort(() => Math.random() - 0.5);
+      const shuffled = allVideos.sort(function() { return Math.random() - 0.5; });
 
       // Use 15 videos for desktop (5x3), 9 for mobile (3x3)
-      const isMobile = window.innerWidth <= 768;
       const videoCount = isMobile ? 9 : 15;
       const selectedVideos = shuffled.slice(0, videoCount);
 
@@ -216,10 +204,10 @@ document.addEventListener('DOMContentLoaded', function() {
       gridContainer.innerHTML = '';
 
       // Add videos to grid
-      selectedVideos.forEach(videoFilename => {
+      selectedVideos.forEach(function(videoFilename) {
         // Convert filename to 480p version (e.g., video.mp4 -> video_480p.mp4)
         const video480pFilename = videoFilename.replace(/\.mp4$/, '_480p.mp4');
-        const videoUrl = `${BUCKET_URL}/${video480pFilename}`;
+        const videoUrl = BUCKET_URL + '/' + video480pFilename;
         const gridItem = document.createElement('div');
         gridItem.className = 'video-banner-item';
         const video = createBannerVideoElement(videoUrl);
@@ -228,12 +216,16 @@ document.addEventListener('DOMContentLoaded', function() {
       });
 
       console.log('[VideoBanner]', videoCount, 'videos loaded');
+      videosLoaded = true;
+
+      // Try to autoplay videos
+      setTimeout(function() {
+        playAllVideos();
+      }, 500);
 
     } catch (error) {
       console.error('[VideoBanner] Error:', error);
-      console.error('[VideoBanner] Error name:', error.name);
-      console.error('[VideoBanner] Error message:', error.message);
-      gridContainer.innerHTML = `<div class="video-banner-loading">Failed to load videos. Check browser console for details.</div>`;
+      gridContainer.innerHTML = '<div class="video-banner-loading">Failed to load videos</div>';
     }
   }
 
