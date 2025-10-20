@@ -109,9 +109,10 @@ img {
 </div>
 
 <script>
-(function() {
+// Wrap in DOMContentLoaded to ensure proper execution
+document.addEventListener('DOMContentLoaded', function() {
   const BUCKET_URL = 'https://gauss-gym-videos.escontrela.me';
-  const MANIFEST_URL = `${BUCKET_URL}/videos.json`;
+  const MANIFEST_URL = BUCKET_URL + '/videos_good.json';
 
   // Create video element
   function createBannerVideoElement(videoUrl) {
@@ -124,6 +125,8 @@ img {
     video.autoplay = true;
     video.loop = true;
     video.playsInline = true;
+    video.volume = 0;
+    video.defaultMuted = true; // Add this
     video.preload = 'auto';
     video.src = videoUrl;
 
@@ -131,15 +134,38 @@ img {
       console.error('Failed to load video:', videoUrl);
     };
 
-    // Explicitly try to play when loaded (Safari needs this)
-    video.addEventListener('loadeddata', function() {
+    // Try multiple events for better Safari compatibility
+    const attemptPlay = () => {
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise.catch(error => {
           console.error('Error auto-playing video:', error);
+          // Retry after a short delay
+          setTimeout(() => video.play().catch(() => {}), 100);
         });
       }
-    });
+    };
+
+    video.addEventListener('loadedmetadata', attemptPlay);
+    video.addEventListener('canplay', attemptPlay);
+
+    // // Explicitly try to play when loaded (Safari needs this)
+    // video.addEventListener('loadeddata', function() {
+    //   const playPromise = video.play();
+    //   if (playPromise !== undefined) {
+    //     playPromise.catch(error => {
+    //       console.error('Error auto-playing video:', error);
+    //     });
+    //   }
+    // });
+
+    // Force play after adding to DOM
+    setTimeout(() => {
+      if (video.paused) {
+        attemptPlay();
+      }
+    }, 100);
+
 
     return video;
   }
@@ -211,13 +237,9 @@ img {
     }
   }
 
-  // Load banner when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadVideoBanner);
-  } else {
-    loadVideoBanner();
-  }
-})();
+  // Load banner immediately when DOM is ready
+  loadVideoBanner();
+});
 </script>
 
 <style>
@@ -262,7 +284,6 @@ img {
 </style>
 
 <div class="tldr-section">
-  <div class="tldr-label">TL;DR</div>
   <p class="tldr-text">
     Train robot policies at 100K+ steps/second in photorealistic 3D environments captured from iPhone videos, datasets, or AI-generated worlds.
   </p>
@@ -270,7 +291,7 @@ img {
 
 <div class="row">
     <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
-        <h3><a href="https://arxiv.org/pdf/2305.14343.pdf">Paper<br/><i class="fas fa-file-pdf"></i></a></h3>
+        <h3><a href="https://arxiv.org/pdf/2510.15352">Paper<br/><i class="fas fa-file-pdf"></i></a></h3>
     </div>
     <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
         <h3><a href="https://huggingface.co/collections/escontra/gauss-gym-datasets-68f1545f33691c8cb43a55ff">Data<br/><svg width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; vertical-align: -0.125em;">
@@ -284,6 +305,51 @@ img {
     <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
         <h3><a href="https://github.com/escontra/gauss_gym">Code<br/><i class="fas fa-file-code"></i></a></h3>
     </div>
+</div>
+
+<br/>
+
+<style>
+.author-section {
+  text-align: center;
+  margin: 40px 0;
+  line-height: 1.8;
+}
+
+.author-names {
+  font-size: clamp(18px, 3vw, 24px);
+  margin-bottom: 15px;
+}
+
+.author-affiliations {
+  font-size: clamp(14px, 2.5vw, 18px);
+  color: var(--global-text-color-light);
+  margin-bottom: 8px;
+}
+
+.author-note {
+  font-size: clamp(13px, 2vw, 16px);
+  color: var(--global-text-color-light);
+}
+
+@media (max-width: 768px) {
+  .author-section {
+    margin: 30px 0;
+  }
+}
+</style>
+
+<div class="author-section">
+  <p class="author-names">
+    Alejandro Escontrela<sup>1</sup>, Justin Kerr<sup>1</sup>, Arthur Allshire<sup>1</sup>, Jonas Frey<sup>2</sup>,<br/>
+    Rocky Duan<sup>3</sup>, Carmelo Sferrazza<sup>1, 3, &sect;</sup>, Pieter Abbeel<sup>1, 3, &sect;</sup>
+  </p>
+  <p class="author-affiliations">
+    <sup>1</sup>UC Berkeley, <sup>2</sup>ETH Zurich, <sup>3</sup>Amazon FAR (Frontier AI &amp; Robotics)
+  </p>
+  <p class="author-note">
+    <sup>&sect;</sup>Work done while at UC Berkeley
+  </p>
 </div>
 
 <br/>
@@ -309,6 +375,9 @@ img {
   font-size: 48px;
   font-weight: 900;
   margin-bottom: 20px;
+}
+
+.interactive-heading .gradient-text {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -353,7 +422,7 @@ img {
 </style>
 
 <div class="interactive-section">
-  <h2 class="interactive-heading" id="try-it-yourself">🎮 Try It Yourself</h2>
+  <h2 class="interactive-heading" id="try-it-yourself">🎮 <span class="gradient-text">Try It Yourself</span></h2>
 
   <p class="interactive-description">
     <strong>Explore photorealistic 3D environments</strong> where our robot policies learn to navigate. Each scene—from real-world iPhone captures to AI-generated landscapes—is rendered using 3D Gaussian Splatting and fully interactive in your browser.
@@ -848,47 +917,258 @@ document.addEventListener('DOMContentLoaded', function() {
 <br/>
 
 <style>
-.author-section {
-  text-align: center;
-  margin: 40px 0;
-  line-height: 1.8;
-}
-
-.author-names {
-  font-size: clamp(18px, 3vw, 24px);
-  margin-bottom: 15px;
-}
-
-.author-affiliations {
-  font-size: clamp(14px, 2.5vw, 18px);
-  color: var(--global-text-color-light);
-  margin-bottom: 8px;
-}
-
-.author-note {
-  font-size: clamp(13px, 2vw, 16px);
-  color: var(--global-text-color-light);
+.video-showcase-section {
+  background: linear-gradient(180deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  padding: 60px 20px;
+  margin: 40px -20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
 }
 
 @media (max-width: 768px) {
-  .author-section {
-    margin: 30px 0;
+  .video-showcase-section {
+    padding: 40px 15px;
+    margin: 30px -15px;
   }
+}
+
+.video-showcase-heading {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 900;
+  margin-bottom: 20px;
+}
+
+.video-showcase-heading .gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (max-width: 768px) {
+  .video-showcase-heading {
+    font-size: 32px;
+  }
+}
+
+.video-showcase-description {
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  color: var(--global-text-color);
+}
+
+@media (max-width: 768px) {
+  .video-showcase-description {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+}
+
+.refresh-button {
+  display: block;
+  margin: 0 auto 30px;
+  padding: 15px 40px;
+  font-size: 18px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.refresh-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4);
+}
+
+.refresh-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .refresh-button {
+    font-size: 16px;
+    padding: 12px 30px;
+  }
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}
+
+.video-grid-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.video-grid-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  color: var(--global-text-color);
+  font-size: 18px;
 }
 </style>
 
-<div class="author-section">
-  <p class="author-names">
-    Alejandro Escontrela<sup>1</sup>, Justin Kerr<sup>1</sup>, Arthur Allshire<sup>1</sup>, Jonas Frey<sup>2</sup>,<br/>
-    Rocky Duan<sup>3</sup>, Carmelo Sferrazza<sup>1, 3, &sect;</sup>, Pieter Abbeel<sup>1, 3, &sect;</sup>
+<div class="video-showcase-section">
+  <h2 class="video-showcase-heading" id="video-showcase">🎬 <span class="gradient-text">Scene Showcase</span></h2>
+
+  <p class="video-showcase-description">
+    See <strong>gaussian splats</strong> from our dataset. Scenes are from the <a href="https://huggingface.co/datasets/leggedrobotics/grand_tour_dataset">GrandTour</a> subcollection.
   </p>
-  <p class="author-affiliations">
-    <sup>1</sup>UC Berkeley, <sup>2</sup>ETH Zurich, <sup>3</sup>Amazon FAR (Frontier AI &amp; Robotics)
-  </p>
-  <p class="author-note">
-    <sup>&sect;</sup>Work done while at UC Berkeley
-  </p>
+
+  <button class="refresh-button" onclick="refreshShowcaseVideos()">
+    🔄 Refresh Scene
+  </button>
+
+  <div class="video-grid" id="videoShowcaseGrid">
+    <div class="video-loading">Loading videos...</div>
+  </div>
 </div>
+
+<script>
+let showcaseVideosCache = null;
+
+async function loadShowcaseVideos() {
+  const BUCKET_URL = 'https://gauss-gym-videos.escontrela.me';
+  const MANIFEST_URL = BUCKET_URL + '/videos_good.json';
+
+  try {
+    const response = await fetch(MANIFEST_URL, {
+      mode: 'cors',
+      credentials: 'omit',
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('HTTP ' + response.status + ': ' + response.statusText);
+    }
+
+    const data = await response.json();
+    showcaseVideosCache = data.videos || [];
+    console.log('[VideoShowcase] Loaded', showcaseVideosCache.length, 'videos from manifest');
+
+    // Load initial videos
+    refreshShowcaseVideos();
+  } catch (error) {
+    console.error('[VideoShowcase] Error:', error);
+    document.getElementById('videoShowcaseGrid').innerHTML = '<div class="video-loading">Failed to load videos</div>';
+  }
+}
+
+function createShowcaseVideoElement(videoUrl) {
+  const video = document.createElement('video');
+  video.setAttribute('playsinline', '');
+  video.setAttribute('muted', '');
+  video.setAttribute('autoplay', '');
+  video.setAttribute('loop', '');
+  video.setAttribute('controls', '');
+  video.muted = true;
+  video.autoplay = true;
+  video.loop = true;
+  video.playsInline = true;
+  video.volume = 0;
+  video.defaultMuted = true;
+  video.preload = 'auto';
+  video.src = videoUrl;
+
+  video.onerror = function() {
+    console.error('Failed to load video:', videoUrl);
+  };
+
+  const attemptPlay = function() {
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(function(error) {
+        console.error('Error auto-playing video:', error);
+        setTimeout(function() { video.play().catch(function() {}); }, 100);
+      });
+    }
+  };
+
+  video.addEventListener('loadedmetadata', attemptPlay);
+  video.addEventListener('canplay', attemptPlay);
+
+  setTimeout(function() {
+    if (video.paused) {
+      attemptPlay();
+    }
+  }, 100);
+
+  return video;
+}
+
+function refreshShowcaseVideos() {
+  if (!showcaseVideosCache || showcaseVideosCache.length === 0) {
+    console.log('[VideoShowcase] No videos in cache yet');
+    return;
+  }
+
+  const BUCKET_URL = 'https://gauss-gym-videos.escontrela.me';
+  const gridContainer = document.getElementById('videoShowcaseGrid');
+  const isMobile = window.innerWidth <= 768;
+  const videoCount = isMobile ? 1 : 3;
+
+  // Shuffle and pick random videos
+  const shuffled = showcaseVideosCache.sort(function() { return Math.random() - 0.5; });
+  const selectedVideos = shuffled.slice(0, videoCount);
+
+  // Clear grid
+  gridContainer.innerHTML = '';
+
+  // Add videos to grid
+  selectedVideos.forEach(function(videoFilename) {
+    // Convert filename to 480p version (e.g., video.mp4 -> video_480p.mp4)
+    const video480pFilename = videoFilename.replace(/\.mp4$/, '_480p.mp4');
+    const videoUrl = BUCKET_URL + '/' + video480pFilename;
+
+    const gridItem = document.createElement('div');
+    gridItem.className = 'video-grid-item';
+    const video = createShowcaseVideoElement(videoUrl);
+    gridItem.appendChild(video);
+    gridContainer.appendChild(gridItem);
+  });
+
+  console.log('[VideoShowcase]', videoCount, 'videos loaded');
+}
+
+// Load videos when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+  loadShowcaseVideos();
+});
+</script>
 
 <br/>
 
