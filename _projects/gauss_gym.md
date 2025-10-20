@@ -131,22 +131,20 @@ document.addEventListener('DOMContentLoaded', function() {
     video.setAttribute('autoplay', '');
     video.setAttribute('loop', '');
     video.setAttribute('crossorigin', 'anonymous');
+    video.setAttribute('disablePictureInPicture', '');
     video.muted = true;
     video.autoplay = true;
     video.loop = true;
     video.playsInline = true;
     video.volume = 0;
     video.defaultMuted = true;
-    video.preload = 'auto';
+    video.preload = 'metadata';
 
     // Create source element with explicit MIME type for Safari
     const source = document.createElement('source');
     source.src = videoUrl;
     source.type = 'video/mp4';
     video.appendChild(source);
-
-    // Explicitly load the video
-    video.load();
 
     video.onerror = function() {
       console.error('[VideoBanner] Failed to load video:', videoUrl);
@@ -1115,22 +1113,20 @@ function createShowcaseVideoElement(videoUrl) {
   video.setAttribute('loop', '');
   video.setAttribute('controls', '');
   video.setAttribute('crossorigin', 'anonymous');
+  video.setAttribute('disablePictureInPicture', '');
   video.muted = true;
   video.autoplay = true;
   video.loop = true;
   video.playsInline = true;
   video.volume = 0;
   video.defaultMuted = true;
-  video.preload = 'auto';
+  video.preload = 'metadata';
 
   // Create source element with explicit MIME type for Safari
   const source = document.createElement('source');
   source.src = videoUrl;
   source.type = 'video/mp4';
   video.appendChild(source);
-
-  // Explicitly load the video
-  video.load();
 
   video.onerror = function() {
     console.error('Failed to load video:', videoUrl);
