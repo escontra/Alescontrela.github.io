@@ -145,6 +145,9 @@ document.addEventListener('DOMContentLoaded', function() {
     source.type = 'video/mp4';
     video.appendChild(source);
 
+    // Explicitly load the video
+    video.load();
+
     video.onerror = function() {
       console.error('[VideoBanner] Failed to load video:', videoUrl);
     };
@@ -237,6 +240,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Load banner immediately when DOM is ready
   loadVideoBanner();
+
+  // Add interaction handlers for mobile to trigger autoplay
+  let hasInteracted = false;
+  function handleFirstInteraction() {
+    if (!hasInteracted && videosLoaded) {
+      hasInteracted = true;
+      playAllVideos();
+      // Remove listeners after first interaction
+      document.removeEventListener('scroll', handleFirstInteraction);
+      document.removeEventListener('touchstart', handleFirstInteraction);
+      document.removeEventListener('click', handleFirstInteraction);
+    }
+  }
+
+  // Listen for user interactions
+  document.addEventListener('scroll', handleFirstInteraction, { passive: true });
+  document.addEventListener('touchstart', handleFirstInteraction, { passive: true });
+  document.addEventListener('click', handleFirstInteraction);
 });
 </script>
 
@@ -1107,6 +1128,9 @@ function createShowcaseVideoElement(videoUrl) {
   source.src = videoUrl;
   source.type = 'video/mp4';
   video.appendChild(source);
+
+  // Explicitly load the video
+  video.load();
 
   video.onerror = function() {
     console.error('Failed to load video:', videoUrl);
