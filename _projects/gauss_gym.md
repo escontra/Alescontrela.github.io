@@ -1,13 +1,18 @@
 ---
 layout: page
 title: "Gauss Gym"
-description: Using advances in generative modeling to learn reward functions from unlabeled videos.
-img: assets/img/viper/viper_method.png
+description: An open-source real-to-sim framework for learning locomotion from pixels
+img: assets/gif/gauss_gym_splash.gif
 importance: 0
 category: work
 ---
 
 <style>
+/* Rounded borders for all content images */
+img {
+  border-radius: 12px;
+}
+
 .video-banner-container {
   width: 100%;
   margin: -20px 0 40px 0;
@@ -111,15 +116,31 @@ category: work
   // Create video element
   function createBannerVideoElement(videoUrl) {
     const video = document.createElement('video');
-    video.src = videoUrl;
+    video.setAttribute('playsinline', '');
+    video.setAttribute('muted', '');
+    video.setAttribute('autoplay', '');
+    video.setAttribute('loop', '');
+    video.muted = true;
     video.autoplay = true;
     video.loop = true;
-    video.muted = true;
     video.playsInline = true;
     video.preload = 'auto';
+    video.src = videoUrl;
+
     video.onerror = function() {
       console.error('Failed to load video:', videoUrl);
     };
+
+    // Explicitly try to play when loaded (Safari needs this)
+    video.addEventListener('loadeddata', function() {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.error('Error auto-playing video:', error);
+        });
+      }
+    });
+
     return video;
   }
 
@@ -199,6 +220,54 @@ category: work
 })();
 </script>
 
+<style>
+.tldr-section {
+  text-align: center;
+  margin: 50px auto;
+  max-width: 1000px;
+  padding: 0 20px;
+}
+
+.tldr-label {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--global-theme-color);
+  margin-bottom: 15px;
+  opacity: 0.8;
+}
+
+.tldr-text {
+  font-size: clamp(20px, 4vw, 32px);
+  font-weight: 700;
+  line-height: 1.4;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .tldr-section {
+    margin: 30px auto;
+  }
+
+  .tldr-label {
+    font-size: 14px;
+    letter-spacing: 3px;
+  }
+}
+</style>
+
+<div class="tldr-section">
+  <div class="tldr-label">TL;DR</div>
+  <p class="tldr-text">
+    Train robot policies at 100K+ steps/second in photorealistic 3D environments captured from iPhone videos, datasets, or AI-generated worlds.
+  </p>
+</div>
+
 <div class="row">
     <div class="text-center col-4 col-sm-4 mt-4 mt-md-0">
         <h3><a href="https://arxiv.org/pdf/2305.14343.pdf">Paper<br/><i class="fas fa-file-pdf"></i></a></h3>
@@ -217,92 +286,87 @@ category: work
     </div>
 </div>
 
+<br/>
+
 <style>
-.author-section {
-  text-align: center;
-  margin: 40px 0;
-  line-height: 1.8;
-}
-
-.author-names {
-  font-size: clamp(18px, 3vw, 24px);
-  margin-bottom: 15px;
-}
-
-.author-affiliations {
-  font-size: clamp(14px, 2.5vw, 18px);
-  color: var(--global-text-color-light);
-  margin-bottom: 8px;
-}
-
-.author-note {
-  font-size: clamp(13px, 2vw, 16px);
-  color: var(--global-text-color-light);
+.interactive-section {
+  background: linear-gradient(180deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  padding: 60px 20px;
+  margin: 40px -20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.15);
 }
 
 @media (max-width: 768px) {
-  .author-section {
-    margin: 30px 0;
+  .interactive-section {
+    padding: 40px 15px;
+    margin: 30px -15px;
+  }
+}
+
+.interactive-heading {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@media (max-width: 768px) {
+  .interactive-heading {
+    font-size: 32px;
+  }
+}
+
+.interactive-description {
+  text-align: center;
+  font-size: 20px;
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  color: var(--global-text-color);
+}
+
+@media (max-width: 768px) {
+  .interactive-description {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+}
+
+.cta-text {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: var(--global-theme-color);
+}
+
+@media (max-width: 768px) {
+  .cta-text {
+    font-size: 16px;
   }
 }
 </style>
 
-<div class="author-section">
-  <p class="author-names">
-    Alejandro Escontrela<sup>1</sup>, Justin Kerr<sup>1</sup>, Arthur Allshire<sup>1</sup>, Jonas Frey<sup>2</sup>,<br/>
-    Rocky Duan<sup>3</sup>, Carmelo Sferrazza<sup>1, 3, &sect;</sup>, Pieter Abbeel<sup>1, 3, &sect;</sup>
+<div class="interactive-section">
+  <h2 class="interactive-heading" id="try-it-yourself">🎮 Try It Yourself</h2>
+
+  <p class="interactive-description">
+    <strong>Explore photorealistic 3D environments</strong> where our robot policies learn to navigate. Each scene—from real-world iPhone captures to AI-generated landscapes—is rendered using 3D Gaussian Splatting and fully interactive in your browser.
   </p>
-  <p class="author-affiliations">
-    <sup>1</sup>UC Berkeley, <sup>2</sup>ETH Zurich, <sup>3</sup>Amazon FAR (Frontier AI &amp; Robotics)
+
+  <p class="cta-text">
+    👇 Select a category, pick a scene, and see the robot's view as it moves through the world
   </p>
-  <p class="author-note">
-    <sup>&sect;</sup>Work done while at UC Berkeley
-  </p>
-</div>
-
-<br/>
-
-
-## Overview
----
-
-Training vision-based robot policies requires massive amounts of diverse, high-quality data. Traditional simulators struggle to provide photorealistic visual experiences at the scale needed for modern reinforcement learning, forcing researchers to choose between visual fidelity and training throughput.
-
-We present **GaussGym**, a novel approach that integrates *3D Gaussian Splatting* as a drop-in renderer within vectorized physics simulators such as IsaacGym. This integration enables unprecedented speed—exceeding **100,000 steps per second on consumer GPUs**—while maintaining photorealistic visual fidelity.
-
-**Key capabilities:**
-- **Photorealistic rendering** using 3D Gaussian Splatting at massive scale
-- **Diverse scene creation** from iPhone scans, datasets (GrandTour, ARKit), and generative video models (Veo)
-- **Sim2real transfer** with motion blur, camera randomization, and intrinsic jitter
-- **Rich sensing** beyond RGB: depth maps, heightmaps, and terrain-based rewards
-- **Tasks** are provided out of the box, including pursuit tasks and goal reaching.
-
-This work bridges high-throughput simulation and high-fidelity perception, advancing scalable and generalizable robot learning. All code and data are open-sourced for the community to build upon.
-
-<div style="text-align: center; margin: 30px 0;">
-  <img src="https://gauss-gym.escontrela.me/all_scenes_compressed.png"
-       alt="Overview of all scenes"
-       style="max-width: 100%; height: auto;">
-  <p style="margin-top: 10px; font-size: 16px; color: var(--global-text-color-light); font-style: italic;">
-    Gauss Gym provides tooling to extract scenes from a variety of datasets, including iPhone scans, existing image datasets (e.g. GrandTour, ARKitScenes), and even generative video models like Veo.
-  </p>
-</div>
-
-<br/>
-
-## Interactive 3D Scenes
----
-
-Explore the diverse photorealistic environments where GaussGym trains robot policies. Each scene is rendered using 3D Gaussian Splatting and can be navigated interactively in your browser. Click on a category below to select a scene, then use your mouse to orbit the camera and observe the robot's first-person view as it navigates the environment.
-
-These scenes span iPhone captures of real locations, large-scale outdoor datasets, indoor room scans, and even AI-generated worlds from video models like Veo—demonstrating the versatility of our scene extraction pipeline.
-
-**Note**: Some examples may be slow to load
 
 <style>
 .scene-viewer-wrapper {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 20px 0;
 }
@@ -311,38 +375,50 @@ These scenes span iPhone captures of real locations, large-scale outdoor dataset
 .category-selector {
   display: flex;
   justify-content: center;
-  gap: 20px;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 }
 
 .category-card {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 40px 60px;
+  padding: 20px 30px;
   border-radius: 12px;
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
   text-align: center;
-  min-width: 200px;
   border: none;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   position: relative;
-  animation: pulse-border 2s ease-in-out infinite;
+  opacity: 0.7;
+  flex: 1;
+  max-width: 200px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category-card.active {
+  opacity: 1;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
 }
 
 .category-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  opacity: 1;
 }
 
-@keyframes pulse-border {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(255, 54, 54, 0.7), 0 10px 30px rgba(0, 0, 0, 0.2);
+@media (max-width: 768px) {
+  .category-selector {
+    gap: 6px;
   }
-  50% {
-    box-shadow: 0 0 0 8px rgba(255, 54, 54, 0), 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  .category-card {
+    padding: 12px 15px;
+    font-size: 12px;
+    max-width: 150px;
   }
 }
 
@@ -365,10 +441,10 @@ These scenes span iPhone captures of real locations, large-scale outdoor dataset
 /* Scene thumbnails */
 .scene-thumbnails {
   display: none;
-  gap: 15px;
+  gap: 8px;
   justify-content: center;
   margin-bottom: 20px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   animation: fadeIn 0.3s ease-in;
 }
 
@@ -376,22 +452,54 @@ These scenes span iPhone captures of real locations, large-scale outdoor dataset
   display: flex;
 }
 
+@media (max-width: 768px) {
+  .scene-thumbnails {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}
+
 .scene-thumbnail {
-  min-width: 150px;
-  height: 100px;
+  width: 120px;
+  height: 80px;
   background: var(--global-card-bg-color);
-  border-radius: 8px;
+  border-radius: 6px;
   cursor: pointer;
-  border: 3px solid transparent;
+  border: 2px solid transparent;
   transition: border-color 0.3s, transform 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--global-text-color);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
   overflow: hidden;
   position: relative;
+  flex-shrink: 0;
+}
+
+.scene-thumbnail.text-only {
+  color: white;
+  font-size: 11px;
+  padding: 8px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.scene-thumbnail.text-only.iphone {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.scene-thumbnail.text-only.grandtour {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.scene-thumbnail.text-only.arkit {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.scene-thumbnail.text-only.veo {
+  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
 }
 
 .scene-thumbnail img {
@@ -407,9 +515,9 @@ These scenes span iPhone captures of real locations, large-scale outdoor dataset
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.8);
-  color: var(--global-bg-color);
-  padding: 8px;
-  font-size: 12px;
+  color: white;
+  padding: 4px;
+  font-size: 10px;
   font-weight: bold;
   text-align: center;
 }
@@ -423,15 +531,29 @@ These scenes span iPhone captures of real locations, large-scale outdoor dataset
   border-color: var(--global-theme-color);
 }
 
+@media (max-width: 768px) {
+  .scene-thumbnail {
+    width: 90px;
+    height: 65px;
+  }
+}
+
 /* Viewer container */
 .scene-viewer-container {
   width: 100%;
-  height: 600px;
+  height: 850px;
   position: relative;
   overflow: hidden;
   background: #000;
-  border-radius: 8px;
+  border-radius: 12px;
   display: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .scene-viewer-container {
+    height: 500px;
+  }
 }
 
 .scene-viewer-container.active {
@@ -467,24 +589,7 @@ These scenes span iPhone captures of real locations, large-scale outdoor dataset
 }
 
 .back-button {
-  background: var(--global-card-bg-color);
-  color: var(--global-text-color);
-  border: 1px solid var(--global-divider-color);
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 4px;
-  margin-bottom: 20px;
-  transition: background 0.3s, border-color 0.3s;
   display: none;
-}
-
-.back-button.active {
-  display: inline-block;
-}
-
-.back-button:hover {
-  border-color: var(--global-hover-color);
 }
 
 @keyframes fadeIn {
@@ -494,28 +599,23 @@ These scenes span iPhone captures of real locations, large-scale outdoor dataset
 </style>
 
 <div class="scene-viewer-wrapper">
-  <!-- Back button -->
-  <button class="back-button" id="backButton" onclick="sceneViewer.showCategories()">
-    &#8249; Back to Categories
-  </button>
-
   <!-- Category selection -->
   <div class="category-selector" id="categorySelector">
     <button class="category-card iphone" onclick="sceneViewer.selectCategory('iphone')">
       <div>iPhone Scenes</div>
-      <div style="font-size: 12px; margin-top: 8px; opacity: 0.9;">5 locations</div>
+      <div style="font-size: 10px; margin-top: 4px; opacity: 0.9;">5 locations</div>
     </button>
     <button class="category-card grandtour" onclick="sceneViewer.selectCategory('grandtour')">
       <div>GrandTour Scenes</div>
-      <div style="font-size: 12px; margin-top: 8px; opacity: 0.9;">5 locations</div>
+      <div style="font-size: 10px; margin-top: 4px; opacity: 0.9;">5 locations</div>
     </button>
     <button class="category-card arkit" onclick="sceneViewer.selectCategory('arkit')">
       <div>ARKit Scenes</div>
-      <div style="font-size: 12px; margin-top: 8px; opacity: 0.9;">5 locations</div>
+      <div style="font-size: 10px; margin-top: 4px; opacity: 0.9;">5 locations</div>
     </button>
     <button class="category-card veo" onclick="sceneViewer.selectCategory('veo')">
       <div>Veo Scenes</div>
-      <div style="font-size: 12px; margin-top: 8px; opacity: 0.9;">4 locations</div>
+      <div style="font-size: 10px; margin-top: 4px; opacity: 0.9;">4 locations</div>
     </button>
   </div>
 
@@ -628,18 +728,22 @@ const sceneViewer = {
 
   selectCategory(category) {
     this.currentCategory = category;
+    this.currentScene = null; // Reset scene when switching categories
+
+    // Update active category button
+    document.querySelectorAll('.category-card').forEach(card => {
+      card.classList.remove('active');
+    });
+    document.querySelector(`.category-card.${category}`).classList.add('active');
+
     this.showThumbnails();
   },
 
   showThumbnails() {
-    const categorySelector = document.getElementById('categorySelector');
     const thumbnailsContainer = document.getElementById('sceneThumbnails');
-    const backButton = document.getElementById('backButton');
 
-    // Hide categories, show thumbnails
-    categorySelector.style.display = 'none';
+    // Show thumbnails
     thumbnailsContainer.classList.add('active');
-    backButton.classList.add('active');
 
     // Populate thumbnails
     const scenes = this.scenes[this.currentCategory];
@@ -651,19 +755,29 @@ const sceneViewer = {
       thumbnail.onclick = () => this.loadScene(index);
 
       if (scene.thumbnail) {
+        // Has image thumbnail
         const img = document.createElement('img');
         img.src = scene.thumbnail;
         img.alt = scene.name;
         thumbnail.appendChild(img);
-      }
 
-      const label = document.createElement('div');
-      label.className = 'scene-thumbnail-label';
-      label.textContent = scene.name;
-      thumbnail.appendChild(label);
+        const label = document.createElement('div');
+        label.className = 'scene-thumbnail-label';
+        label.textContent = scene.name;
+        thumbnail.appendChild(label);
+      } else {
+        // Text-only thumbnail
+        thumbnail.classList.add('text-only', this.currentCategory);
+        thumbnail.textContent = scene.name;
+      }
 
       thumbnailsContainer.appendChild(thumbnail);
     });
+
+    // Auto-load first scene if none is selected
+    if (this.currentScene === null) {
+      this.loadScene(0);
+    }
   },
 
   loadScene(sceneIndex) {
@@ -693,35 +807,20 @@ const sceneViewer = {
     });
   },
 
-  showCategories() {
-    const categorySelector = document.getElementById('categorySelector');
-    const thumbnailsContainer = document.getElementById('sceneThumbnails');
-    const viewerContainer = document.getElementById('sceneViewer');
-    const backButton = document.getElementById('backButton');
-    const iframe = document.getElementById('sceneIframe');
-
-    // Unload iframe to free memory
-    iframe.src = '';
-
-    // Reset view
-    categorySelector.style.display = 'flex';
-    thumbnailsContainer.classList.remove('active');
-    viewerContainer.classList.remove('active');
-    backButton.classList.remove('active');
-
-    this.currentCategory = null;
-    this.currentScene = null;
-  },
-
   hideOverlay() {
     if (!this.hasInteracted) {
       this.hasInteracted = true;
       document.getElementById('clickOverlay').classList.add('hidden');
     }
+  },
+
+  init() {
+    // Load default category and scene on page load
+    this.selectCategory('iphone');
   }
 };
 
-// Set up overlay hiding
+// Set up overlay hiding and initialize viewer
 document.addEventListener('DOMContentLoaded', function() {
   const viewer = document.getElementById('sceneViewer');
   const overlay = document.getElementById('clickOverlay');
@@ -730,12 +829,93 @@ document.addEventListener('DOMContentLoaded', function() {
   viewer.addEventListener('mouseenter', () => sceneViewer.hideOverlay());
   viewer.addEventListener('touchstart', () => sceneViewer.hideOverlay());
   overlay.addEventListener('click', () => sceneViewer.hideOverlay());
+
+  // Initialize with default category and scene
+  sceneViewer.init();
 });
 </script>
 
 <p style="text-align: center; font-size: 13px; color: var(--global-text-color-light); margin-top: 20px;">
   Interactive demos made possible by <a href="https://sparkjs.dev/">Spark</a>, <a href="https://viser.studio/main/">Viser</a>, and <a href="https://brentyi.github.io/">Brent Yi</a>
 </p>
+
+<p style="text-align: center; font-size: 14px; color: var(--global-text-color-light); margin-top: 15px; font-style: italic;">
+  Note: Some examples may be slow to load
+</p>
+
+</div>
+
+<br/>
+
+<style>
+.author-section {
+  text-align: center;
+  margin: 40px 0;
+  line-height: 1.8;
+}
+
+.author-names {
+  font-size: clamp(18px, 3vw, 24px);
+  margin-bottom: 15px;
+}
+
+.author-affiliations {
+  font-size: clamp(14px, 2.5vw, 18px);
+  color: var(--global-text-color-light);
+  margin-bottom: 8px;
+}
+
+.author-note {
+  font-size: clamp(13px, 2vw, 16px);
+  color: var(--global-text-color-light);
+}
+
+@media (max-width: 768px) {
+  .author-section {
+    margin: 30px 0;
+  }
+}
+</style>
+
+<div class="author-section">
+  <p class="author-names">
+    Alejandro Escontrela<sup>1</sup>, Justin Kerr<sup>1</sup>, Arthur Allshire<sup>1</sup>, Jonas Frey<sup>2</sup>,<br/>
+    Rocky Duan<sup>3</sup>, Carmelo Sferrazza<sup>1, 3, &sect;</sup>, Pieter Abbeel<sup>1, 3, &sect;</sup>
+  </p>
+  <p class="author-affiliations">
+    <sup>1</sup>UC Berkeley, <sup>2</sup>ETH Zurich, <sup>3</sup>Amazon FAR (Frontier AI &amp; Robotics)
+  </p>
+  <p class="author-note">
+    <sup>&sect;</sup>Work done while at UC Berkeley
+  </p>
+</div>
+
+<br/>
+
+## Overview
+---
+
+Training vision-based robot policies requires massive amounts of diverse, high-quality data. Traditional simulators struggle to provide photorealistic visual experiences at the scale needed for modern reinforcement learning, forcing researchers to choose between visual fidelity and training throughput.
+
+We present **GaussGym**, a novel approach that integrates *3D Gaussian Splatting* as a drop-in renderer within vectorized physics simulators such as IsaacGym. This integration enables unprecedented speed—exceeding **100,000 steps per second on consumer GPUs**—while maintaining photorealistic visual fidelity.
+
+**Key capabilities:**
+- **Photorealistic rendering** using 3D Gaussian Splatting at massive scale
+- **Diverse scene creation** from iPhone scans, datasets (GrandTour, ARKit), and generative video models (Veo)
+- **Sim2real transfer** with motion blur, camera randomization, and intrinsic jitter
+- **Rich sensing** beyond RGB: depth maps, heightmaps, and terrain-based rewards
+- **Tasks** are provided out of the box, including pursuit tasks and goal reaching.
+
+This work bridges high-throughput simulation and high-fidelity perception, advancing scalable and generalizable robot learning. All code and data are open-sourced for the community to build upon.
+
+<div style="text-align: center; margin: 30px 0;">
+  <img src="https://gauss-gym.escontrela.me/all_scenes_compressed.png"
+       alt="Overview of all scenes"
+       style="max-width: 100%; height: auto;">
+  <p style="margin-top: 10px; font-size: 16px; color: var(--global-text-color-light); font-style: italic;">
+    Gauss Gym provides tooling to extract scenes from a variety of datasets, including iPhone scans, existing image datasets (e.g. GrandTour, ARKitScenes), and even generative video models like Veo.
+  </p>
+</div>
 
 <br/>
 
@@ -903,5 +1083,5 @@ We provide deployment code to evaluate learned policies on hardware. We also val
 ---
 
 <div class="publications">
-{% bibliography -f papers_new_pref -q @*[title=GaussGym: An Open-Source Real-To-Sim Framework for Learning Locomotion from Pixels]* --max 0 %}
+{% bibliography -f papers --template bib_bibtex_only -q @*[title=GaussGym: An Open-Source Real-To-Sim Framework for Learning Locomotion from Pixels]* --max 0 %}
 </div>

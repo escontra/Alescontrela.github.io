@@ -22,7 +22,7 @@ category: work
 {: .no_toc}
 ---
 <div class="publications">
-{% bibliography -f papers -q @*[title=Learning a Diffusion Model Policy from Rewards via Q-Score Matching]* --max 0 %}
+{% bibliography -f papers  -q @*[title=Learning a Diffusion Model Policy from Rewards via Q-Score Matching]* --max 0 %}
 </div>
 
 <br/>
@@ -46,5 +46,5 @@ Michael Psenka acknowledges support from ONR grant N00014-22-1-2102. Alejandro E
 ---
 
 <div class="publications">
-{% bibliography -f papers_new_pref -q @*[title=Learning a Diffusion Model Policy from Rewards via Q-Score Matching]* --max 0 %}
+{% bibliography -f papers --template bib_bibtex_only -q @*[title=Learning a Diffusion Model Policy from Rewards via Q-Score Matching]* --max 0 %}
 </div>

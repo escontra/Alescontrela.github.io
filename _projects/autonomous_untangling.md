@@ -79,5 +79,5 @@ This research was performed at the AUTOLAB at UC Berkeley in affiliation with th
 ## How to cite
 ---
 <div class="publications">
-{% bibliography -f papers_new_pref -q @*[title=Autonomously Untangling Long Cables]* --max 0 %}
+{% bibliography -f papers --template bib_bibtex_only -q @*[title=Autonomously Untangling Long Cables]* --max 0 %}
 </div>

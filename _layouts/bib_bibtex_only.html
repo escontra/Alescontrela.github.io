@@ -1,0 +1,20 @@
+---
+---
+<!-- _layouts/bib_bibtex_only.html -->
+<!-- Template for showing only bibtex code on project pages -->
+<div>
+    <div class="row no-gutters">
+        <div class="col-sm-12">
+            <div class="card-body">
+                <div id="{{entry.key}}">
+                    {% if entry.bibtex_show -%}
+                    <!-- Bibtex block -->
+                    <div class="bibtex">
+                        {% highlight bibtex %}{{ entry.bibtex | hideCustomBibtex }}{% endhighlight %}
+                    </div>
+                    {%- endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

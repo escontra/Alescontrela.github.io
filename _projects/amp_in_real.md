@@ -161,5 +161,5 @@ The authors would like to thank <a href="https://www.lauvisuals.com/">Adam Lau</
 ---
 
 <div class="publications">
-{% bibliography -f papers_new_pref -q @*[title=Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions]* --max 0 %}
+{% bibliography -f papers --template bib_bibtex_only -q @*[title=Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions]* --max 0 %}
 </div>

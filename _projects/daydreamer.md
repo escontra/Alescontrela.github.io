@@ -181,5 +181,5 @@ in part by an NSF Fellowship, NSF NRI #2024675, and the Vanier Canada Graduate S
 ## How to cite
 ---
 <div class="publications">
-{% bibliography -f papers_new_pref -q @*[title=Daydreamer: World Models for Physical Robot Learning]* --max 0 %}
+{% bibliography -f papers --template bib_bibtex_only -q @*[title=Daydreamer: World Models for Physical Robot Learning]* --max 0 %}
 </div>
