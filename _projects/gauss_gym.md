@@ -231,13 +231,13 @@ category: work
 
 .author-affiliations {
   font-size: clamp(14px, 2.5vw, 18px);
-  color: #666;
+  color: var(--global-text-color-light);
   margin-bottom: 8px;
 }
 
 .author-note {
   font-size: clamp(13px, 2vw, 16px);
-  color: #666;
+  color: var(--global-text-color-light);
 }
 
 @media (max-width: 768px) {
@@ -266,13 +266,24 @@ category: work
 ## Overview
 ---
 
-We present a novel approach for photorealistic robot simulation that integrates *3D Gaussian Splatting* as a drop-in renderer within vectorized physics simulators such as IsaacGym. This enables unprecedented speed—exceeding 100,000 steps per second on consumer GPUs—while maintaining high visual fidelity, which we showcase across diverse tasks. We additionally demonstrate its applicability in a sim-to-real robotics setting. Beyond depth-based sensing, our results highlight how rich visual semantics improve navigation and decision-making, such as avoiding undesirable regions. We further showcase the ease of incorporating thousands of environments from iPhone scans, large-scale scene datasets (e.g., GrandTour, ARKit), and outputs from generative video models like Veo, enabling rapid creation of realistic training worlds. This work bridges high-throughput simulation and high-fidelity perception, advancing scalable and generalizable robot learning. All code and data will are open-sourced for the community to build upon.
+Training vision-based robot policies requires massive amounts of diverse, high-quality data. Traditional simulators struggle to provide photorealistic visual experiences at the scale needed for modern reinforcement learning, forcing researchers to choose between visual fidelity and training throughput.
+
+We present **GaussGym**, a novel approach that integrates *3D Gaussian Splatting* as a drop-in renderer within vectorized physics simulators such as IsaacGym. This integration enables unprecedented speed—exceeding **100,000 steps per second on consumer GPUs**—while maintaining photorealistic visual fidelity.
+
+**Key capabilities:**
+- **Photorealistic rendering** using 3D Gaussian Splatting at massive scale
+- **Diverse scene creation** from iPhone scans, datasets (GrandTour, ARKit), and generative video models (Veo)
+- **Sim2real transfer** with motion blur, camera randomization, and intrinsic jitter
+- **Rich sensing** beyond RGB: depth maps, heightmaps, and terrain-based rewards
+- **Tasks** are provided out of the box, including pursuit tasks and goal reaching.
+
+This work bridges high-throughput simulation and high-fidelity perception, advancing scalable and generalizable robot learning. All code and data are open-sourced for the community to build upon.
 
 <div style="text-align: center; margin: 30px 0;">
   <img src="https://gauss-gym.escontrela.me/all_scenes_compressed.png"
        alt="Overview of all scenes"
        style="max-width: 100%; height: auto;">
-  <p style="margin-top: 10px; font-size: 16px; color: #666; font-style: italic;">
+  <p style="margin-top: 10px; font-size: 16px; color: var(--global-text-color-light); font-style: italic;">
     Gauss Gym provides tooling to extract scenes from a variety of datasets, including iPhone scans, existing image datasets (e.g. GrandTour, ARKitScenes), and even generative video models like Veo.
   </p>
 </div>
@@ -282,7 +293,9 @@ We present a novel approach for photorealistic robot simulation that integrates 
 ## Interactive 3D Scenes
 ---
 
-Click on a category and sub-scene to visualize our learned vision-based policy in the photo-realistic environment. Examples are interactive!
+Explore the diverse photorealistic environments where GaussGym trains robot policies. Each scene is rendered using 3D Gaussian Splatting and can be navigated interactively in your browser. Click on a category below to select a scene, then use your mouse to orbit the camera and observe the robot's first-person view as it navigates the environment.
+
+These scenes span iPhone captures of real locations, large-scale outdoor datasets, indoor room scans, and even AI-generated worlds from video models like Veo—demonstrating the versatility of our scene extraction pipeline.
 
 **Note**: Some examples may be slow to load
 
@@ -326,10 +339,10 @@ Click on a category and sub-scene to visualize our learned vision-based policy i
 
 @keyframes pulse-border {
   0%, 100% {
-    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7), 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 0 rgba(255, 54, 54, 0.7), 0 10px 30px rgba(0, 0, 0, 0.2);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(255, 0, 0, 0), 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 0 8px rgba(255, 54, 54, 0), 0 10px 30px rgba(0, 0, 0, 0.2);
   }
 }
 
@@ -366,7 +379,7 @@ Click on a category and sub-scene to visualize our learned vision-based policy i
 .scene-thumbnail {
   min-width: 150px;
   height: 100px;
-  background: #222;
+  background: var(--global-card-bg-color);
   border-radius: 8px;
   cursor: pointer;
   border: 3px solid transparent;
@@ -374,7 +387,7 @@ Click on a category and sub-scene to visualize our learned vision-based policy i
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: var(--global-text-color);
   font-size: 14px;
   font-weight: bold;
   overflow: hidden;
@@ -394,7 +407,7 @@ Click on a category and sub-scene to visualize our learned vision-based policy i
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.8);
-  color: #fff;
+  color: var(--global-bg-color);
   padding: 8px;
   font-size: 12px;
   font-weight: bold;
@@ -403,11 +416,11 @@ Click on a category and sub-scene to visualize our learned vision-based policy i
 
 .scene-thumbnail:hover {
   transform: scale(1.05);
-  border-color: #666;
+  border-color: var(--global-hover-color);
 }
 
 .scene-thumbnail.active {
-  border-color: #4CAF50;
+  border-color: var(--global-theme-color);
 }
 
 /* Viewer container */
@@ -454,15 +467,15 @@ Click on a category and sub-scene to visualize our learned vision-based policy i
 }
 
 .back-button {
-  background: #333;
-  color: #fff;
-  border: none;
+  background: var(--global-card-bg-color);
+  color: var(--global-text-color);
+  border: 1px solid var(--global-divider-color);
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
   border-radius: 4px;
   margin-bottom: 20px;
-  transition: background 0.3s;
+  transition: background 0.3s, border-color 0.3s;
   display: none;
 }
 
@@ -471,7 +484,7 @@ Click on a category and sub-scene to visualize our learned vision-based policy i
 }
 
 .back-button:hover {
-  background: #555;
+  border-color: var(--global-hover-color);
 }
 
 @keyframes fadeIn {
@@ -720,7 +733,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<p style="text-align: center; font-size: 13px; color: #666; margin-top: 20px;">
+<p style="text-align: center; font-size: 13px; color: var(--global-text-color-light); margin-top: 20px;">
   Interactive demos made possible by <a href="https://sparkjs.dev/">Spark</a>, <a href="https://viser.studio/main/">Viser</a>, and <a href="https://brentyi.github.io/">Brent Yi</a>
 </p>
 
@@ -729,13 +742,19 @@ document.addEventListener('DOMContentLoaded', function() {
 ## Lowering the Visual Sim2Real Gap
 ---
 
-GaussGym enables users to simulate motion blur, jitter camera intrinsics, and randomize camera pose all while remaining extremely fast and efficient.
+A critical challenge in sim-to-real transfer is the visual gap between simulated and real-world images. Real cameras introduce artifacts like motion blur, lens distortion, and varying intrinsics that are rarely modeled in traditional simulators. GaussGym addresses this by simulating these effects efficiently during training.
+
+**Motion Blur**: Real cameras capture images over finite exposure times, creating motion blur when the robot or camera moves. We simulate this by alpha-blending rendered images along the camera's twist vector, parameterized by shutter speed. This can be randomized during training to improve robustness to varying lighting conditions and motion speeds.
+
+**Camera Randomization**: We support randomization of camera pose, intrinsics (focal length, principal point), and extrinsics to ensure policies generalize across different camera configurations. All randomizations run efficiently within the vectorized renderer.
+
+**Terrain-Aware Rewards**: Beyond visual rendering, GaussGym integrates with NVIDIA Warp to provide heightmap measurements directly from the 3D scene geometry. This enables computation of terrain-based rewards and geometric constraints without expensive raycasting.
 
 <div style="text-align: center; margin: 30px 0;">
   <img src="https://gauss-gym.escontrela.me/motion_blur_compressed.png"
        alt="Overview of all scenes"
        style="max-width: 100%; height: auto;">
-  <p style="margin-top: 10px; font-size: 16px; color: #666; font-style: italic;">
+  <p style="margin-top: 10px; font-size: 16px; color: var(--global-text-color-light); font-style: italic;">
     Motion blur achieved by alpha-blending images along the cameras twist vector and is parameterized by the shutter speed, which can also be randomized.
   </p>
 </div>
@@ -743,7 +762,11 @@ GaussGym enables users to simulate motion blur, jitter camera intrinsics, and ra
 ## Extracting scenes from videos
 ---
 
-GaussGym leverages recent advances in Structure from Motion (SfM), Surface Reconstruction, and Differentiable Rendering to translate images and videos into 3D scenes. Input images are fed through VGGT to extract high-quality metric poses and point clouds with normals. These posed images and pointclouds are used to infer high resolution meshes and train 3D Gaussian Splatting models, which can be used to simulate contact physics and render high quality images in sim.
+Creating diverse, high-quality training environments has traditionally been a bottleneck in robot learning. Manual scene creation is labor-intensive, while existing datasets offer limited diversity. GaussGym dramatically simplifies this process by automatically extracting simulation-ready 3D scenes from videos and images.
+
+**Automated Scene Pipeline**: Our pipeline leverages recent advances in Structure from Motion (SfM), Surface Reconstruction, and Differentiable Rendering. Input images are processed through [VGGT](https://vgg-t.github.io/) to extract metric poses and dense point clouds with normals. These are then used to: (1) reconstruct high-resolution collision meshes for physics simulation with [NKSR](https://github.com/nv-tlabs/NKSR), and (2) train 3D Gaussian Splatting models with [gsplat](https://github.com/nerfstudio-project/gsplat) for photorealistic rendering.
+
+**From Capture to Sim in Minutes**: What previously required days of manual modeling now happens automatically. Simply capture a video with your iPhone, run it through our pipeline, and get a simulation-ready scene complete with both visual rendering and collision geometry. This enables rapid iteration and massive scaling to thousands of diverse environments.
 
 <div style="text-align: center; margin: 30px 0;">
   <img src="https://gauss-gym.escontrela.me/data_compressed.png"
@@ -751,7 +774,7 @@ GaussGym leverages recent advances in Structure from Motion (SfM), Surface Recon
        style="max-width: 100%; height: auto;">
 </div>
 
-Our pipeline also supports extracting scenes from video generation models. This is made possible by the improved 3D consistenty of recent models as well as improved SfM pipelines. Users can prompt video models with text prompts describing the scenes they want to train in, then use our pipeline to extract 3D Gaussian Splats and surface geometry for sim training.
+**Beyond Real-World Capture**: Our pipeline also supports extracting scenes from generative video models like Veo. Users can describe desired training scenarios via text prompts (e.g., "a crystal cave with glowing formations"), generate videos, and automatically extract 3D scenes for simulation. This opens up entirely new possibilities for training in environments that don't exist in the real world.
 
 <div style="text-align: center; margin: 30px 0;">
   <img src="https://gauss-gym.escontrela.me/veo_compressed.png"
@@ -760,13 +783,117 @@ Our pipeline also supports extracting scenes from video generation models. This 
 </div>
 
 
-## Not just RGB
+## Rich Multi-Modal Sensing
 ---
 
-GaussGym supports more than just RGB. It can also render depth while remaining fast and efficient.
+While photorealistic RGB rendering is essential for vision-based policies, many robotics tasks benefit from additional sensing modalities. GaussGym efficiently renders depth maps alongside RGB images, enabling richer perception without sacrificing performance.
+
+**Depth Rendering**: Using the same 3D Gaussian Splatting representation, we render per-pixel depth maps that provide geometric understanding of the scene. This is particularly valuable for:
+- **Navigation tasks** where obstacle distance matters
+- **Manipulation** requiring precise geometric reasoning
+- **Multi-modal policies** that fuse RGB and depth for robustness
+
+**Performance**: Depth rendering adds minimal overhead to the already fast RGB rendering pipeline, maintaining the 100K+ steps/second throughput that makes large-scale training practical.
+
+**Sensor Flexibility**: The depth maps can be configured to match real sensor characteristics (range limits, noise patterns) to further improve sim-to-real transfer.
 
 <div style="text-align: center; margin: 30px 0;">
   <img src="https://gauss-gym.escontrela.me/amazon_depth_compressed.png"
        alt="Overview of all scenes"
        style="max-width: 100%; height: auto;">
 </div>
+
+## Policy Learning
+---
+
+<style>
+.architecture-container {
+  display: flex;
+  gap: 30px;
+  margin: 30px 0;
+  align-items: center;
+}
+
+.architecture-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.architecture-image {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+}
+
+.architecture-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 968px) {
+  .architecture-container {
+    flex-direction: column-reverse;
+  }
+
+  .architecture-text,
+  .architecture-image {
+    width: 100%;
+  }
+}
+</style>
+
+<div class="architecture-container">
+  <div class="architecture-text">
+    <p>Our vision-based policy uses a recurrent encoder that fuses visual and proprioceptive observations over time. At each timestep, DinoV2 embeddings from RGB images are concatenated with proprioceptive measurements and processed through an LSTM, creating a compact latent representation that captures temporal dynamics and visual semantics. We use LSTM instead of transformers to ensure fast inference on-robot.</p>
+
+    <p>This shared representation feeds two specialized heads:</p>
+
+    <p><strong>Voxel Prediction Head:</strong> Unflattens the latent vector into a 3D grid and applies transposed convolutions to predict dense volumetric occupancy and terrain heights, forcing the network to learn scene geometry.</p>
+
+    <p><strong>Policy Head:</strong> A second LSTM processes the latent representation and outputs parameters of a Gaussian distribution over joint position offsets.</p>
+  </div>
+
+  <div class="architecture-image">
+    <img src="https://gauss-gym.escontrela.me/network_compressed.png"
+         alt="Network architecture diagram">
+  </div>
+</div>
+
+## Sim2Real Transfer
+
+<style>
+.side-by-side-container {
+  display: flex;
+  gap: 20px;
+  margin: 30px 0;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.side-by-side-container img {
+  width: 48%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .side-by-side-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .side-by-side-container img {
+    width: 100%;
+  }
+}
+</style>
+
+We provide deployment code to evaluate learned policies on hardware. We also validate our architecture on the Unitree A1 quadrupedal robot, demonstrating perceptive locomotion on 17cm stairs.
+
+
+<div class="side-by-side-container">
+  <img src="https://gauss-gym.escontrela.me/sim_a1_compressed.png"
+       alt="Simulation A1">
+  <img src="https://gauss-gym.escontrela.me/real_a1_compressed.png"
+       alt="Real A1">
+</div>
+
