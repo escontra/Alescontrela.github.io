@@ -897,3 +897,11 @@ We provide deployment code to evaluate learned policies on hardware. We also val
        alt="Real A1">
 </div>
 
+
+## How to cite
+{: .no_toc}
+---
+
+<div class="publications">
+{% bibliography -f papers_new_pref -q @*[title=GaussGym: An Open-Source Real-To-Sim Framework for Learning Locomotion from Pixels]* --max 0 %}
+</div>
