@@ -361,8 +361,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div class="author-section">
   <p class="author-names">
-    Alejandro Escontrela<sup>1</sup>, Justin Kerr<sup>1</sup>, Arthur Allshire<sup>1</sup>, Jonas Frey<sup>2</sup>,<br/>
-    Rocky Duan<sup>3</sup>, Carmelo Sferrazza<sup>1, 3, &sect;</sup>, Pieter Abbeel<sup>1, 3, &sect;</sup>
+    Alejandro Escontrela<sup>1</sup>, <a href="https://kerrj.github.io/">Justin Kerr</a><sup>1</sup>, <a href="https://allshire.org/">Arthur Allshire</a><sup>1</sup>, <a href="https://jonasfrey96.github.io/">Jonas Frey</a><sup>2</sup>,<br/>
+    <a href="http://rockyduan.com/">Rocky Duan</a><sup>3</sup>, <a href="https://sferrazza.cc/">Carmelo Sferrazza</a><sup>1, 3, &sect;</sup>, <a href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a><sup>1, 3, &sect;</sup>
   </p>
   <p class="author-affiliations">
     <sup>1</sup>UC Berkeley, <sup>2</sup>ETH Zurich, <sup>3</sup>Amazon FAR (Frontier AI &amp; Robotics)
