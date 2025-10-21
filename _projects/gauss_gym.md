@@ -1392,3 +1392,8 @@ We provide deployment code to evaluate learned policies on hardware. We also val
 <div class="publications">
 {% bibliography -f papers --template bib_bibtex_only -q @*[title=GaussGym: An Open-Source Real-To-Sim Framework for Learning Locomotion from Pixels]* --max 0 %}
 </div>
+
+## Acknowledgements
+---
+
+We would like to thank [Brent Yi](https://brentyi.github.io/), [Angjoo Kanazawa](https://people.eecs.berkeley.edu/~kanazawa/), [Marco Hutter](https://rsl.ethz.ch/the-lab/people/person-detail.MTIxOTEx.TGlzdC8yNDQxLC0xNDI1MTk1NzM1.html), [Karen Liu](https://tml.stanford.edu/people/karen-liu), and [Guanya Shi](https://www.gshi.me/) for their valuable feedback and support. This work was supported in part by an NSF Graduate Fellowship, the ONR MURI N00014-22-1-2773, the BAIR Industrial Consortium, and Amazon. We also thank NVIDIA for providing compute resources through the NVIDIA Academic DGX Grant.
