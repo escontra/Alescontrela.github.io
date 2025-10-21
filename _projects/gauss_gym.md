@@ -8,9 +8,10 @@ category: work
 ---
 
 <style>
-/* Rounded borders for all content images */
+/* Rounded borders and shadows for all content images */
 img {
   border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .video-banner-container {
@@ -20,6 +21,8 @@ img {
   overflow: hidden;
   background: #000;
   min-height: 400px;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 @media (max-width: 768px) {
