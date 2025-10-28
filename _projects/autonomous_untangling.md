@@ -3,7 +3,7 @@ layout: page
 title: "Autonomously Untangling Long Cables"
 description: Sliding and Grasping for Tangle Manipulation (SGTM)
 img: assets/img/autonomous_untangling/knot_detection/12.png
-importance: 3
+importance: 5
 category: work
 ---
 <div class="row">

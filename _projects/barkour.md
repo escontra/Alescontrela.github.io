@@ -4,7 +4,7 @@ title: "Barkour: Benchmarking animal-level agility with quadruped robots"
 description: We introduce the Barkour agility benchmark for quadruped robots, along with a Transformer-based generalist locomotion policy
 img: assets/gif/alphapet_jump.gif
 redirect: https://ai.googleblog.com/2023/05/barkour-benchmarking-animal-level.html
-importance: 1
+importance: 2
 category: work
 ---
 

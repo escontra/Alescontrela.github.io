@@ -3,7 +3,7 @@ layout: page
 title: "Video Prediction Models as Rewards for Reinforcement Learning"
 description: Using advances in generative modeling to learn reward functions from unlabeled videos.
 img: assets/img/viper/viper_method.png
-importance: 0
+importance: 2
 category: work
 ---
 

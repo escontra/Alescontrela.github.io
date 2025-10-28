@@ -3,7 +3,7 @@ layout: page
 title: "DayDreamer: World Models for Physical Robot Learning"
 description: Hyper data-efficient robot learning with world models
 img: assets/img/daydreamer_splash.png
-importance: 1
+importance: 2
 category: work
 ---
 

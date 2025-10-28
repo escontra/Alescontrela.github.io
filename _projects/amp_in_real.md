@@ -3,7 +3,7 @@ layout: page
 title: "Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions"
 description: Using motion priors to learn energy-efficient and natural robot locomotion strategies
 img: assets/img/adversarial_motion_priors.png
-importance: 2
+importance: 3
 category: work
 ---
 
