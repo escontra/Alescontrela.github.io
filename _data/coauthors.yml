@@ -4,6 +4,9 @@
 "van Steenkiste":
   - firstname: ["Sjoerd"]
     url: https://www.sjoerdvansteenkiste.com/
+"Steenkiste":
+  - firstname: ["Sjoerd van"]
+    url: https://www.sjoerdvansteenkiste.com/
 "Rubanova":
   - firstname: ["Yulia"]
     url: https://yuliarubanova.github.io/
