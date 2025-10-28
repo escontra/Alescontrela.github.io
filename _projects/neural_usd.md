@@ -2,7 +2,7 @@
 layout: page
 title: "Neural USD: Scalable Scene Editing via Differentiable Universal Scene Description"
 description: Interactive 3D scene editing using Neural USD representations
-img: https://neural-usd.escontrela.me/splash.png
+img: https://neural-usd.escontrela.me/splash_whitebg.png
 importance: 1
 category: work
 ---
@@ -22,9 +22,16 @@ category: work
 
 .slide-content {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  gap: 20px;
   margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .slide-content {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 /* Glow boxes for original and predictions */
@@ -48,29 +55,33 @@ category: work
 }
 
 .original-box {
-  margin-bottom: 0;
+  flex: 0 0 auto;
+  width: 200px;
+}
+
+@media (max-width: 768px) {
+  .original-box {
+    width: 100%;
+  }
 }
 
 .predictions-box {
-  margin-top: 0;
+  flex: 1;
+  min-width: 0;
 }
 
 .original-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 15px;
-  justify-items: center;
-  max-width: 600px;
-  margin: 0 auto;
+  align-items: center;
 }
 
 .operations-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   justify-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
@@ -95,7 +106,7 @@ category: work
 
 .original-img, .original-video {
   width: 100%;
-  max-width: 256px;
+  max-width: 180px;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -119,7 +130,7 @@ category: work
 
 .operation-video {
   width: 100%;
-  max-width: 256px;
+  max-width: 180px;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -316,17 +327,32 @@ Amazing progress has been made in controllable generative modeling, especially o
   <img src="https://neural-usd.escontrela.me/splash.png" alt="Neural USD Overview">
 </div>
 
+## Method
+---
+
+A Neural USD consists of assets with multiple modalities: appearance, geometry, and pose. Pre-trained image models fine-tune on Neural USD data, encoding appearance and geometry from a source image and pose from a target image to reconstruct the target. At inference time, objects' poses, geometry, and appearance can be modified, including the background:
 
 <div class="method-figure">
   <img src="https://neural-usd.escontrela.me/method_figure.png" alt="Neural USD method">
 </div>
 
-<div class="method-figure">
-  <img src="https://neural-usd.escontrela.me/control_examples.png" alt="Neural USD method">
-</div>
+## Control Examples
+---
+
+Neural USD allows users to perform a variety of pose, appearance, and geometry modifications to both the foreground and the background objects:
+
 
 <div class="method-figure">
-  <img src="https://neural-usd.escontrela.me/examples_replace.png" alt="Neural USD method">
+  <img src="https://neural-usd.escontrela.me/control_examples.png" alt="Neural USD control examples">
+</div>
+
+## Object Replacement
+---
+
+Object replacement examples with appearance and geometry conditioning (top) and geometry conditioning (bottom):
+
+<div class="method-figure">
+  <img src="https://neural-usd.escontrela.me/examples_replace.png" alt="Neural USD object replacement">
 </div>
 
 ## Neural USD Examples
@@ -349,7 +375,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/src_bboxes/1_2.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/reconstruction/1_2.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -417,7 +443,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/src_bboxes/1_7.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/reconstruction/1_7.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -485,7 +511,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/src_bboxes/2_0.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/reconstruction/2_0.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -544,7 +570,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/src_bboxes/2_4.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/reconstruction/2_4.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -603,7 +629,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/src_bboxes/2_6.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/reconstruction/2_6.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -800,7 +826,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/src_bboxes/4_5.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/reconstruction/4_5.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -850,7 +876,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/src_bboxes/4_6.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/reconstruction/4_6.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -916,7 +942,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/src_bboxes/1_5.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/reconstruction/1_5.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1002,7 +1028,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/src_bboxes/2_2.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/reconstruction/2_2.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1088,7 +1114,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/src_bboxes/2_4.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/reconstruction/2_4.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1174,7 +1200,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/src_bboxes/2_5.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/reconstruction/2_5.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1495,7 +1521,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/src_bboxes/1_0.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/reconstruction/1_0.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1608,7 +1634,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/src_bboxes/1_2.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/reconstruction/1_2.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1721,7 +1747,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/src_bboxes/1_3.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/reconstruction/1_3.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1834,7 +1860,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/src_bboxes/1_6.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/reconstruction/1_6.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1947,7 +1973,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/src_bboxes/2_2.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/reconstruction/2_2.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -2033,7 +2059,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/src_bboxes/2_3.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/reconstruction/2_3.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -2119,7 +2145,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/src_bboxes/2_6.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>3D Reconstruction</label>
+              <label>Reconstruction (Upper Bound)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/reconstruction/2_6.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -2337,3 +2363,11 @@ Below we demonstrate some of the interactive operations made possible by using N
 </div>
 
 <script>registerCarousel('egotracks', 3);</script>
+
+## How to cite
+{: .no_toc}
+---
+
+<div class="publications">
+{% bibliography -f papers --template bib_bibtex_only -q @*[title=Neural USD: Scalable Scene Editing via Differentiable Universal Scene Description]* --max 0 %}
+</div>
