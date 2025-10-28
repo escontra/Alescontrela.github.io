@@ -375,7 +375,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/src_bboxes/1_2.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/reconstruction/1_2.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -443,7 +443,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/src_bboxes/1_7.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/reconstruction/1_7.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -511,7 +511,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/src_bboxes/2_0.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/reconstruction/2_0.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -570,7 +570,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/src_bboxes/2_4.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/reconstruction/2_4.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -629,7 +629,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/src_bboxes/2_6.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/reconstruction/2_6.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -826,7 +826,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/src_bboxes/4_5.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/reconstruction/4_5.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -876,7 +876,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/src_bboxes/4_6.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/objectron/original/reconstruction/4_6.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -942,7 +942,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/src_bboxes/1_5.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/reconstruction/1_5.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1028,7 +1028,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/src_bboxes/2_2.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/reconstruction/2_2.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1114,7 +1114,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/src_bboxes/2_4.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/reconstruction/2_4.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1200,7 +1200,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/src_bboxes/2_5.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/waymo/original/reconstruction/2_5.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1521,7 +1521,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/src_bboxes/1_0.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/reconstruction/1_0.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1634,7 +1634,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/src_bboxes/1_2.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/reconstruction/1_2.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1747,7 +1747,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/src_bboxes/1_3.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/reconstruction/1_3.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1860,7 +1860,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/src_bboxes/1_6.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/reconstruction/1_6.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -1973,7 +1973,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/src_bboxes/2_2.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/reconstruction/2_2.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -2059,7 +2059,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/src_bboxes/2_3.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/reconstruction/2_3.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
@@ -2145,7 +2145,7 @@ Below we demonstrate some of the interactive operations made possible by using N
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/src_bboxes/2_6.png" alt="Source with bboxes" class="original-img">
             </div>
             <div class="media-item">
-              <label>Reconstruction (Upper Bound)</label>
+              <label>VAE Reconstruction (Upper bound on quality)</label>
               <img src="https://neural-usd.escontrela.me/neural_usd_examples/movi-e/original/reconstruction/2_6.png" alt="Reconstruction" class="original-img">
             </div>
           </div>
