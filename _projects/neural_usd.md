@@ -2,7 +2,7 @@
 layout: page
 title: "Neural USD: Scalable Scene Editing via Differentiable Universal Scene Description"
 description: Interactive 3D scene editing using Neural USD representations
-img: https://neural-usd.escontrela.me/splash_whitebg.png
+img: https://neural-usd.escontrela.me/geometry.gif
 importance: 1
 category: work
 ---
