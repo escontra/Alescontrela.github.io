@@ -299,8 +299,8 @@ function updateCarousel(datasetId) {
 
 <div class="author-section">
   <p class="author-names">
-    Alejandro Escontrela<sup>†,*</sup>, <a href="https://www.linkedin.com/in/shrinu-kushagra-1ab73731/">Shrinu Kushagra</a><sup>†</sup>, <a href="https://www.sjoerdvansteenkiste.com/">Sjoerd van Steenkiste</a><sup>v</sup>, <a href="https://yuliarubanova.github.io/">Yulia Rubanova</a><sup>†</sup>,<br/>
-    <a href="https://holynski.org/">Aleksander Hołyński</a><sup>†</sup>, <a href="https://k-r-allen.github.io/">Kelsey Allen</a><sup>†</sup>, <a href="https://x.com/sirbayes?lang=en">Kevin Murphy</a><sup>†</sup>, <a href="https://tkipf.github.io/">Thomas Kipf</a><sup>†,‡</sup>
+    Alejandro Escontrela<sup>† *</sup>, <a href="https://www.linkedin.com/in/shrinu-kushagra-1ab73731/">Shrinu Kushagra</a><sup>†</sup>, <a href="https://www.sjoerdvansteenkiste.com/">Sjoerd van Steenkiste</a><sup>v</sup>, <a href="https://yuliarubanova.github.io/">Yulia Rubanova</a><sup>†</sup>,<br/>
+    <a href="https://holynski.org/">Aleksander Hołyński</a><sup>†</sup>, <a href="https://k-r-allen.github.io/">Kelsey Allen</a><sup>†</sup>, <a href="https://x.com/sirbayes?lang=en">Kevin Murphy</a><sup>†</sup>, <a href="https://tkipf.github.io/">Thomas Kipf</a><sup>†</sup>
   </p>
   <p class="author-affiliations">
     <sup>†</sup>Google DeepMind, <sup>*</sup>U.C. Berkeley, <sup>v</sup>Google Research
@@ -312,7 +312,7 @@ function updateCarousel(datasetId) {
 
 <div class="row">
     <div class="text-center col-12 mt-4 mt-md-0">
-        <h3><a href="TODO">Paper<br/><i class="fas fa-file-pdf"></i></a></h3>
+        <h3><a href="https://arxiv.org/abs/2510.23956">Paper<br/><i class="fas fa-file-pdf"></i></a></h3>
     </div>
 </div>
 
