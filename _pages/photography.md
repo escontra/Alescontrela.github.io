@@ -67,7 +67,7 @@ show_title: false
   </div>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
-      data-flickity-lazyload="https://site-images.escontrela.me/girls.avif"/>
+      data-flickity-lazyload="https://site-images.escontrela.me/girls-2.avif"/>
   </div>
   <div class="carousel-cell">
     <img class="carousel-cell-image"
