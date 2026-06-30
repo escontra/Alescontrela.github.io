@@ -29,6 +29,74 @@ show_title: false
 
 <br/>
 
+## Japan
+---
+
+<div class="carousel" data-flickity='{ "fullscreen": true, "lazyLoad": 1, "draggable": true, "wrapAround": true, "contain": true}'>
+  <div class="carousel-cell">
+    <img class="carousel-cell-image"
+      data-flickity-lazyload="https://site-images.escontrela.me/rush.avif"/>
+  </div>
+  <div class="carousel-cell">
+    <img class="carousel-cell-image"
+      data-flickity-lazyload="https://site-images.escontrela.me/egret.avif"/>
+  </div>
+  <div class="carousel-cell">
+    <img class="carousel-cell-image"
+      data-flickity-lazyload="https://site-images.escontrela.me/chopsticks.avif"/>
+  </div>
+  <div class="carousel-cell">
+    <img class="carousel-cell-image"
+      data-flickity-lazyload="https://site-images.escontrela.me/glow-2.avif"/>
+  </div>
+  <div class="carousel-cell">
+    <img class="carousel-cell-image"
+      data-flickity-lazyload="https://site-images.escontrela.me/waterfall-2.avif"/>
+  </div>
+  <div class="carousel-cell">
+    <img class="carousel-cell-image"
+      data-flickity-lazyload="https://site-images.escontrela.me/train.avif"/>
+  </div>
+  <div class="carousel-cell">
+    <img class="carousel-cell-image"
+      data-flickity-lazyload="https://site-images.escontrela.me/streetlamp-2.avif"/>
+  </div>
+  <div class="carousel-cell">
+    <img class="carousel-cell-image"
+      data-flickity-lazyload="https://site-images.escontrela.me/blur.avif"/>
+  </div>
+  <div class="carousel-cell">
+    <img class="carousel-cell-image"
+      data-flickity-lazyload="https://site-images.escontrela.me/girls.avif"/>
+  </div>
+  <div class="carousel-cell">
+    <img class="carousel-cell-image"
+      data-flickity-lazyload="https://site-images.escontrela.me/reflection.avif"/>
+  </div>
+  <div class="carousel-cell">
+    <img class="carousel-cell-image"
+      data-flickity-lazyload="https://site-images.escontrela.me/shrine-2.avif"/>
+  </div>
+  <div class="carousel-cell">
+    <img class="carousel-cell-image"
+      data-flickity-lazyload="https://site-images.escontrela.me/skate.avif"/>
+  </div>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-12">
+        <p class="text-justify text-monospace mt-3">
+            <u>Camera</u>: Nikon D600<br>
+            <u>Lens</u>: Nikon AF-S Nikkor 24-85mm ED<br>
+            <u>Settings</u>: Shot on manual | daytime shots with Auto ISO
+        </p>
+    </div>
+</div>
+
+<br/>
+
 ## Comet C/2023 A3 over Gilmore Lake, Tahoe
 ---
 <div class="row">
